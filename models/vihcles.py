@@ -79,11 +79,16 @@ actros_vehicle.assign_to_work()
 
 lst = [scania_vehicle, man_vehicle, actros_vehicle]
 
-vehicles_on_road, available_vehicles = Vehicles.count_vehicles_on_road(lst)
+vehicles_on_road, available_vehicles_count = Vehicles.count_vehicles_on_road(lst)
 
+scania_on_road, man_on_road, actros_on_road = vehicles_on_road.values()
+scania_available, man_available, actros_available = available_vehicles_count.values()
 
+print(f"Vehicles on the road:")
+print(f"Scania: {scania_on_road}, Man: {man_on_road}, Actros: {actros_on_road}")
+print("\nAvailable vehicles:")
+print(f"Scania: {scania_available}, Man: {man_available}, Actros: {actros_available}")
 
-print(f'Vehicles on road: {vehicles_on_road} \nAvailable vehicles: {available_vehicles}')
 
 
 
