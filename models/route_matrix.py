@@ -1,5 +1,5 @@
 """
-    SYD = 'SYD', 'Sydney'
+    SYD = ('SYD', 'Sydney')
     MEL = 'MEL', 'Melbourne'
     ADL = 'ADL', 'Adelaide'
     PER = 'PER', 'Perth'
@@ -13,6 +13,8 @@ from datetime import datetime, timedelta
 class Routes:
 
     AVERAGE_SPEED = 87
+
+    SYD = ('SYD', 'Sydney')
 
     DISTANCES = {
         "SYD": {"MEL": 877, "ADL": 1376, "ASP": 2762, "BRI": 909, "DAR": 3935, "PER": 4016},
@@ -39,8 +41,8 @@ class Routes:
         if distance is None:
             return "Invalid route"
         travel_time = distance / Routes.AVERAGE_SPEED
-        time_delta = timedelta(hours=travel_time)
-        return str(time_delta).split(".")[0]
+        return timedelta(hours= travel_time)
+
 print(Routes.my_distance('ASP',"ADL"))
 
 print(Routes.time_needed('SYD', 'MEL'))

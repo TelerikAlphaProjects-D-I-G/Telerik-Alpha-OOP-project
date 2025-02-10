@@ -1,10 +1,21 @@
 from models.package_status import PackageStatus
 from datetime import datetime, timedelta
+from models.route_matrix import Routes
+
+from models.route_matrix import Routes
 
 
 class Package:
 
-	location = {'Sydney', 'Melbourne', 'Adelaide', 'Perth', 'Brisbane', 'Alice Springs', 'Darwin'}
+	LOCATION_MAPPING = {
+		"Sydney" == "SYD",
+		"Melbourne" == "MEL",
+		"Adelaide" == "ADL",
+		"Perth" == "PER",
+		"Brisbane" == "BRI",
+		"Alice Springs" == "ASP",
+		"Darwin" == "DAR"
+	}
 
 	unique_id_user = set()
 
@@ -17,11 +28,11 @@ class Package:
 		self.weight_kg = weight_kg
 		self.contact_information = contact_information
 		Package.unique_id_user.add(unique_id)
-		self.location_exist(start_location, end_location)
+#		self.location_exist(start_location, end_location)
 		self.check_weight(weight_kg)
 		self._package_status = PackageStatus.PENDING
-		self.created_at = datetime.now
-		self.arrival_time = None
+		self.estimated_duration = Routes.time_needed(self.start_location, self.end_location)
+		self.arrival_time = datetime.now() + self.estimated_duration if self.estimated_duration else None
 
 	@property
 	def package_status(self):
@@ -32,11 +43,11 @@ class Package:
 		return self._unique_id
 
 
-	def location_exist(self, start_location, end_location):
-		if start_location not in Package.location or end_location not in Package.location:
-			raise ValueError("Cities must be: 'Sydney', 'Melbourne', 'Adelaide', 'Perth', 'Brisbane', 'Alice Springs', 'Darwin' ")
-		if start_location == end_location:
-			raise ValueError("Distance must be different")
+#	def location_exist(self, start_location, end_location):
+#		if start_location not in Package.LOCATION_MAPPING or end_location not in Package.LOCATION_MAPPING:
+#			raise ValueError("Cities must be: 'Sydney', 'Melbourne', 'Adelaide', 'Perth', 'Brisbane', 'Alice Springs', 'Darwin' ")
+#		if start_location == end_location:
+#			raise ValueError("Distance must be different")
 
 
 	def check_weight(self, value):
@@ -58,10 +69,12 @@ class Package:
 		        f'End location: {self.end_location}\n'
 		        f'Weight: {self.weight_kg} kg\n'
 		        f'Contact information: {self.contact_information}\n'
-				f'Current status: {self._package_status}'
-		        )
+				f'Current status: {self._package_status}\n'
+				f'Estimated delivery time: {self.estimated_duration}\n'
+				f'Expected delivery date: {self.arrival_time}'
+				)
 
-new_package = Package('1', 'Adelaide', 'Sydney', 45, 'JohnDue')
+new_package = Package('1', 'SYD', 'MEL', 45, 'JohnDue')
 new_package.advance_status()
 print(new_package)
 
