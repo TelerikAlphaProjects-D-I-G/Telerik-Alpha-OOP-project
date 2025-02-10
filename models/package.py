@@ -6,15 +6,14 @@ from models.route_matrix import Routes
 
 
 class Package:
-
 	LOCATION_MAPPING = {
-		"Sydney" == "SYD",
-		"Melbourne" == "MEL",
-		"Adelaide" == "ADL",
-		"Perth" == "PER",
-		"Brisbane" == "BRI",
-		"Alice Springs" == "ASP",
-		"Darwin" == "DAR"
+		"Sydney": "SYD",
+		"Melbourne": "MEL",
+		"Adelaide": "ADL",
+		"Perth": "PER",
+		"Brisbane": "BRI",
+		"Alice Springs": "ASP",
+		"Darwin": "DAR"
 	}
 
 	unique_id_user = set()
@@ -43,11 +42,13 @@ class Package:
 		return self._unique_id
 
 
-#	def location_exist(self, start_location, end_location):
-#		if start_location not in Package.LOCATION_MAPPING or end_location not in Package.LOCATION_MAPPING:
-#			raise ValueError("Cities must be: 'Sydney', 'Melbourne', 'Adelaide', 'Perth', 'Brisbane', 'Alice Springs', 'Darwin' ")
-#		if start_location == end_location:
-#			raise ValueError("Distance must be different")
+	def location_exist(self, location):
+		if location in Package.LOCATIONS_FULL:
+			return Package.LOCATION_MAPPING[location]
+		elif location in Package.LOCATIONS_ABBR:
+			return location
+		else:
+			raise ValueError(f"Invalid location: {location}. Must be one of: {', '.join(Package.LOCATIONS_FULL)}")
 
 
 	def check_weight(self, value):
@@ -70,8 +71,8 @@ class Package:
 		        f'Weight: {self.weight_kg} kg\n'
 		        f'Contact information: {self.contact_information}\n'
 				f'Current status: {self._package_status}\n'
-				f'Estimated delivery time: {self.estimated_duration}\n'
-				f'Expected delivery date: {self.arrival_time}'
+				f'Estimated delivery time: {str(self.estimated_duration).split(".")[0]}\n'
+				f'Expected delivery date: {self.arrival_time.strftime("%Y-%m-%d %H:%M:%S")}'
 				)
 
 new_package = Package('1', 'SYD', 'MEL', 45, 'JohnDue')
