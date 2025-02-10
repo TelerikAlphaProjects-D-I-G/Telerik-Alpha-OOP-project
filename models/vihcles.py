@@ -45,11 +45,11 @@ class Vehicles:
             if not vehicle.is_available:
                 vehicles_on_road[vehicle.name] += 1
 
-        available_vehicles_count = {'Scania': Vehicles.available_vehicles['Scania']['quantity'] - vehicles_on_road['Scania'],
+        liable_vehicles_count = {'Scania': Vehicles.available_vehicles['Scania']['quantity'] - vehicles_on_road['Scania'],
                                     'Man': Vehicles.available_vehicles['Man']['quantity'] - vehicles_on_road['Man'],
                                     'Actros': Vehicles.available_vehicles['Actros']['quantity'] - vehicles_on_road['Actros']}
 
-        return vehicles_on_road, available_vehicles_count
+        return vehicles_on_road, liable_vehicles_count
 
     def __str__(self):
         vehicle_info = Vehicles.truck_info(self.vehicle_id)
@@ -88,11 +88,3 @@ print(f"Vehicles on the road:")
 print(f"Scania: {scania_on_road}, Man: {man_on_road}, Actros: {actros_on_road}")
 print("\nAvailable vehicles:")
 print(f"Scania: {scania_available}, Man: {man_available}, Actros: {actros_available}")
-
-
-
-
-
-
-
-

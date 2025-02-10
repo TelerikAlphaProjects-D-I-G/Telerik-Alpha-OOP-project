@@ -1,5 +1,3 @@
-from numpy.f2py.cfuncs import needs
-
 
 class Package:
 
@@ -22,6 +20,7 @@ class Package:
 	@property
 	def unique_id(self):
 		return self._unique_id
+
 
 	def location_exist(self, start_location, end_location):
 		if start_location not in Package.location or end_location not in Package.location:
