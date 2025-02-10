@@ -8,8 +8,11 @@
     DAR = 'DAR', 'Darwin'
 
 """
+from datetime import datetime, timedelta
 
 class Routes:
+
+    AVERAGE_SPEED = 87
 
     DISTANCES = {
         "SYD": {"MEL": 877, "ADL": 1376, "ASP": 2762, "BRI": 909, "DAR": 3935, "PER": 4016},
@@ -30,6 +33,16 @@ class Routes:
             return 0
         return  Routes.DISTANCES.get(start,{}).get(end)
 
+    @staticmethod
+    def time_needed(start, end):
+        distance = Routes.my_distance(start, end)
+        if distance is None:
+            return None
+        travel_time = distance / Routes.AVERAGE_SPEED
+        return timedelta(hours=travel_time)
+
 print(Routes.my_distance('ASP',"ADL"))
+
+print(Routes.time_needed('SYD', 'MEL'))
 
 

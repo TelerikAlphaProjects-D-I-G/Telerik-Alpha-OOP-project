@@ -1,4 +1,5 @@
 from models.package_status import PackageStatus
+from datetime import datetime, timedelta
 
 
 class Package:
@@ -19,6 +20,8 @@ class Package:
 		self.location_exist(start_location, end_location)
 		self.check_weight(weight_kg)
 		self._package_status = PackageStatus.PENDING
+		self.created_at = datetime.now
+		self.arrival_time = None
 
 	@property
 	def package_status(self):
@@ -57,6 +60,7 @@ class Package:
 		        f'Contact information: {self.contact_information}\n'
 				f'Current status: {self._package_status}'
 		        )
+
 new_package = Package('1', 'Adelaide', 'Sydney', 45, 'JohnDue')
 new_package.advance_status()
 print(new_package)

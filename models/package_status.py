@@ -7,16 +7,18 @@ class PackageStatus:
 
     package_status = [PENDING, IN_TRANSIT, DELIVERED]
 
-    def next(self,status):
-        index = self.package_status.index(status)
-        if index < len(self.package_status) -1:
-            return self.package_status[index +1]
+    @staticmethod
+    def next(status):
+        index = PackageStatus.package_status.index(status)
+        if index < len(PackageStatus.package_status) - 1:
+            return PackageStatus.package_status[index + 1]
         return status
 
-    def previous(self,status):
-        index = self.package_status.index(status)
+    @staticmethod
+    def previous(status):
+        index = PackageStatus.package_status.index(status)
         if index > 0:
-            return self.package_status[index -1]
+            return PackageStatus.package_status[index - 1]
         return status
 
 package_status = PackageStatus()
