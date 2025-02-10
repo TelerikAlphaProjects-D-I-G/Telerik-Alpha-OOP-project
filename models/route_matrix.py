@@ -18,6 +18,6 @@ def my_distance(start,end):
         return 0
     return  DISTANCES.get(start,{}).get(end)
 
-print(my_distance("MEL","MEL"))
+print(my_distance("MEL","ADL"))
 
 
