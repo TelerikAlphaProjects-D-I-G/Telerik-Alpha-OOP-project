@@ -10,15 +10,12 @@ class Vehicles:
         'Actros': {'capacity': 26000, 'max range': 13000, 'quantity': 15}
     }
 
-
     def __init__(self, name, vehicle_id):
         self.name = name
+        self.vehicle_id = vehicle_id
         self.capacity = Vehicles.available_vehicles[name]['capacity']
         self.max_range = Vehicles.available_vehicles[name]['max range']
-        self.vehicle_id = vehicle_id
         self.is_available = True
-
-
 
     def assign_to_work(self):
         if self.is_available:
@@ -33,19 +30,33 @@ class Vehicles:
     @staticmethod
     def truck_info(vehicle_id):
         if 1001 <= vehicle_id <= 1010:
-            vehicle_type = 'Scania'
+            return Vehicles.available_vehicles.get('Scania')
         if 1011 <= vehicle_id <= 1025:
             return Vehicles.available_vehicles.get('Man')
         if 1026 <= vehicle_id <= 1040:
-            return ACTROS
+            return Vehicles.available_vehicles.get('Actros')
 
     def __str__(self):
-        return f'\n'.join(Vehicles.truck_info())
+        vehicle_info = Vehicles.truck_info(self.vehicle_id)
 
-print(Vehicles.truck_info(1012))
+        if vehicle_info:
+            return (f'Name: {self.name}\n'
+                    f'Vehicle ID: {self.vehicle_id}\n'
+                    f'Capacity: {self.capacity} kg\n'
+                    f'Max Range: {self.max_range} km\n'
+                    f'Status: {'Available' if self.is_available else 'Not Available'}\n'
+                    f'Total Available: {vehicle_info['quantity']} vehicles\n')
 
+        return'No vehicle information has been found.'
 
+scania_vehicle = Vehicles('Scania', 1005)
+print(scania_vehicle)
 
+man_vehicle = Vehicles('Man', 1020)
+print(man_vehicle)
+
+actros_vehicle = Vehicles('Actros', 1030)
+print(actros_vehicle)
 
 
 
