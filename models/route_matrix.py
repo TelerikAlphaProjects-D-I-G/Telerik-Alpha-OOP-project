@@ -8,15 +8,16 @@ DISTANCES = {
     "BRI": {"SYD": 909, "MEL": 1765, "ADL": 1927, "ASP": 2993, "DAR": 3426, "PER": 4311},
     "DAR": {"SYD": 3935, "MEL": 3752, "ADL": 3027, "ASP": 1497, "BRI": 3426, "PER": 4025},
     "PER": {"SYD": 4016, "MEL": 3509, "ADL": 2785, "ASP": 2481, "BRI": 4311, "DAR": 4025}
+
 }
 
 def my_distance(start,end):
+    if start not in DISTANCES or end not in DISTANCES:
+        raise ValueError("Invalid distance")
     if start == end:
         return 0
-    if start or end not in DISTANCES:
-        raise ValueError("Invalid distance")
     return  DISTANCES.get(start,{}).get(end)
 
-print(my_distance("DAR","ABC"))
+print(my_distance("MEL","MEL"))
 
 
