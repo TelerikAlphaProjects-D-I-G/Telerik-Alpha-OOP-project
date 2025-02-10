@@ -37,10 +37,10 @@ class Routes:
     def time_needed(start, end):
         distance = Routes.my_distance(start, end)
         if distance is None:
-            return None
+            return "Invalid route"
         travel_time = distance / Routes.AVERAGE_SPEED
-        return timedelta(hours=travel_time)
-
+        time_delta = timedelta(hours=travel_time)
+        return str(time_delta).split(".")[0]
 print(Routes.my_distance('ASP',"ADL"))
 
 print(Routes.time_needed('SYD', 'MEL'))
