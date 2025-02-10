@@ -5,11 +5,11 @@ from models.route_matrix import my_distance
 class ApplicationData:
 
     def __init__(self):
-        self.packages = {}
+        self._packages = {}
 
     @property
     def packages(self):
-        return self.packages
+        return self._packages
 
     def add_package(self,unique_id, start_location, end_location, weight_kg, contact_information)->Package :
         new_package = Package(unique_id,start_location,end_location,weight_kg,contact_information)
