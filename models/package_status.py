@@ -1,9 +1,11 @@
-
-
 class PackageStatus:
 
+    PENDING = 'Pending'
+    IN_TRANSIT = 'In Transit'
+    DELIVERED = 'Delivered'
 
-    package_status = ["Pending", "In Transit", "Delivered"]
+
+    package_status = [PENDING, IN_TRANSIT, DELIVERED]
 
     def next(self,status):
         index = self.package_status.index(status)
