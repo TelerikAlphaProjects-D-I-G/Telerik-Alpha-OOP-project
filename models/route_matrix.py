@@ -59,8 +59,8 @@ class Routes:
         travel_time = distance / Routes.AVERAGE_SPEED
         return timedelta(hours= travel_time)
 
-print(Routes.my_distance('Sydney',"Adelaide"))
-
-print(Routes.time_needed('Sydney', 'Melbourne'))
+# print(Routes.my_distance('MEL',"Adelaide"))
+#
+# print(Routes.time_needed('Sydney', 'Melbourne'))
 
 
