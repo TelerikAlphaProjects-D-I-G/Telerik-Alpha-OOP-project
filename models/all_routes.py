@@ -1,20 +1,26 @@
 from models.route_matrix import Routes
 class AllRoutes:
 
-	ROUTES = ['Sydney', 'Melboune', 'Adelaide', 'Perth']
+	# ROUTES = ['Sydney', 'Melboune', 'Adelaide', 'Perth']
+
+
+	@staticmethod
 	def km_distance(route):
+		routes1 = ["SYD", "MEL", "ADL", "PER"]
 		total_distance = 0
-		for i in range(len(ROUTES) - 1):
-			current_city = ROUTES[i]
-			next_city = ROUTES[i+1]
-			if (current_city, next_city) in AllRoutes.ROUTES:
-				total_distance += AllRoutes.ROUTES[(current_city, next_city)]
-			elif (next_city, current_city) in AllRoutes.ROUTES:
-				total_distance += AllRoutes.ROUTES[(next_city, current_city)]
+		for i in range(len(routes1)):
+			current_city = routes1[i]
+			next_city = routes1[i+1]
+			if Routes.my_distance(current_city,next_city) in routes1:
+				total_distance += Routes.my_distance(current_city, next_city)
+			elif (next_city, current_city) in routes1:
+				total_distance += Routes.my_distance(current_city, next_city)
 			else:
 				print("No")
+
 		print(f"Routes: {'->'.join(route)}")
 		print(f"Total distance: {total_distance} km")
 		return total_distance
-route = ['Sydney', 'Melboune', 'Adelaide']
+route = ["SYD", "MEL", "ADL", "PER"]
+
 AllRoutes.km_distance(route)

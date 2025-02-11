@@ -1,13 +1,3 @@
-"""
-    SYD = ('SYD', 'Sydney')
-    MEL = 'MEL', 'Melbourne'
-    ADL = 'ADL', 'Adelaide'
-    PER = 'PER', 'Perth'
-    BRI = 'BRI', 'Brisbane'
-    ASP = 'ASP', 'Alice Springs'
-    DAR = 'DAR', 'Darwin'
-
-"""
 from datetime import datetime, timedelta
 
 class Routes:
