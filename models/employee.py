@@ -1,4 +1,5 @@
 import string
+from models.route_matrix import Routes
 
 from models.employee_role import EmployeeRole
 
@@ -22,21 +23,15 @@ class Employee:
     FIRSTNAME_LEN_MAX = 20
     FIRSTNAME_LEN_ERR = f'Firstname must be between {FIRSTNAME_LEN_MIN} and {FIRSTNAME_LEN_MAX} characters long!'
 
-    NORMAL_ROLE_VEHICLE_LIMIT = 5
 
-    NORMAL_USER_LIMIT_REACHED_ERR = f'You are not VIP and cannot add more than {NORMAL_ROLE_VEHICLE_LIMIT} vehicles!'
-    ADMIN_CANNOT_ADD_VEHICLES_ERR = 'You are an admin and therefore cannot add vehicles!'
-    YOU_ARE_NOT_THE_AUTHOR = 'You are not the author of the comment you are trying to remove!'
-    THE_VEHICLE_DOES_NOT_EXIT = 'The vehicle does not exist!'
-
-    def __init__(self,username,firstname,lastname,password,user_role):
+    def __init__(self,username,firstname,lastname,password,employee_role):
         self._username = self.validate_username(username)
         self._firstname = self.validate_first_name(firstname)
         self._lastname = self.validate_last_name(lastname)
         self._password = self.validate_password(password)
-        self._user_role = user_role
+        self._employee_role = employee_role
         self._is_manager = True if user_role == EmployeeRole.MANAGER else False
-        self._vehicles = []
+
 
 
     @property
@@ -60,8 +55,8 @@ class Employee:
         return self._password
 
     @property
-    def user_role(self):
-        return self._user_role
+    def employee_role(self):
+        return self._employee_role
 
 
     @staticmethod
@@ -94,6 +89,18 @@ class Employee:
             raise ValueError(Employee.PASSWORD_INVALID_SYMBOLS)
         return value
 
+    def check_if_manager(self):
+        if self._is_manager is False:
+            raise ValueError("Your position is not manager")
+        return Routes.routes_lst
+
+    def check_if_supervisor(self):
+        if self.employee_role == EmployeeRole.SUPERVISING_EMPLOYEE:
+            pass
+
+    def check_if_employee(self):
+        if self.employee_role == EmployeeRole.EMPLOYEE:
+            pass
 
     def __str__(self):
-        return f'Username: {self.username}, FullName: {self.firstname} {self.lastname}, Role: {self.user_role}'
+        return f'Username: {self.username}, FullName: {self.firstname} {self.lastname}, Role: {self.employee_role}'
