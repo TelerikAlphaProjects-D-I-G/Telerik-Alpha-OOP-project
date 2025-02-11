@@ -12,6 +12,9 @@ from datetime import datetime, timedelta
 
 class Routes:
 
+    routes_lst = []
+    routes_id_counter = 1
+
     AVERAGE_SPEED = 87
 
     SYD = ('SYD', 'Sydney')
@@ -32,6 +35,15 @@ class Routes:
         PER[0]: {SYD[0]: 4016, MEL[0]: 3509, ADL[0]: 2785, ASP[0]: 2481, BRI[0]: 4311, DAR[0]: 4025}
 
     }
+
+    def __init__(self, start_location, end_location, stops, departure_time):
+        self.star_location =start_location
+        self.end_location = end_location
+        self.stops = stops
+        self.departure_time = departure_time
+        self.route_id = Routes.routes_id_counter
+        Routes.routes_id_counter += 1
+
 
     @staticmethod
     def my_distance(start,end):

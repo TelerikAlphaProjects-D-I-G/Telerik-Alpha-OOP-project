@@ -1,4 +1,3 @@
-from zoneinfo import available_timezones
 
 SCANIA = ["Scania",42000,8000]
 MAN = ["Man", 37000, 10000]
