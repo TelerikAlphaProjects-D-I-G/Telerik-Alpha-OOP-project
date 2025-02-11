@@ -11,10 +11,17 @@
 from datetime import datetime, timedelta
 
 class Routes:
+    LOCATION_MAPPING = {
+        "Sydney": "SYD",
+        "Melbourne": "MEL",
+        "Adelaide": "ADL",
+        "Perth": "PER",
+        "Brisbane": "BRI",
+        "Alice Springs": "ASP",
+        "Darwin": "DAR"
+    }
 
     AVERAGE_SPEED = 87
-
-    SYD = ('SYD', 'Sydney')
 
     DISTANCES = {
         "SYD": {"MEL": 877, "ADL": 1376, "ASP": 2762, "BRI": 909, "DAR": 3935, "PER": 4016},
@@ -28,12 +35,21 @@ class Routes:
     }
 
     @staticmethod
+    def get_city_code(location_mapping):
+        if location_mapping in Routes.LOCATION_MAPPING.keys():
+            return Routes.LOCATION_MAPPING[location_mapping]
+        return location_mapping
+
+
+    @staticmethod
     def my_distance(start,end):
-        if start not in Routes.DISTANCES or end not in Routes.DISTANCES:
+        start_code = Routes.get_city_code(start)
+        end_code = Routes.get_city_code(end)
+        if start_code not in Routes.DISTANCES or end_code not in Routes.DISTANCES:
             raise ValueError("Invalid distance")
-        if start == end:
+        if start_code == end_code:
             return 0
-        return  Routes.DISTANCES.get(start,{}).get(end)
+        return  Routes.DISTANCES.get(start_code,{}).get(end_code)
 
     @staticmethod
     def time_needed(start, end):
@@ -43,8 +59,8 @@ class Routes:
         travel_time = distance / Routes.AVERAGE_SPEED
         return timedelta(hours= travel_time)
 
-print(Routes.my_distance('ASP',"ADL"))
+print(Routes.my_distance('Sydney',"Adelaide"))
 
-print(Routes.time_needed('SYD', 'MEL'))
+print(Routes.time_needed('Sydney', 'Melbourne'))
 
 

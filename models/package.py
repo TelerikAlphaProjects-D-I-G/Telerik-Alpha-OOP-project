@@ -6,6 +6,7 @@ from models.route_matrix import Routes
 
 
 class Package:
+
 	LOCATION_MAPPING = {
 		"Sydney": "SYD",
 		"Melbourne": "MEL",
@@ -15,6 +16,7 @@ class Package:
 		"Alice Springs": "ASP",
 		"Darwin": "DAR"
 	}
+
 
 	unique_id_user = set()
 
@@ -75,7 +77,7 @@ class Package:
 				f'Expected delivery date: {self.arrival_time.strftime("%Y-%m-%d %H:%M:%S")}'
 				)
 
-new_package = Package('1', 'SYD', 'MEL', 45, 'JohnDue')
+new_package = Package('1', 'Melbourne', 'Adelaide', 45, 'JohnDue')
 new_package.advance_status()
 print(new_package)
 
