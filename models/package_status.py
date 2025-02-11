@@ -24,4 +24,4 @@ class PackageStatus:
 package_status = PackageStatus()
 current_status = "In Transit"
 
-print(package_status.previous(current_status))
+#print(package_status.previous(current_status))
