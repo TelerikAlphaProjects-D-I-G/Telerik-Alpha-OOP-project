@@ -7,6 +7,7 @@ from commands.search_for_route_command import SearchForRouteCommand
 from commands.view_information_rout_command import ViewInformationAboutRouteCommand
 from commands.create_delivery_route_command import CreateDeliveryRouteCommand
 from commands.curr_transport_vehicle_command import CurrTransportVehicleCommand
+from commands.view_information_package_command import ViewInformationAboutPackage
 
 class CommandFactory:
     def __init__(self, data):
@@ -23,6 +24,8 @@ class CommandFactory:
             return SearchForRouteCommand(params,self._app_data)
         if cmd.lower() == "viewinformationaboutroute":
             return ViewInformationAboutRouteCommand(params,self._app_data)
+        if cmd.lower() == "viewinformationaboutpackage":
+            return ViewInformationAboutPackage(params, self._app_data)
         if cmd.lower() == "assigndeliverypackage":
             return AssignDeliveryPackageCommand(params,self._app_data)
         if cmd.lower() == "assignfreetruck":

@@ -23,5 +23,10 @@ class ApplicationData:
         package = Package(unique_id, start_location, end_location, weight_kg, contact_information)
         self._packages.append(package)
         return package
+
+    def find_package_by_id(self, unique_id) -> Package:
+        for id in self._packages:
+            if id.unique_id == unique_id:
+                return id
     # def assign_package_to_route(self,package_id, route_id, ):
 
