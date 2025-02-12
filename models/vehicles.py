@@ -1,9 +1,8 @@
-
 SCANIA = ["Scania",42000,8000]
 MAN = ["Man", 37000, 10000]
 ACTROS = ["Actros",  26000,13000]
 
-class Vehicle:
+class Vehicles:
 
     available_vehicles = {
         'Scania': {'capacity': 42000, 'max range': 8000, 'quantity': 10},
@@ -11,17 +10,12 @@ class Vehicle:
         'Actros': {'capacity': 26000, 'max range': 13000, 'quantity': 15}
     }
 
-    def __init__(self, name, vehicle_id,max_range,capacity):
+    def __init__(self, name, vehicle_id):
         self.name = name
         self.vehicle_id = vehicle_id
-        self.capacity = Vehicle.available_vehicles[name]['capacity']
-        self.max_range = Vehicle.available_vehicles[name]['max range']
+        self.capacity = Vehicles.available_vehicles[name]['capacity']
+        self.max_range = Vehicles.available_vehicles[name]['max range']
         self.is_available = True
-        self._vehicles = []
-
-    @property
-    def vehicles(self):
-        return self._vehicles
 
     def assign_to_work(self):
         if self.is_available:
@@ -33,17 +27,14 @@ class Vehicle:
         self.is_available = True
         return True
 
-
-    def truck_info(self,vehicle_id):
-        for truck_id in range(1001,1011):
-            vehicle = Vehicle("Scania",truck_id,8000,42000)
-            self.vehicles.append(vehicle)
-        for truck_id in range(1011,1025):
-            vehicle = Vehicle("Man", truck_id,10000,37000)
-            self.vehicles.append(vehicle)
-        for truck_id in range(1026,1040):
-            vehicle = Vehicle("Actros",truck_id,13000,26000)
-            self.vehicles.append(vehicle)
+    @staticmethod
+    def truck_info(vehicle_id):
+        if 1001 <= vehicle_id <= 1010:
+            return Vehicles.available_vehicles.get('Scania')
+        if 1011 <= vehicle_id <= 1025:
+            return Vehicles.available_vehicles.get('Man')
+        if 1026 <= vehicle_id <= 1040:
+            return Vehicles.available_vehicles.get('Actros')
 
     @staticmethod
     def count_vehicles_on_road(lst):
@@ -52,14 +43,14 @@ class Vehicle:
             if not vehicle.is_available:
                 vehicles_on_road[vehicle.name] += 1
 
-        liable_vehicles_count = {'Scania': Vehicle.available_vehicles['Scania']['quantity'] - vehicles_on_road['Scania'],
-                                    'Man': Vehicle.available_vehicles['Man']['quantity'] - vehicles_on_road['Man'],
-                                    'Actros': Vehicle.available_vehicles['Actros']['quantity'] - vehicles_on_road['Actros']}
+        liable_vehicles_count = {'Scania': Vehicles.available_vehicles['Scania']['quantity'] - vehicles_on_road['Scania'],
+                                    'Man': Vehicles.available_vehicles['Man']['quantity'] - vehicles_on_road['Man'],
+                                    'Actros': Vehicles.available_vehicles['Actros']['quantity'] - vehicles_on_road['Actros']}
 
         return vehicles_on_road, liable_vehicles_count
 
     def __str__(self):
-        vehicle_info = self.truck_info(self.vehicle_id)
+        vehicle_info = Vehicles.truck_info(self.vehicle_id)
 
         if vehicle_info:
             return (f'Name: {self.name}\n'
@@ -71,26 +62,26 @@ class Vehicle:
 
         return'No vehicle information has been found.'
 
-scania_vehicle = Vehicle('Scania', 1005,8000,42000)
+scania_vehicle = Vehicles('Scania', 1005)
 print(scania_vehicle)
 
-man_vehicle = Vehicle('Man', 1020,10000,37000)
+man_vehicle = Vehicles('Man', 1020)
 print(man_vehicle)
 
-actros_vehicle = Vehicle('Actros', 1030,13000,26000)
+actros_vehicle = Vehicles('Actros', 1030)
 print(actros_vehicle)
 
 scania_vehicle.assign_to_work()
 man_vehicle.assign_to_work()
 actros_vehicle.assign_to_work()
-#
+
 lst = [scania_vehicle, man_vehicle, actros_vehicle]
-#
-vehicles_on_road, available_vehicles_count = Vehicle.count_vehicles_on_road(lst)
+
+vehicles_on_road, available_vehicles_count = Vehicles.count_vehicles_on_road(lst)
 
 scania_on_road, man_on_road, actros_on_road = vehicles_on_road.values()
 scania_available, man_available, actros_available = available_vehicles_count.values()
-print()
+
 print(f"Vehicles on the road:")
 print(f"Scania: {scania_on_road}, Man: {man_on_road}, Actros: {actros_on_road}")
 print("\nAvailable vehicles:")
