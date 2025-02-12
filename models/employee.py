@@ -30,7 +30,7 @@ class Employee:
         self._lastname = self.validate_last_name(lastname)
         self._password = self.validate_password(password)
         self._employee_role = employee_role
-        self._is_manager = True if user_role == EmployeeRole.MANAGER else False
+        self._is_manager = True if employee_role == EmployeeRole.MANAGER else False
 
 
 

@@ -1,12 +1,13 @@
 from models.package import Package
 from models.route_matrix import Routes
+from models.vehicles import Vehicles
 
 
 class ApplicationData:
 
     def __init__(self):
         self._packages = []
-
+        self._truck =
     @property
     def packages(self):
         return self._packages
@@ -28,5 +29,8 @@ class ApplicationData:
         for id in self._packages:
             if id.unique_id == unique_id:
                 return id
+
+    def find_truck_by_id(self,unique_id): -> Vehicles:
+        for id in self.
     # def assign_package_to_route(self,package_id, route_id, ):
 
