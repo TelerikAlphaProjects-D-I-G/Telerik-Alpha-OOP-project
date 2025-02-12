@@ -29,11 +29,11 @@ class Vehicles:
 
 
     def assign_package(self, package):
-        if self.current_load + package.weight_kg <= self.capacity:
-            self.assigned_packages.append(package)
-            self.current_load += package.weight_kg
-            return True
-        return False
+        if self.current_load + package.weight_kg > self.capacity:
+            raise ValueError('Not enough capacity')
+        self.assigned_packages.append(package)
+        self.current_load += package.weight_kg
+        return True
 
     def assign_to_work(self):
         if self.is_available:
@@ -74,9 +74,9 @@ class Vehicles:
     def find_available_vehicle(weight):
         for vehicle_type in Vehicles.available_vehicles:
             capacity = Vehicles.available_vehicles[vehicle_type]['capacity']
-            if capacity <= weight:
-                raise ValueError('No available vehicles')
-        return vehicle_type
+            if capacity >= weight:
+                return vehicle_type
+        raise ValueError('Weight of the Packages exceeds the capacity of available trucks')
 
     def __str__(self):
         return (f'Name: {self.name}\n'
@@ -104,7 +104,7 @@ vehicle_type = Vehicles.find_available_vehicle(5000)"""
 
 from package import Package
 
-package1 = Package('1', 'Sydney', 'Brisbane', 4500, 'JohnDue')
+package1 = Package('1', 'Sydney', 'Brisbane', 500000, 'JohnDue')
 
 scania_vehicle.assign_package(package1)
 print(scania_vehicle)
