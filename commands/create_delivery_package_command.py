@@ -16,6 +16,10 @@ class CreateDeliveryPackageCommand:
         package_weight_kg = self._params[3]
         package_coninfo = self._params[4]
         try:
+            package_id = try_parse_int(package_id)
+        except:
+            raise ValueError('Invalid type id')
+        try:
             package_weight_kg = try_parse_int(package_weight_kg)
         except:
             raise ValueError('Invalid type weight')
