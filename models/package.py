@@ -75,13 +75,13 @@ class Package:
 		end_full_name = Package.LOCATION_ABBR_MAPPING[self.end_location]
 
 		return (f'Id: {self.unique_id}\n'
-				f'Start location: {start_full_name}\n'
-				f'End location: {end_full_name}\n'
-				f'Weight: {self.weight_kg} kg\n'
-				f'Contact information: {self.contact_information}\n'
-				f'Current status: {self._package_status}\n'
-				f'Estimated delivery time: {str(self.estimated_duration).split(".")[0]} h\n'
-				f'Expected delivery date: {self.arrival_time.strftime("%H:%M:%S %d-%m-%Y")}'
+				f'Start location 📍: {start_full_name}\n'
+				f'End location📍: {end_full_name}\n'
+				f'Weight📦⚖️: {self.weight_kg} kg\n'
+				f'Contact information📋: {self.contact_information}\n'
+				f'Current status✅: {self._package_status}\n'
+				f'Estimated delivery time🕒: {str(self.estimated_duration).split(".")[0]} h\n'
+				f'Expected delivery date🕒: {self.arrival_time.strftime("%H:%M:%S %d-%m-%Y")}'
 				)
 
 # new_package = Package('1', 'Sydney', 'Brisbane', 45, 'JohnDue')

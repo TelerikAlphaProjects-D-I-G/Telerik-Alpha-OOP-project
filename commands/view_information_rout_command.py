@@ -11,8 +11,8 @@ class ViewInformationAboutRouteCommand(BaseCommand):
 
     def execute(self):
         super().execute(self.params)
-        # test_route = Routes("MEL","SYD","ADL",10)
-        # self._app_data.new_route(test_route)
+        test_route = Routes("MEL","SYD","ADL",10)
+        self._app_data.new_route(test_route)
         route_id = super()._try_parse_int(self.params[0])
         route = self._app_data.find_route_by_id(route_id)
         return str(route)

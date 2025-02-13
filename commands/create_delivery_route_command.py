@@ -14,3 +14,5 @@ class CreateDeliveryRouteCommand(BaseCommand):
         all_routes = self._params
         new_route = self._app_data.create_route(all_routes)
         return f"{' -> '.join(new_route.cities)}\nTotal distance: {test_route} km"
+
+

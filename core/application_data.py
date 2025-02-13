@@ -76,8 +76,8 @@ class ApplicationData:
         self.routes.append(new_route)
         return new_route
 
-    # def new_route(self,route):
-    #     self.routes.append(route)
+    def new_route(self,route):
+        self.routes.append(route)
 
 
 

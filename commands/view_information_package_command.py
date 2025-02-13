@@ -8,9 +8,13 @@ class ViewInformationAboutPackage(BaseCommand):
 		validate_params_count(params, 1)
 		self._params = params
 
+
 	def execute(self):
 		super().execute(self._params)
 		package_info_id = super()._try_parse_int(self._params[0])
 		package = self._app_data.find_package_by_id(package_info_id)
 
-		return package.__str__()
+		return str(package)
+
+	def _expected_params_count(self) -> int:
+		return 1
