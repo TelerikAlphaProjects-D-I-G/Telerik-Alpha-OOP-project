@@ -57,7 +57,7 @@ class Routes:
                 f"Additional stops: {self.stops}\n"
                 f"End location: {self.end_location}\n")
 
-print(Routes.my_distance('ASP',"ADL"))
-print(Routes.time_needed('ASP',"ADL"))
+# print(Routes.my_distance('ASP',"ADL"))
+# print(Routes.time_needed('ASP',"ADL"))
 #print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
 

@@ -84,6 +84,6 @@ class Package:
 				f'Expected delivery date: {self.arrival_time.strftime("%H:%M:%S %d-%m-%Y")}'
 				)
 
-new_package = Package('1', 'Sydney', 'Brisbane', 45, 'JohnDue')
-new_package.advance_status()
-print(new_package)
+# new_package = Package('1', 'Sydney', 'Brisbane', 45, 'JohnDue')
+# new_package.advance_status()
+# print(new_package)

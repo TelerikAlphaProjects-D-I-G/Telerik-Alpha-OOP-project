@@ -91,23 +91,23 @@ class Vehicles:
 
 
 
-scania_vehicle = Vehicles('Scania', 1010)
-print(scania_vehicle)
-
-"""man_vehicle = Vehicles('Man', 1020)
-print(man_vehicle)
-
-actros_vehicle = Vehicles('Actros', 1030)
-print(actros_vehicle)
-
-vehicle_type = Vehicles.find_available_vehicle(5000)"""
-
-# from package import Package
-
-package1 = Package('2', 'Sydney', 'Brisbane', 500, 'JohnDue')
-
-scania_vehicle.assign_package(package1)
-
-print(scania_vehicle)
-print(scania_vehicle.work_done())
-print(scania_vehicle)
+# scania_vehicle = Vehicles('Scania', 1010)
+# print(scania_vehicle)
+#
+# """man_vehicle = Vehicles('Man', 1020)
+# print(man_vehicle)
+#
+# actros_vehicle = Vehicles('Actros', 1030)
+# print(actros_vehicle)
+#
+# vehicle_type = Vehicles.find_available_vehicle(5000)"""
+#
+# # from package import Package
+#
+# package1 = Package('2', 'Sydney', 'Brisbane', 500, 'JohnDue')
+#
+# scania_vehicle.assign_package(package1)
+#
+# print(scania_vehicle)
+# print(scania_vehicle.work_done())
+# print(scania_vehicle)
