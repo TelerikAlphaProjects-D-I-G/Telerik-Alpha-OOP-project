@@ -16,6 +16,6 @@ class AllRoutes:
 		print(f"Routes: {'->'.join(routes)}")
 		print(f"Total distance: {total_distance} km")
 		return total_distance
-course = ["DAR","SYD"]
+course = ["DAR","SYD","MEL"]
 
 AllRoutes.route_distance(course)

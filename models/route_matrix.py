@@ -51,6 +51,13 @@ class Routes:
         travel_time = distance / Routes.AVERAGE_SPEED
         return timedelta(hours= travel_time)
 
+    def __str__(self):
+        return (f"Route id: {self.route_id}\n"
+                f"Start location: {self.star_location}\n"
+                f"Additional stops: {self.stops}\n"
+                f"End location: {self.end_location}\n")
+
 print(Routes.my_distance('ASP',"ADL"))
 print(Routes.time_needed('ASP',"ADL"))
 #print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
+

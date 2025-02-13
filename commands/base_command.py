@@ -5,12 +5,12 @@ class BaseCommand:
         self._app_data = app_data
 
     def execute(self, params) -> str:
-        if self._requires_login() and not self._app_data.has_logged_in_user:
-            raise ValueError('You are not logged in! Please login first!')
+        # if self._requires_login() and not self._app_data.has_logged_in_user:
+        #     raise ValueError('You are not logged in! Please login first!')
 
-        if len(params) < self._expected_params_count():
+        if len(params) > self._expected_params_count():
             raise ValueError(
-                f'Invalid number of arguments. Expected at least {self._expected_params_count()}; received: {len(params)}.")')
+                f'Invalid number of arguments. Expected at least {self._expected_params_count()}; received: {len(params)}.')
 
         return ''
 

@@ -5,7 +5,7 @@ MAN = ["Man", 37000, 10000]
 ACTROS = ["Actros",  26000,13000]
 
 """
-
+from models.package import Package
 
 class Vehicles:
 
@@ -91,7 +91,7 @@ class Vehicles:
 
 
 
-scania_vehicle = Vehicles('Scania', 1005)
+scania_vehicle = Vehicles('Scania', 1010)
 print(scania_vehicle)
 
 """man_vehicle = Vehicles('Man', 1020)
@@ -102,9 +102,12 @@ print(actros_vehicle)
 
 vehicle_type = Vehicles.find_available_vehicle(5000)"""
 
-from package import Package
+# from package import Package
 
-package1 = Package('1', 'Sydney', 'Brisbane', 500000, 'JohnDue')
+package1 = Package('2', 'Sydney', 'Brisbane', 500, 'JohnDue')
 
 scania_vehicle.assign_package(package1)
+
+print(scania_vehicle)
+print(scania_vehicle.work_done())
 print(scania_vehicle)
