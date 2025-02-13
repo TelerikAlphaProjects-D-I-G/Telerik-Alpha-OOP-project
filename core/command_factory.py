@@ -21,7 +21,7 @@ class CommandFactory:
         cmd, *params =input_line.split()
 
         if cmd.lower() == "createdeliverypackage":
-            return CreateDeliveryPackageCommand(params, self._app_data)
+            return CreateDeliveryPackageCommand(self._app_data)
         if cmd.lower() == "createdeliveryroute":
             return CreateDeliveryRouteCommand(params, self._app_data)
         if cmd.lower() == "searchforroute":
@@ -52,6 +52,7 @@ class CommandFactory:
 regiseremployee gosho Georgi Yovchev 1234568
 logoutemployee
 loginemployee gosho 1234568
+createdeliverypackage 1 SYD MEL 50 Pack
 end
 
 
