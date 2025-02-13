@@ -12,7 +12,7 @@ class LoginCommand(BaseCommand):
         username, password = params
 
         employee = self._app_data.find_employee_by_username(username)
-        if employee.password != password
+        if employee.password != password:
             raise ValueError('Wrong username or password!')
         else:
             self._app_data.login(employee)
