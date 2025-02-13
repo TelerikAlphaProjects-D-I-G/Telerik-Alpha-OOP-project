@@ -2,6 +2,7 @@ from models.all_routes import AllRoutes
 from models.package import Package
 from models.route_matrix import Routes
 from models.vehicles import Vehicles
+from models.employee import Employee
 
 
 class ApplicationData:
@@ -11,6 +12,8 @@ class ApplicationData:
         self.vehicles = []
         self.create_trucks()
         self.routes = []
+        self._employees = []
+        self._logged_employee = None
 
     @property
     def packages(self):
@@ -78,6 +81,40 @@ class ApplicationData:
 
     def new_route(self,route):
         self.routes.append(route)
+
+    @property
+    def employees(self):
+        return tuple(self._employees)
+
+    def create_employee_acc(self, username, firstname, lastname, password, employee_role) -> Employee:
+        if len([e for e in self._employees if e.username == username]) > 0:
+            raise ValueError(f'User {username} already exist. Choose a different username!')
+
+        employee = Employee(username, firstname, lastname, password, employee_role)
+        self._employees.append(employee)
+        return employee
+
+    def find_employee_by_username(self, username: str) -> Employee:
+        filtered = [employee for employee in self._employees if employee.username == username]
+        if filtered == []:
+            raise ValueError(f'There is no employee with username {username}.')
+        return filtered[0]
+
+    @property
+    def logged_in_employee(self):
+        if self.has_logged_in_employee:
+            return self._logged_employee
+        else:
+            raise ValueError('There is no logged in employee.')
+
+    def has_logged_in_employee(self):
+        return self._logged_employee is not None
+
+    def login(self, employee: Employee):
+        self._logged_employee = employee
+
+    def logout(self):
+        self._logged_employee = None
 
 
 

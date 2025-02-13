@@ -32,10 +32,10 @@ class BaseCommand:
         except:
             raise ValueError(msg)
 
-    def _throw_if_user_logged_in(self):
-        if self._app_data.has_logged_in_user:
-            logged_user = self._app_data.logged_in_user
+    def _throw_if_employee_logged_in(self):
+        if self._app_data.has_logged_in_employee():
+            logged_employee = self._app_data.logged_in_employee
             raise ValueError(
-                f'User {logged_user.username} is logged in! Please log out first!')
+                f'User {logged_employee.username} is logged in! Please log out first!')
 
     

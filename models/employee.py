@@ -5,6 +5,7 @@ from models.employee_role import EmployeeRole
 
 
 class Employee:
+
     USERNAME_LEN_MIN = 2
     USERNAME_LEN_MAX = 20
     USERNAME_LEN_ERR = f'Username must be between {USERNAME_LEN_MIN} and {USERNAME_LEN_MAX} characters long!'
