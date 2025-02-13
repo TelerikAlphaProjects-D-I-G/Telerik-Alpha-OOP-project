@@ -3,7 +3,7 @@ from core.application_data import ApplicationData
 
 class LoginCommand(BaseCommand):
     def __init__(self, app_data: ApplicationData):
-        super().execute(app_data)
+        super().__init__(app_data)
 
     def execute(self, params):
         super().execute(params)

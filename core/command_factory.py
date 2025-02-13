@@ -8,6 +8,10 @@ from commands.view_information_rout_command import ViewInformationAboutRouteComm
 from commands.create_delivery_route_command import CreateDeliveryRouteCommand
 from commands.curr_transport_vehicle_command import CurrTransportVehicleCommand
 from commands.view_information_package_command import ViewInformationAboutPackage
+from commands.register_employee_command import RegisterEmployeeCommand
+from commands.login_command import LoginCommand
+from commands.logout_command import LogoutCommand
+
 
 class CommandFactory:
     def __init__(self, data):
@@ -36,6 +40,20 @@ class CommandFactory:
             return CurrTransportVehicleCommand(params,self._app_data)
         if cmd.lower() == "currdeliveryrouts":
             return CurrDeliveryRoutsCommand(params,self._app_data)
+        if cmd.lower() == "regiseremployee":
+            return RegisterEmployeeCommand(self._app_data)
+        if cmd.lower() == "loginemployee":
+            return LoginCommand(self._app_data)
+        if cmd.lower() == "logoutemployee":
+            return LogoutCommand(self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
+"""
+regiseremployee gosho Georgi Yovchev 1234568
+logoutemployee
+loginemployee gosho 1234568
+end
+
+
+"""
 

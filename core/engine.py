@@ -13,9 +13,13 @@ class Engine:
                 if input_line.lower() == 'end':
                     break
 
-                command = self._command_factory.create(input_line)
-                output.append(command.execute())
+                output.append(self._process_command(input_line))
             except ValueError as err:
                 output.append(err.args[0])
 
         print('\n'.join(output))
+
+    def _process_command(self, input_line):
+        cmd_name, *params = input_line.split()
+
+        return self._command_factory.create(cmd_name).execute(params)
