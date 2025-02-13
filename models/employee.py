@@ -30,7 +30,7 @@ class Employee:
         self._firstname = self.validate_first_name(firstname)
         self._lastname = self.validate_last_name(lastname)
         self._password = self.validate_password(password)
-        self._employee_role = employee_role
+        self._employee_role = EmployeeRole.from_string(employee_role)
         self._is_manager = True if employee_role == EmployeeRole.MANAGER else False
 
 

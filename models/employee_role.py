@@ -1,6 +1,6 @@
 class EmployeeRole:
     EMPLOYEE = 'Employee'
-    SUPERVISING_EMPLOYEE = 'Supervising employee'
+    SUPERVISING_EMPLOYEE = 'Supervisor'
     MANAGER = "Manager"
 
     @classmethod

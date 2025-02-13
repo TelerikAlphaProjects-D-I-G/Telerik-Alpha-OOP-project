@@ -10,20 +10,25 @@ class RegisterEmployeeCommand(BaseCommand):
         super().execute(params)
         self._throw_if_employee_logged_in()
 
-        username, firstname, lastname, password, *rest = params
+        username, firstname, lastname, password, role = params
 
-        if rest == []:
-            employee_role = EmployeeRole.EMPLOYEE
-        else:
-            employee_role = EmployeeRole.from_string(rest[0])
+        try:
+            employee_role = EmployeeRole.from_string(role)
+        except ValueError as ve:
+            return f"Error: {str(ve)}"
 
-        employee = self._app_data.create_employee_acc(username, firstname, lastname, password, employee_role)
+        try:
+            employee = self._app_data.create_employee_acc(username, firstname, lastname, password, employee_role)
+        except ValueError as ve:
+            return f"Error: {str(ve)}"
+
+        # Automatically log in the new employee
         self._app_data.login(employee)
 
-        return f'Employee {employee.username} registered successfully.'
+        return f"Employee {employee.username} registered successfully as {employee_role}."
 
     def _requires_login(self) -> bool:
         return False
 
     def _expected_params_count(self) -> int:
-        return 4
+        return 5

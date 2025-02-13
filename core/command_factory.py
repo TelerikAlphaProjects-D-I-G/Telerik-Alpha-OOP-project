@@ -54,21 +54,26 @@ class CommandFactory:
 
 """
 
-regiseremployee gosho Georgi Yovchev 1234568
+regiseremployee denkata Denis Denchev Supervisor123 Supervisor
 logoutemployee
-loginemployee gosho 1234568
-viewloggedinemployee gosho
+loginemployee denkata Supervisor123
+viewloggedinemployee denkata
 logoutemployee
-loginemployee gosho 1234568
+regiseremployee ivancho Ivan Pustovit manager123 Manager
 createdeliverypackage 1 SYD MEL 45 Pack
 viewinformationaboutpackage 1
+viewloggedinemployee ivancho
 logoutemployee
 viewinformationaboutpackage 1
-loginemployee gosho 1234568
+regiseremployee gosho Georgi Yovchev 1234568
+regiseremployee gosho Georgi Yovchev 1234568 Employee
 createdeliverypackage 2 SYD ADL 45 Pack
+viewloggedinemployee gosho
 viewinformationaboutpackage 2
 logoutemployee
 end
 
+regiseremployee ivancho Ivan Ivanov manager123 Manager
+end
 """
 
