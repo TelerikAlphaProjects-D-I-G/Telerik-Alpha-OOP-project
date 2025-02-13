@@ -5,8 +5,8 @@ class BaseCommand:
         self._app_data = app_data
 
     def execute(self, params) -> str:
-        # if self._requires_login() and not self._app_data.has_logged_in_user:
-        #     raise ValueError('You are not logged in! Please login first!')
+        if self._requires_login() and not self._app_data.has_logged_in_employee():
+            raise ValueError('You are not logged in! Please log in first!')
 
         if len(params) > self._expected_params_count():
             raise ValueError(

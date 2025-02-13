@@ -20,6 +20,9 @@ class AssignDeliveryPackageCommand(BaseCommand):
         self.route.add_package(self.package)
         self.package.advance_status()
 
+    def _requires_login(self) -> bool:
+        return True
+
     def _expected_params_count(self) -> int:
         return 0
 

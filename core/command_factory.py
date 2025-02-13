@@ -48,14 +48,23 @@ class CommandFactory:
             return LogoutCommand(self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
+
 """
+
 regiseremployee gosho Georgi Yovchev 1234568
+logoutemployee
+loginemployee gosho 1234568
 logoutemployee
 loginemployee gosho 1234568
 createdeliverypackage 1 SYD MEL 45 Pack
 viewinformationaboutpackage 1
+logoutemployee
+viewinformationaboutpackage 1
+loginemployee gosho 1234568
+createdeliverypackage 2 SYD ADL 45 Pack
+viewinformationaboutpackage 2
+logoutemployee
 end
-
 
 """
 

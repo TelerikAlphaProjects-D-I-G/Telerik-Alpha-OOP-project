@@ -28,5 +28,8 @@ class ViewInformationAboutPackage(BaseCommand):
 
 		return str(package)
 
+	def _requires_login(self) -> bool:
+		return True
+
 	def _expected_params_count(self) -> int:
 		return 1

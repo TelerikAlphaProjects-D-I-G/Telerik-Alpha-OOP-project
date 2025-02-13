@@ -31,5 +31,8 @@ class CreateDeliveryPackageCommand(BaseCommand):
         except ValueError as e:
             return f"Error: {e}"
 
+    def _requires_login(self) -> bool:
+        return True
+
     def _expected_params_count(self) -> int:
         return 5

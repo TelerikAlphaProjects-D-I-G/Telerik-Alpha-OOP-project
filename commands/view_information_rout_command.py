@@ -17,6 +17,9 @@ class ViewInformationAboutRouteCommand(BaseCommand):
         route = self._app_data.find_route_by_id(route_id)
         return str(route)
 
+    def _requires_login(self) -> bool:
+        return True
+
     def _expected_params_count(self) -> int:
 
         return 1
