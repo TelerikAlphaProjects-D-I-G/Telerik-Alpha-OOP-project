@@ -117,6 +117,12 @@ class ApplicationData:
     def logout(self):
         self._logged_employee = None
 
+    def find_employee_by_username(self, username: Employee) -> Employee:
+        for employee in self._employees:
+            if username == employee.username:
+                return employee
+        raise ValueError("Wrong username!")
+
 
 
 app_data = ApplicationData()

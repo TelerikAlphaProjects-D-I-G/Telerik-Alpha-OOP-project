@@ -1,4 +1,6 @@
 from models.route_matrix import Routes
+
+
 class AllRoutes:
 
 	total_distance = 0

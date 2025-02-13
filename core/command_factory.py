@@ -1,7 +1,7 @@
 from commands.assign_delivery_package_command import AssignDeliveryPackageCommand
 from commands.assign_free_truck_command import AssignFreeTruckCommand
 from commands.create_delivery_package_command import CreateDeliveryPackageCommand
-from commands.curr_delivery_routs_command import CurrDeliveryRoutsCommand
+from commands.curr_delivery_routes_command import CurrDeliveryRoutesCommand
 from commands.curr_state_delivery_pack_command import CurrStateDeliveryPackCommand
 from commands.search_for_route_command import SearchForRouteCommand
 from commands.view_information_rout_command import ViewInformationAboutRouteCommand
@@ -11,6 +11,7 @@ from commands.view_information_package_command import ViewInformationAboutPackag
 from commands.register_employee_command import RegisterEmployeeCommand
 from commands.login_command import LoginCommand
 from commands.logout_command import LogoutCommand
+from commands.view_logged_in_employee_command import ViewLoggedInEmployeeCommand
 
 
 class CommandFactory:
@@ -38,14 +39,16 @@ class CommandFactory:
             return CurrStateDeliveryPackCommand(params,self._app_data)
         if cmd.lower() == "currtransportvehicle":
             return CurrTransportVehicleCommand(params,self._app_data)
-        if cmd.lower() == "currdeliveryrouts":
-            return CurrDeliveryRoutsCommand(params,self._app_data)
+        if cmd.lower() == "currdeliveryroutes":
+            return CurrDeliveryRoutesCommand(params, self._app_data)
         if cmd.lower() == "regiseremployee":
             return RegisterEmployeeCommand(self._app_data)
         if cmd.lower() == "loginemployee":
             return LoginCommand(self._app_data)
         if cmd.lower() == "logoutemployee":
             return LogoutCommand(self._app_data)
+        if cmd.lower() == "viewloggedinemployee":
+            return ViewLoggedInEmployeeCommand(params, self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
 
@@ -54,6 +57,7 @@ class CommandFactory:
 regiseremployee gosho Georgi Yovchev 1234568
 logoutemployee
 loginemployee gosho 1234568
+viewloggedinemployee gosho
 logoutemployee
 loginemployee gosho 1234568
 createdeliverypackage 1 SYD MEL 45 Pack

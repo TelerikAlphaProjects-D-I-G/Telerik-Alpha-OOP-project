@@ -104,4 +104,6 @@ class Employee:
             pass
 
     def __str__(self):
-        return f'Username: {self.username}, FullName: {self.firstname} {self.lastname}, Role: {self.employee_role}'
+        return (f'Username: {self.username}\n'
+                f'Full Name: {self.firstname} {self.lastname}\n'
+                f'Role: {self.employee_role}')

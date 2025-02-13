@@ -1,4 +1,4 @@
 from commands.base_command import BaseCommand
 
-class CurrDeliveryRoutsCommand(BaseCommand):
+class CurrDeliveryRoutesCommand(BaseCommand):
     pass
