@@ -52,7 +52,8 @@ class CommandFactory:
 regiseremployee gosho Georgi Yovchev 1234568
 logoutemployee
 loginemployee gosho 1234568
-createdeliverypackage 1 SYD MEL 50 Pack
+createdeliverypackage 1 SYD MEL 45 Pack
+viewinformationaboutpackage 1
 end
 
 

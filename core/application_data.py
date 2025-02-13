@@ -57,6 +57,7 @@ class ApplicationData:
         for id in self._packages:
             if id.unique_id == unique_id:
                 return id
+        return None
 
     def find_truck_by_id(self,unique_id):
         for truck in self.vehicles:

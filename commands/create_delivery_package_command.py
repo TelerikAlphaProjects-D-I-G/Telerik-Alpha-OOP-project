@@ -11,16 +11,25 @@ class CreateDeliveryPackageCommand(BaseCommand):
         super().execute(params)
 
         unique_id, start_location, end_location, weight_kg, contact_information = params
+
         try:
             unique_id = try_parse_int(unique_id)
-        except:
-            raise ValueError('Invalid type id')
-        try:
+            if unique_id is None:
+                raise ValueError("Invalid type for ID, must be a number")
+
             weight_kg = try_parse_int(weight_kg)
-        except:
-            raise ValueError('Invalid type weight')
-        self._app_data.create_package(unique_id, start_location, end_location, weight_kg, contact_information)
-        return f"Your package has been successfully created with ID {unique_id}"
+            if weight_kg is None:
+                raise ValueError("Invalid value for weight, must be a number.")
+
+            # If everything is valid, create the package
+            self._app_data.create_package(unique_id, start_location, end_location, weight_kg, contact_information)
+
+            return (f"Your package has been successfully created.\n"
+                    f" ID: {unique_id}\n"
+                    f" Weight: {weight_kg} kg\n")
+
+        except ValueError as e:
+            return f"Error: {e}"
 
     def _expected_params_count(self) -> int:
         return 5
