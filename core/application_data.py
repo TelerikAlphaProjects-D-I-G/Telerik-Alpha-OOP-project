@@ -72,7 +72,7 @@ class ApplicationData:
         raise ValueError("Route not found")
 
     def create_route(self, routes) -> AllRoutes:
-        if len(routes) < 2:
+        if len(routes) <= 1:
             raise ValueError("Invalid route")
         route = AllRoutes.route_distance(routes)
         new_route = AllRoutes()
@@ -125,6 +125,6 @@ class ApplicationData:
 
 
 
-app_data = ApplicationData()
-
-print(app_data.count_vehicles_on_road())
+# app_data = ApplicationData()
+#
+# print(app_data.count_vehicles_on_road())
