@@ -15,6 +15,15 @@ class Routes:
     ASP = ('ASP', 'Alice Springs')
     DAR = ('DAR', 'Darwin')
 
+    SYD1 = ('Sydney', 'Sydney')
+    MEL1 = ('Melbourne', 'Melbourne')
+    ADL1 = ('Adelaide', 'Adelaide')
+    PER1 = ('Perth', 'Perth')
+    BRI1 = ('Brisbane', 'Brisbane')
+    ASP1 = ('Alice Springs', 'Alice Springs')
+    DAR1 = ('Darwin', 'Darwin')
+
+
     DISTANCES = {
         SYD[0]: {MEL[0]: 877, ADL[0]: 1376, ASP[0]: 2762, BRI[0]: 909, DAR[0]: 3935, PER[0]: 4016},
         MEL[0]: {SYD[0]: 877, ADL[0]: 725, ASP[0]: 2255, BRI[0]: 1765, DAR[0]: 3752, PER[0]: 3509},
@@ -25,23 +34,25 @@ class Routes:
         PER[0]: {SYD[0]: 4016, MEL[0]: 3509, ADL[0]: 2785, ASP[0]: 2481, BRI[0]: 4311, DAR[0]: 4025}
 
     }
+    DISTANCES_FULL = {
+        SYD1[0]: {MEL1[0]: 877, ADL1[0]: 1376, ASP1[0]: 2762, BRI1[0]: 909, DAR1[0]: 3935, PER1[0]: 4016},
+        MEL1[0]: {SYD1[0]: 877, ADL1[0]: 725, ASP1[0]: 2255, BRI1[0]: 1765, DAR1[0]: 3752, PER1[0]: 3509},
+        ADL1[0]: {SYD1[0]: 1376, MEL1[0]: 725, ASP1[0]: 1530, BRI1[0]: 1927, DAR1[0]: 3027, PER1[0]: 2785},
+        ASP1[0]: {SYD1[0]: 2762, MEL1[0]: 2255, ADL1[0]: 1530, BRI1[0]: 2993, DAR1[0]: 1497, PER1[0]: 2481},
+        BRI1[0]: {SYD1[0]: 909, MEL1[0]: 1765, ADL1[0]: 1927, ASP1[0]: 2993, DAR1[0]: 3426, PER1[0]: 4311},
+        DAR1[0]: {SYD1[0]: 3935, MEL1[0]: 3752, ADL1[0]: 3027, ASP1[0]: 1497, BRI1[0]: 3426, PER1[0]: 4025},
+        PER1[0]: {SYD1[0]: 4016, MEL1[0]: 3509, ADL1[0]: 2785, ASP1[0]: 2481, BRI1[0]: 4311, DAR1[0]: 4025}
 
-    def __init__(self, start_location, end_location, stops, departure_time):
-        self.star_location =start_location
-        self.end_location = end_location
-        self.stops = stops
-        self.departure_time = departure_time
-        self.route_id = Routes.routes_id_counter
-        Routes.routes_id_counter += 1
-
-
+    }
     @staticmethod
-    def my_distance(start,end):
-        if start not in Routes.DISTANCES or end not in Routes.DISTANCES:
-            raise ValueError("Invalid distance")
-        if start == end:
-            return 0
-        return  Routes.DISTANCES.get(start,{}).get(end)
+    def my_distance(start, end):
+        if start in Routes.DISTANCES and end in Routes.DISTANCES[start]:
+            return Routes.DISTANCES[start][end]
+
+        if start in Routes.DISTANCES_FULL and end in Routes.DISTANCES_FULL[start]:
+            return Routes.DISTANCES_FULL[start][end]
+
+        raise ValueError('Invalid distance')
 
     @staticmethod
     def time_needed(start, end):
@@ -57,7 +68,9 @@ class Routes:
                 f"Additional stops: {self.stops}\n"
                 f"End location: {self.end_location}\n")
 
-# print(Routes.my_distance('ASP',"ADL"))
-# print(Routes.time_needed('ASP',"ADL"))
+print(Routes.my_distance('SYD',"MEL"))
+print(Routes.my_distance('Sydney', 'Melbourne'))
+print(Routes.time_needed('Sydney', 'Melbourne'))
+print(Routes.time_needed('SYD', 'MEL'))
 #print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
 
