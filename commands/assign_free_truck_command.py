@@ -9,6 +9,7 @@ class AssignFreeTruckCommand(BaseCommand):
     def __init__(self, params, app_data: ApplicationData):
         super().__init__(app_data)
         self._params = params
+    #     new
 
     def execute(self):
         super().execute(self._params)
