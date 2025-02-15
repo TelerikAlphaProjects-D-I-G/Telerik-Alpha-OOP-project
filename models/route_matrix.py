@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from models.vehicles import Vehicles
 
 class Routes:
 
@@ -52,6 +53,7 @@ class Routes:
         self.departure_time = departure_time
         self.route_id = Routes.routes_id_counter
         Routes.routes_id_counter += 1
+        self.assigned_vehicle = None
 
     @staticmethod
     def my_distance(start, end):
@@ -71,15 +73,43 @@ class Routes:
         travel_time = distance / Routes.AVERAGE_SPEED
         return timedelta(hours= travel_time)
 
+
+
+    def assign_vehicle(self, vehicle_id):
+        vehicle = Vehicles(vehicle_id)
+
+        if self.assigned_vehicle is None:
+            self.assigned_vehicle = vehicle
+            return True
+        return False
+
+    @staticmethod
+    def route_distance(routes):
+        total_distance = 0
+        for i in range(len(routes) - 1):
+            current_city = routes[i]
+            next_city = routes[i + 1]
+            distance = Routes.my_distance(current_city, next_city)
+            if distance is None:
+                raise ValueError
+            total_distance += distance
+
+        return total_distance
+
     def __str__(self):
         return (f"Route id: {self.route_id}\n"
                 f"Start location: {self.star_location}\n"
                 f"Additional stops: {self.stops}\n"
-                f"End location: {self.end_location}\n")
+                f"End location: {self.end_location}\n"
+                f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
-print(Routes.my_distance('SYD',"MEL"))
-print(Routes.my_distance('Sydney', 'Melbourne'))
-print(Routes.time_needed('Sydney', 'Melbourne'))
-print(Routes.time_needed('SYD', 'MEL'))
+#print(Routes.my_distance('SYD',"MEL"))
+#print(Routes.my_distance('Sydney', 'Melbourne'))
+#print(Routes.time_needed('Sydney', 'Melbourne'))
+#print(Routes.time_needed('SYD', 'MEL'))
+
+route = Routes('SYD', 'ADL', 'MEL', 10)
+route.assign_vehicle(1001)
+#print(route)
 #print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
 

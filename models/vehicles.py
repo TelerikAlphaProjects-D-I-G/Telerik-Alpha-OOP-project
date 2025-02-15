@@ -5,7 +5,7 @@ MAN = ["Man", 37000, 10000]
 ACTROS = ["Actros",  26000,13000]
 
 """
-from models.package import Package
+
 from storage_data.storage_trucks import TRUCKS
 class Vehicles:
 
@@ -91,7 +91,7 @@ class Vehicles:
 #
 #
 scania_vehicle = Vehicles(1011)
-print(scania_vehicle)
+#print(scania_vehicle)
 #
 # """man_vehicle = Vehicles('Man', 1020)
 # print(man_vehicle)

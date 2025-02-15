@@ -1,4 +1,3 @@
-from models.all_routes import AllRoutes
 from models.package import Package
 from models.route_matrix import Routes
 from models.vehicles import Vehicles
@@ -10,7 +9,7 @@ class ApplicationData:
     def __init__(self):
         self._packages = []
         self.vehicles = []
-        self.create_trucks()
+        #self.create_trucks()
         self.routes = []
         self._employees = []
         self._logged_employee = None
@@ -60,11 +59,11 @@ class ApplicationData:
                 return route
         raise ValueError("Route not found")
 
-    def create_route(self, routes) -> AllRoutes:
+    def create_route(self, routes) -> Routes:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
-        route = AllRoutes.route_distance(routes)
-        new_route = AllRoutes()
+        route = Routes.route_distance(routes)
+        new_route = Routes()
         new_route.cities = routes
         self.routes.append(new_route)
         return new_route

@@ -34,7 +34,7 @@ class CommandFactory:
         if cmd.lower() == "assigndeliverypackage":
             return AssignDeliveryPackageCommand(params,self._app_data)
         if cmd.lower() == "assignfreetruck":
-            return AssignFreeTruckCommand(params,self._app_data)
+            return AssignFreeTruckCommand(self._app_data)
         if cmd.lower() == "currstatedelivpack":
             return CurrStateDeliveryPackCommand(params,self._app_data)
         if cmd.lower() == "currtransportvehicle":
@@ -54,12 +54,14 @@ class CommandFactory:
 
 """
 
-regiseremployee denkata Denis Denchev Supervisor123 Employee
+regiseremployee denkata Denis Denchev Supervisor123 Manager
 logoutemployee
 loginemployee denkata Supervisor123
 searchforroute SYD MEL
 createdeliverypackage 1 SYD MEL 45 Pack
 viewinformationaboutpackage 1
+createdeliveryroute 'SYD' 'ADL' 'MEL' 10
+assignfreetruck 1001 1
 end
 
 viewloggedinemployee denkata
