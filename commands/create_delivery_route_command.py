@@ -10,12 +10,20 @@ class CreateDeliveryRouteCommand(BaseCommand):
         self.params = params
 
     def execute(self, params):
-        test_route = Routes.route_distance(params)
-        route_id = Routes.route_id
-        all_routes = params
-        new_route = self._app_data.create_route(all_routes)
-        return f"Total distance: {test_route} km {test_route.route_id}"
-        #return "Route is created. You can view route with command: CurrentRoutes"
+        try:
+            total_distance = Routes.route_distance(self.params)
+        except ValueError as ve:
+            return f"Error: {str(ve)}"
+
+        try:
+            new_route = self._app_data.create_route(self.params)
+        except ValueError as ve:
+            return f"Error creating route: {str(ve)}"
+
+        route_summary = f"Route created successfully with ID {new_route.route_id}:\n"
+        route_summary += f"Route path: {' -> '.join(self.params)}\n"
+        route_summary += f"Total distance: {total_distance} km"
+        return route_summary
 
     def _requires_login(self) -> bool:
         return True
