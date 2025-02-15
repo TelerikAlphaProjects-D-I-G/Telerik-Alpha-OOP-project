@@ -10,9 +10,9 @@ class ApplicationData:
         self._packages = []
         self.vehicles = []
         #self.create_trucks()
-        self.routes = []
         self._employees = []
         self._logged_employee = None
+        self.routes = []
 
     @property
     def packages(self):
@@ -60,11 +60,16 @@ class ApplicationData:
         raise ValueError("Route not found")
 
     def create_route(self, routes) -> Routes:
+        print(f"Received routes: {routes}")
         if len(routes) <= 1:
             raise ValueError("Invalid route")
         route = Routes.route_distance(routes)
-        self.routes.append(route)
-        return route
+        new_route = Routes(start_location = routes[0], end_location = [-1])
+        new_route.route_id = len(self.routes) + 1
+        new_route.path = routes
+        new_route_distance = route
+        self.routes.append(new_route)
+        return new_route
 
     def new_route(self,route):
         self.routes.append(route)
