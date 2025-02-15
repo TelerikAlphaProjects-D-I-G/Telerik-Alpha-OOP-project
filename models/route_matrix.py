@@ -86,9 +86,9 @@ class Routes:
     @staticmethod
     def route_distance(routes):
         total_distance = 0
-        for i in range(len(routes) - 1):
-            current_city = routes[i]
-            next_city = routes[i + 1]
+        for i in range(len(routes[0:-1]) - 1):
+            current_city = routes[0:-1][i]
+            next_city = routes[0:-1][i + 1]
             distance = Routes.my_distance(current_city, next_city)
             if distance is None:
                 raise ValueError

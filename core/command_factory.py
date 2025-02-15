@@ -60,9 +60,17 @@ loginemployee denkata Supervisor123
 searchforroute SYD MEL
 createdeliverypackage 1 SYD MEL 45 Pack
 viewinformationaboutpackage 1
-createdeliveryroute SYD ADL MEL 10
+createdeliveryroute SYD ADL 1
 assignfreetruck 1001 1
 end
+
+regiseremployee denkata Denis Denchev Supervisor123 Manager
+logoutemployee
+loginemployee denkata Supervisor123
+createdeliveryroute SYD ADL MEL
+assignfreetruck 1001 1
+end
+
 
 viewloggedinemployee denkata
 logoutemployee

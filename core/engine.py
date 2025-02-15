@@ -17,7 +17,7 @@ class Engine:
             except ValueError as err:
                 output.append(err.args[0])
 
-        print('\n\n'.join(output))
+        print('\n\n'.join(str(item) for item in output))
 
     def _process_command(self, input_line):
         cmd, *params = input_line.split()

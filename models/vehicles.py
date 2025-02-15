@@ -16,11 +16,11 @@ class Vehicles:
     # }
 
     def __init__(self, vehicle_id):
-        self.name = TRUCKS[vehicle_id]['model']
+        self.name = TRUCKS.get(vehicle_id, {}).get('model', 'uknown model')
         self.vehicle_id = vehicle_id
-        self.capacity = TRUCKS[vehicle_id]['capacity']
-        self.max_range = TRUCKS[vehicle_id]['max_range']
-        self.current_city = TRUCKS[vehicle_id]['city']
+        self.capacity =TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
+        self.max_range = TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
+        self.current_city = TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
         self.current_load = 0
         self.is_available = True
         self.assigned_packages = []
