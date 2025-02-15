@@ -44,6 +44,15 @@ class Routes:
         PER1[0]: {SYD1[0]: 4016, MEL1[0]: 3509, ADL1[0]: 2785, ASP1[0]: 2481, BRI1[0]: 4311, DAR1[0]: 4025}
 
     }
+
+    def __init__(self, start_location, end_location, stops, departure_time):
+        self.star_location =start_location
+        self.end_location = end_location
+        self.stops = stops
+        self.departure_time = departure_time
+        self.route_id = Routes.routes_id_counter
+        Routes.routes_id_counter += 1
+
     @staticmethod
     def my_distance(start, end):
         if start in Routes.DISTANCES and end in Routes.DISTANCES[start]:
