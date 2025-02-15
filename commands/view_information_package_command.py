@@ -1,6 +1,7 @@
 from core.application_data import ApplicationData
 from commands.validate_params_helpers_command import validate_params_count, try_parse_int
 from commands.base_command import BaseCommand
+from models.employee_role import EmployeeRole
 
 
 class ViewInformationAboutPackage(BaseCommand):
@@ -11,6 +12,10 @@ class ViewInformationAboutPackage(BaseCommand):
 
 	def execute(self, params):
 		super().execute(params)
+
+		employee = self._app_data.logged_in_employee
+		if employee.employee_role not in [EmployeeRole.SUPERVISING_EMPLOYEE, EmployeeRole.MANAGER]:
+			return 'Error: Only Supervisors and Managers have access to this data!'
 
 		package_info_id = params[0]
 

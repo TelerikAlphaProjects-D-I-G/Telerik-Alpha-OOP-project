@@ -54,9 +54,14 @@ class CommandFactory:
 
 """
 
-regiseremployee denkata Denis Denchev Supervisor123 Supervisor
+regiseremployee denkata Denis Denchev Supervisor123 Employee
 logoutemployee
 loginemployee denkata Supervisor123
+searchforroute SYD MEL
+createdeliverypackage 1 SYD MEL 45 Pack
+viewinformationaboutpackage 1
+end
+
 viewloggedinemployee denkata
 logoutemployee
 regiseremployee ivancho Ivan Pustovit manager123 Manager
