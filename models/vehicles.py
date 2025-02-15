@@ -6,23 +6,21 @@ ACTROS = ["Actros",  26000,13000]
 
 """
 from models.package import Package
-
+from storage_data.storage_trucks import TRUCKS
 class Vehicles:
 
-    available_vehicles = {
-        'Scania': {'capacity': 42000, 'max range': 8000, 'quantity': 10},
-        'Man': {'capacity': 37000, 'max range': 10000, 'quantity': 15},
-        'Actros': {'capacity': 26000, 'max range': 13000, 'quantity': 15}
-    }
+    # available_vehicles = {
+    #     'Scania': {'capacity': 42000, 'max range': 8000, 'quantity': 10},
+    #     'Man': {'capacity': 37000, 'max range': 10000, 'quantity': 15},
+    #     'Actros': {'capacity': 26000, 'max range': 13000, 'quantity': 15}
+    # }
 
-    def __init__(self, name, vehicle_id):
-        if name not in Vehicles.available_vehicles:
-            raise ValueError('Invalid vehicle!')
-
-        self.name = name
+    def __init__(self, vehicle_id):
+        self.name = TRUCKS[vehicle_id]['model']
         self.vehicle_id = vehicle_id
-        self.capacity = Vehicles.available_vehicles[name]['capacity']
-        self.max_range = Vehicles.available_vehicles[name]['max range']
+        self.capacity = TRUCKS[vehicle_id]['capacity']
+        self.max_range = TRUCKS[vehicle_id]['max_range']
+        self.current_city = TRUCKS[vehicle_id]['city']
         self.current_load = 0
         self.is_available = True
         self.assigned_packages = []
@@ -70,13 +68,13 @@ class Vehicles:
 #
 #        return vehicles_on_road, liable_vehicles_count
 
-    @staticmethod
-    def find_available_vehicle(weight):
-        for vehicle_type in Vehicles.available_vehicles:
-            capacity = Vehicles.available_vehicles[vehicle_type]['capacity']
-            if capacity >= weight:
-                return vehicle_type
-        raise ValueError('Weight of the Packages exceeds the capacity of available trucks')
+    # @staticmethod
+    # def find_available_vehicle(weight):
+    #     for vehicle_type in Vehicles.available_vehicles:
+    #         capacity = Vehicles.available_vehicles[vehicle_type]['capacity']
+    #         if capacity >= weight:
+    #             return vehicle_type
+    #     raise ValueError('Weight of the Packages exceeds the capacity of available trucks')
 
     def __str__(self):
         return (f'Name: {self.name}\n'
@@ -85,14 +83,15 @@ class Vehicles:
                 f'Max Range: {self.max_range} km\n'
                 f'Status: {"Available" if self.is_available else "Not Available"}\n'
                 f'Current Load: {self.current_load} kg\n'
-                f'Assigned Packages: {len(self.assigned_packages)}\n')
+                f'Assigned Packages: {len(self.assigned_packages)}\n'
+                f"Current city: {self.current_city}")
 
 
 
-
-
-# scania_vehicle = Vehicles('Scania', 1010)
-# print(scania_vehicle)
+#
+#
+scania_vehicle = Vehicles(1011)
+print(scania_vehicle)
 #
 # """man_vehicle = Vehicles('Man', 1020)
 # print(man_vehicle)
