@@ -11,9 +11,10 @@ class CreateDeliveryRouteCommand(BaseCommand):
 
     def execute(self, params):
         test_route = Routes.route_distance(params)
+        route_id = Routes.route_id
         all_routes = params
         new_route = self._app_data.create_route(all_routes)
-        return f"{' -> '.join(new_route.cities)}\nTotal distance: {test_route} km"
+        return f"Total distance: {test_route} km {test_route.route_id}"
         #return "Route is created. You can view route with command: CurrentRoutes"
 
     def _requires_login(self) -> bool:

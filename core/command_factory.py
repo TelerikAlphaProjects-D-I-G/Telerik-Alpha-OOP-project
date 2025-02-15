@@ -60,7 +60,7 @@ loginemployee denkata Supervisor123
 searchforroute SYD MEL
 createdeliverypackage 1 SYD MEL 45 Pack
 viewinformationaboutpackage 1
-createdeliveryroute 'SYD' 'ADL' 'MEL' 10
+createdeliveryroute SYD ADL MEL 10
 assignfreetruck 1001 1
 end
 

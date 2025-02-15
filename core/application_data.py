@@ -63,10 +63,8 @@ class ApplicationData:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
         route = Routes.route_distance(routes)
-        new_route = Routes()
-        new_route.cities = routes
-        self.routes.append(new_route)
-        return new_route
+        self.routes.append(route)
+        return route
 
     def new_route(self,route):
         self.routes.append(route)
