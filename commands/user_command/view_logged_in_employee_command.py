@@ -1,6 +1,6 @@
-from commands.base_command import BaseCommand
+from commands.helper_command.base_command import BaseCommand
 from core.application_data import ApplicationData
-from models.employee import Employee
+
 
 class ViewLoggedInEmployeeCommand(BaseCommand):
 

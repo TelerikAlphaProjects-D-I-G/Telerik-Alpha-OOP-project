@@ -1,5 +1,5 @@
-from commands.base_command import BaseCommand
-from commands.create_delivery_route_command import CreateDeliveryRouteCommand
+from commands.helper_command.base_command import BaseCommand
+from commands.routes_command.create_delivery_route_command import CreateDeliveryRouteCommand
 from core.application_data import ApplicationData
 class CurrDeliveryRoutesCommand(BaseCommand):
 

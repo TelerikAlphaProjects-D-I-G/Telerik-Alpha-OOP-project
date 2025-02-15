@@ -1,6 +1,6 @@
 from core.application_data import ApplicationData
-from commands.validate_params_helpers_command import validate_params_count, try_parse_int
-from commands.base_command import BaseCommand
+from commands.helper_command.validate_params_helpers_command import try_parse_int
+from commands.helper_command.base_command import BaseCommand
 from models.employee_role import EmployeeRole
 
 
