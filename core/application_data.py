@@ -19,17 +19,6 @@ class ApplicationData:
     def packages(self):
         return self._packages
 
-    def create_trucks(self):
-        for truck_id in range(1001,1011):
-            vehicle = Vehicles("Scania",truck_id)
-            self.vehicles.append(vehicle)
-        for truck_id in range(1011,1025):
-            vehicle = Vehicles("Man", truck_id)
-            self.vehicles.append(vehicle)
-        for truck_id in range(1026,1040):
-            vehicle = Vehicles("Actros",truck_id)
-            self.vehicles.append(vehicle)
-
     def count_vehicles_on_road(self):
         vehicles_scania = 0
         vehicle_man = 0

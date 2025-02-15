@@ -7,7 +7,7 @@ class AllRoutes:
 
 	@staticmethod
 	def route_distance(routes):
-
+		total_distance = 0
 		for i in range(len(routes)-1):
 			current_city = routes[i]
 			next_city = routes[i +1]
@@ -18,6 +18,6 @@ class AllRoutes:
 
 		return AllRoutes.total_distance
 
-# course = ["DAR","SYD","MEL"]
+# course = ["DAR","SYD"]
 #
-# AllRoutes.route_distance(course)
+# print(AllRoutes.route_distance(course))

@@ -70,6 +70,7 @@ class Package:
 	def advance_status(self):
 		self._package_status = PackageStatus.next(self._package_status)
 
+
 	def __str__(self):
 		start_full_name = Package.LOCATION_ABBR_MAPPING[self.start_location]
 		end_full_name = Package.LOCATION_ABBR_MAPPING[self.end_location]

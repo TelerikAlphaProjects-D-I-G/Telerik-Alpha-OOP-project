@@ -73,6 +73,7 @@ viewinformationaboutpackage 1
 regiseremployee gosho Georgi Yovchev 1234568
 regiseremployee gosho Georgi Yovchev 1234568 Employee
 createdeliverypackage 2 SYD ADL 45 Pack
+createdeliveryroute SYD ADL PER DAR 
 viewloggedinemployee gosho
 viewinformationaboutpackage 2
 logoutemployee
@@ -81,4 +82,3 @@ end
 regiseremployee ivancho Ivan Ivanov manager123 Manager
 end
 """
-
