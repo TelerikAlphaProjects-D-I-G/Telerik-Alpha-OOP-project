@@ -57,13 +57,13 @@ class Routes:
     #     NEW
     @staticmethod
     def valid_distances(*all_stops):
+        distance_lst = []
         distances = Routes.DISTANCES
         distances_full_name = Routes.DISTANCES_FULL
         for stops in all_stops:
-            if stops not in distances and stops not in distances_full_name :
-                raise ValueError("ASDASFAFDAS")
-        return "All stops are valid"
-
+            if stops not in [distances] and stops not in [distances_full_name] :
+                raise ValueError("Please input valid distance")
+        return "All distances are valid"
 
         # if all_stops[0] not in Routes.DISTANCES or all_stops[0:-1] not in Routes.DISTANCES:
         #     return Routes.DISTANCES[all_stops]
@@ -74,7 +74,7 @@ class Routes:
 
     @staticmethod
     def time_needed(start, end):
-        distance = Routes.valid_distances(start, end)
+        distance = Routes.calculate_total_distance()
         if distance is None:
             return "Invalid route"
         travel_time = distance / Routes.AVERAGE_SPEED
@@ -90,18 +90,33 @@ class Routes:
             return True
         return False
 
-    @staticmethod
-    def route_distance(*routes):
+    def calculate_total_distance(*all_stops):
+        Routes.valid_distances(*all_stops)
+        distances = Routes.DISTANCES
+        distances_full_name = Routes.DISTANCES_FULL
         total_distance = 0
-        for i in range(len(routes)-1):
-            current_city = routes[i]
-            next_city = routes[i + 1]
-            distance = Routes.valid_distances(current_city, next_city)
-            if distance is None:
-                raise ValueError
-            total_distance += distance
-
+        for i in range(len(all_stops) - 1):
+            start = all_stops[i]
+            end = all_stops[i + 1]
+            city_distances = distances.get(start, distances_full_name)
+            if end in city_distances:
+                total_distance += city_distances[end]
+            else:
+                raise ValueError(f"Distance between {start} and {end} is not available.")
         return total_distance
+
+    # @staticmethod
+    # def route_distance(*routes):
+    #     total_distance = 0
+    #     for i in range(len(routes)-1):
+    #         current_city = routes[i]
+    #         next_city = routes[i + 1]
+    #         distance = Routes.valid_distances(current_city, next_city)
+    #         if distance is None:
+    #             raise ValueError
+    #         total_distance += distance
+    #
+    #     return total_distance
 
     def __str__(self):
         return (f"Route id: {self.route_id}\n"
@@ -110,8 +125,8 @@ class Routes:
                 f"End location: {self.end_location}\n"
                 f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
-# print(Routes.valid_distances('Sydney', "Melbourne","Adelaide"))
-print(Routes.route_distance("SYD","MEL","ADL"))
+# print(Routes.valid_distances("SYD","PER"))
+# print(Routes.calculate_total_distance("SYD","MEL","ADL","PER"))
 # print(Routes.my_distance('Sydney', 'Melbourne'))
 #print(Routes.time_needed('Sydney', 'Melbourne'))
 #print(Routes.time_needed('SYD', 'MEL'))

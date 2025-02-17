@@ -15,7 +15,7 @@ class CreateDeliveryRouteCommand(BaseCommand):
         route_id = params[-1]
         route_id = try_parse_int(route_id)
         try:
-            total_distance = Routes.route_distance(params)
+            total_distance = Routes.calculate_total_distance(params)
         except ValueError as ve:
             return f"Error: {str(ve)}"
 
