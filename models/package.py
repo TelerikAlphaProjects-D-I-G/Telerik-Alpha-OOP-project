@@ -1,3 +1,4 @@
+from AppData.Local.Programs.Python.Python312.Lib.test.test_warnings.data.stacklevel import package
 from models.package_status import PackageStatus
 from datetime import datetime, timedelta
 from models.route_matrix import Routes
@@ -70,14 +71,12 @@ class Package:
 	def advance_status(self):
 		self._package_status = PackageStatus.next(self._package_status)
 
-
 	def __str__(self):
 		start_full_name = Package.LOCATION_ABBR_MAPPING[self.start_location]
 		end_full_name = Package.LOCATION_ABBR_MAPPING[self.end_location]
 		additional_stops = Routes.valid_distances(0, 1)
 		return (f'Id: {self.unique_id}\n'
 				f'📍Start location: {start_full_name}\n'
-				f'📍Additional stops: {additional_stops}'
 				f'📍End location: {end_full_name}\n'
 				f'📦⚖️Weight: {self.weight_kg} kg\n'
 				f'📋Contact information: {self.contact_information}\n'

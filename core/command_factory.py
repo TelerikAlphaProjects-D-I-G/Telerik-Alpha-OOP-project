@@ -55,12 +55,14 @@ class CommandFactory:
 """
 
 regiseremployee denkata Denis Denchev Supervisor123 Manager
+searchforroute SYD MEL
 logoutemployee
 loginemployee denkata Supervisor123
-searchforroute SYD MEL
+searchforroute SYD MEL ADL
 createdeliverypackage 1 SYD MEL 45 Pack
+assigndeliverypackage
 viewinformationaboutpackage 1
-createdeliveryroute SYD ADL PER ASP 1
+createdeliveryroute SYD MEL 1
 assignfreetruck 1001 1
 assigndeliverypackage 1 1009 1
 end
@@ -91,5 +93,14 @@ logoutemployee
 end
 
 regiseremployee ivancho Ivan Ivanov manager123 Manager
+end
+
+regiseremployee ivancho Ivan Pustovit manager123 Manager
+createdeliverypackage 1 SYD MEL 45 Ivan
+createdeliveryroute SYD MEL PER
+assignfreetruck 1012 1
+assigndeliverypackage 1 1011 1
+viewinformationaboutpackage 1
+viewinformationaboutroute 1 
 end
 """

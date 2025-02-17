@@ -11,7 +11,7 @@ class CreateDeliveryRouteCommand(BaseCommand):
         self.params = params
 
     def execute(self, params):
-        cities = params[0:-1]
+        cities = params[1:-1]
         route_id = params[-1]
         route_id = try_parse_int(route_id)
         try:

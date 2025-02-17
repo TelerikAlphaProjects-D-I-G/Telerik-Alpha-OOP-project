@@ -24,29 +24,32 @@ class Routes:
     ASP1 = ('Alice Springs', 'Alice Springs')
     DAR1 = ('Darwin', 'Darwin')
 
-
     DISTANCES = {
-        SYD[0]: {MEL[0]: 877, ADL[0]: 1376, ASP[0]: 2762, BRI[0]: 909, DAR[0]: 3935, PER[0]: 4016},
-        MEL[0]: {SYD[0]: 877, ADL[0]: 725, ASP[0]: 2255, BRI[0]: 1765, DAR[0]: 3752, PER[0]: 3509},
-        ADL[0]: {SYD[0]: 1376, MEL[0]: 725, ASP[0]: 1530, BRI[0]: 1927, DAR[0]: 3027, PER[0]: 2785},
-        ASP[0]: {SYD[0]: 2762, MEL[0]: 2255, ADL[0]: 1530, BRI[0]: 2993, DAR[0]: 1497, PER[0]: 2481},
-        BRI[0]: {SYD[0]: 909, MEL[0]: 1765, ADL[0]: 1927, ASP[0]: 2993, DAR[0]: 3426, PER[0]: 4311},
-        DAR[0]: {SYD[0]: 3935, MEL[0]: 3752, ADL[0]: 3027, ASP[0]: 1497, BRI[0]: 3426, PER[0]: 4025},
-        PER[0]: {SYD[0]: 4016, MEL[0]: 3509, ADL[0]: 2785, ASP[0]: 2481, BRI[0]: 4311, DAR[0]: 4025}
-
+        "SYD": {"MEL": 877, "ADL": 1376, "ASP": 2762, "BRI": 909, "DAR": 3935, "PER": 4016},
+        "MEL": {"SYD": 877, "ADL": 725, "ASP": 2255, "BRI": 1765, "DAR": 3752, "PER": 3509},
+        "ADL": {"SYD": 1376, "MEL": 725, "ASP": 1530, "BRI": 1927, "DAR": 3027, "PER": 2785},
+        "ASP": {"SYD": 2762, "MEL": 2255, "ADL": 1530, "BRI": 2993, "DAR": 1497, "PER": 2481},
+        "BRI": {"SYD": 909, "MEL": 1765, "ADL": 1927, "ASP": 2993, "DAR": 3426, "PER": 4311},
+        "DAR": {"SYD": 3935, "MEL": 3752, "ADL": 3027, "ASP": 1497, "BRI": 3426, "PER": 4025},
+        "PER": {"SYD": 4016, "MEL": 3509, "ADL": 2785, "ASP": 2481, "BRI": 4311, "DAR": 4025}
     }
+
     DISTANCES_FULL = {
-        SYD1[0]: {MEL1[0]: 877, ADL1[0]: 1376, ASP1[0]: 2762, BRI1[0]: 909, DAR1[0]: 3935, PER1[0]: 4016},
-        MEL1[0]: {SYD1[0]: 877, ADL1[0]: 725, ASP1[0]: 2255, BRI1[0]: 1765, DAR1[0]: 3752, PER1[0]: 3509},
-        ADL1[0]: {SYD1[0]: 1376, MEL1[0]: 725, ASP1[0]: 1530, BRI1[0]: 1927, DAR1[0]: 3027, PER1[0]: 2785},
-        ASP1[0]: {SYD1[0]: 2762, MEL1[0]: 2255, ADL1[0]: 1530, BRI1[0]: 2993, DAR1[0]: 1497, PER1[0]: 2481},
-        BRI1[0]: {SYD1[0]: 909, MEL1[0]: 1765, ADL1[0]: 1927, ASP1[0]: 2993, DAR1[0]: 3426, PER1[0]: 4311},
-        DAR1[0]: {SYD1[0]: 3935, MEL1[0]: 3752, ADL1[0]: 3027, ASP1[0]: 1497, BRI1[0]: 3426, PER1[0]: 4025},
-        PER1[0]: {SYD1[0]: 4016, MEL1[0]: 3509, ADL1[0]: 2785, ASP1[0]: 2481, BRI1[0]: 4311, DAR1[0]: 4025}
-
+        "Sydney": {"Melbourne": 877, "Adelaide": 1376, "Alice Springs": 2762, "Brisbane": 909, "Darwin": 3935,
+                   "Perth": 4016},
+        "Melbourne": {"Sydney": 877, "Adelaide": 725, "Alice Springs": 2255, "Brisbane": 1765, "Darwin": 3752,
+                      "Perth": 3509},
+        "Adelaide": {"Sydney": 1376, "Melbourne": 725, "Alice Springs": 1530, "Brisbane": 1927, "Darwin": 3027,
+                     "Perth": 2785},
+        "Alice Springs": {"Sydney": 2762, "Melbourne": 2255, "Adelaide": 1530, "Brisbane": 2993, "Darwin": 1497,
+                          "Perth": 2481},
+        "Brisbane": {"Sydney": 909, "Melbourne": 1765, "Adelaide": 1927, "Alice Springs": 2993, "Darwin": 3426,
+                     "Perth": 4311},
+        "Darwin": {"Sydney": 3935, "Melbourne": 3752, "Adelaide": 3027, "Alice Springs": 1497, "Brisbane": 3426,
+                   "Perth": 4025},
+        "Perth": {"Sydney": 4016, "Melbourne": 3509, "Adelaide": 2785, "Alice Springs": 2481, "Brisbane": 4311,
+                  "Darwin": 4025}
     }
-
-
     def __init__(self, start_location,additional_stops, end_location):
         self.star_location = start_location
         self.end_location = end_location
@@ -58,12 +61,17 @@ class Routes:
     #     NEW
     @staticmethod
     def valid_distances(*all_stops):
-        distance_lst = []
         distances = Routes.DISTANCES
         distances_full_name = Routes.DISTANCES_FULL
-        for stops in all_stops:
-            if stops not in distances and stops not in distances_full_name :
-                raise ValueError("Please input valid distance")
+        expanded_stops = []
+        for stop in all_stops:
+            if isinstance(stop, list):
+                expanded_stops.extend(stop)
+            else:
+                expanded_stops.append(stop)
+        for stop in expanded_stops:
+            if stop not in distances and stop not in distances_full_name:
+                raise ValueError(f"Invalid stop: {stop}")
 
         return "All distances are valid"
 
