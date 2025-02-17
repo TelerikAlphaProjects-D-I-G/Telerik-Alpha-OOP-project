@@ -4,23 +4,22 @@ from commands.helper_command.base_command import BaseCommand
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 from core.application_data import ApplicationData
 from models.package_status import PackageStatus
-from package import Package
-from route_matrix import Routes
-from vehicles import Vehicles
+from models.package import Package
+from models.route_matrix import Routes
+from models.vehicles import Vehicles
 from storage_data.storage_trucks import TRUCKS
 
 
 class AssignDeliveryPackageCommand(BaseCommand):
-    def __init__(self,params , app_data: ApplicationData):
+    def __init__(self, app_data: ApplicationData):
         super().__init__(app_data)
 
 
-    def execute(self,params):
+    def execute(self, params):
 
         unique_id, truck_id, route_id = params
 
         truck_id = try_parse_int(truck_id)
-        truck = self._app_data.find_truck_by_id(truck_id)
         if truck_id is None or truck_id not in TRUCKS:
             raise ValueError(f"Invalid truck ID: {truck_id}. Please provide a valid truck ID.")
 
@@ -41,7 +40,7 @@ class AssignDeliveryPackageCommand(BaseCommand):
             f"Package_id: {unique_id}\n"
             f"Truck id: {truck_id}\n"
             f"Info about package: {package.package_status}\n"
-            f"Info aboute route: {routes.star_location} {routes.end_location}"
+            f"Info about route: {routes.star_location} {routes.end_location}"
         )
     def _requires_login(self) -> bool:
         return True

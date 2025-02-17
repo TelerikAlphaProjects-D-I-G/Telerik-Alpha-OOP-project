@@ -32,7 +32,7 @@ class CommandFactory:
         if cmd.lower() == "viewinformationaboutpackage":
             return ViewInformationAboutPackage(params, self._app_data)
         if cmd.lower() == "assigndeliverypackage":
-            return AssignDeliveryPackageCommand(params,self._app_data)
+            return AssignDeliveryPackageCommand(self._app_data)
         if cmd.lower() == "assignfreetruck":
             return AssignFreeTruckCommand(self._app_data)
         if cmd.lower() == "currstatedelivpack":
