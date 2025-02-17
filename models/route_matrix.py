@@ -46,6 +46,7 @@ class Routes:
 
     }
 
+
     def __init__(self, start_location,additional_stops, end_location):
         self.star_location = start_location
         self.end_location = end_location
@@ -61,8 +62,9 @@ class Routes:
         distances = Routes.DISTANCES
         distances_full_name = Routes.DISTANCES_FULL
         for stops in all_stops:
-            if stops not in [distances] and stops not in [distances_full_name] :
+            if stops not in distances and stops not in distances_full_name :
                 raise ValueError("Please input valid distance")
+
         return "All distances are valid"
 
         # if all_stops[0] not in Routes.DISTANCES or all_stops[0:-1] not in Routes.DISTANCES:
@@ -126,7 +128,7 @@ class Routes:
                 f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
 # print(Routes.valid_distances("SYD","PER"))
-# print(Routes.calculate_total_distance("SYD","MEL","ADL","PER"))
+print(Routes.calculate_total_distance("SYD","MEL","ADL","PER"))
 # print(Routes.my_distance('Sydney', 'Melbourne'))
 #print(Routes.time_needed('Sydney', 'Melbourne'))
 #print(Routes.time_needed('SYD', 'MEL'))
