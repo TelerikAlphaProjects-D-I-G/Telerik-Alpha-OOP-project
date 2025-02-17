@@ -27,10 +27,8 @@ class ApplicationData:
         return f"Vehicles on road:{vehicles_scania}"
 
 
-    def add_package(self,unique_id, start_location, end_location, weight_kg, contact_information)->Package :
-        new_package = Package(unique_id,start_location,end_location,weight_kg,contact_information)
-        self.packages[new_package.unique_id] = new_package
-        return new_package.unique_id
+    def add_package(self,package)->Package :
+        self._packages.append(package)
 
     def get_package(self,package_id):
         return self.packages.get(package_id)
