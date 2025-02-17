@@ -62,6 +62,7 @@ createdeliverypackage 1 SYD MEL 45 Pack
 viewinformationaboutpackage 1
 createdeliveryroute SYD ADL PER ASP 1
 assignfreetruck 1001 1
+assigndeliverypackage 1 1009 1
 end
 
 regiseremployee denkata Denis Denchev Supervisor123 Manager
