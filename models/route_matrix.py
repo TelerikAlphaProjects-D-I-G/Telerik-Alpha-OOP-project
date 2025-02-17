@@ -46,28 +46,35 @@ class Routes:
 
     }
 
-    def __init__(self, start_location, end_location):
+    def __init__(self, start_location,additional_stops, end_location):
         self.star_location = start_location
         self.end_location = end_location
-        # self.stops = stops
+        self.additional_stops = additional_stops
         # self.departure_time = departure_time
         self.route_id = Routes.routes_id_counter
         Routes.routes_id_counter += 1
         self.assigned_vehicle = None
 
     @staticmethod
-    def my_distance(start, end):
-        if start in Routes.DISTANCES and end in Routes.DISTANCES[start]:
-            return Routes.DISTANCES[start][end]
+    def valid_distances(*all_stops):
+        distances = Routes.DISTANCES
+        distances_full_name = Routes.DISTANCES_FULL
+        for stops in all_stops:
+            if stops not in distances and stops not in distances_full_name :
+                raise ValueError("ASDASFAFDAS")
+        return "All stops are valid"
 
-        if start in Routes.DISTANCES_FULL and end in Routes.DISTANCES_FULL[start]:
-            return Routes.DISTANCES_FULL[start][end]
 
-        raise ValueError('Invalid distance')
+        # if all_stops[0] not in Routes.DISTANCES or all_stops[0:-1] not in Routes.DISTANCES:
+        #     return Routes.DISTANCES[all_stops]
+        # raise ValueError('Invalid distance')
+        # if all_stops[0] not in Routes.DISTANCES_FULL and all_stops[-1] not in Routes.DISTANCES_FULL[all_stops[0]]:
+        #     # return Routes.DISTANCES[all_stops[0:-1]]
+        #     raise ValueError('Invalid distance')
 
     @staticmethod
     def time_needed(start, end):
-        distance = Routes.my_distance(start, end)
+        distance = Routes.valid_distances(start, end)
         if distance is None:
             return "Invalid route"
         travel_time = distance / Routes.AVERAGE_SPEED
@@ -84,12 +91,12 @@ class Routes:
         return False
 
     @staticmethod
-    def route_distance(routes):
+    def route_distance(*routes):
         total_distance = 0
-        for i in range(len(routes[0:-1]) - 1):
-            current_city = routes[0:-1][i]
-            next_city = routes[0:-1][i + 1]
-            distance = Routes.my_distance(current_city, next_city)
+        for i in range(len(routes)-1):
+            current_city = routes[i]
+            next_city = routes[i + 1]
+            distance = Routes.valid_distances(current_city, next_city)
             if distance is None:
                 raise ValueError
             total_distance += distance
@@ -103,13 +110,14 @@ class Routes:
                 f"End location: {self.end_location}\n"
                 f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
-#print(Routes.my_distance('SYD',"MEL"))
-#print(Routes.my_distance('Sydney', 'Melbourne'))
+# print(Routes.valid_distances('Sydney', "Melbourne","Adelaide"))
+print(Routes.route_distance("SYD","MEL","ADL"))
+# print(Routes.my_distance('Sydney', 'Melbourne'))
 #print(Routes.time_needed('Sydney', 'Melbourne'))
 #print(Routes.time_needed('SYD', 'MEL'))
 
-route = Routes('SYD', 'ADL')
-route.assign_vehicle(1001)
+# route = Routes('SYD', 'ADL')
+# route.assign_vehicle(1001)
 #print(route)
 #print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
 

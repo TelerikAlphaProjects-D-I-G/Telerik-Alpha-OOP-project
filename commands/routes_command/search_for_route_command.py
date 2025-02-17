@@ -14,7 +14,7 @@ class SearchForRouteCommand(BaseCommand):
         start, end = params
 
         try:
-            distance = Routes.my_distance(start, end)
+            distance = Routes.valid_distances(start, end)
             time_needed = Routes.time_needed(start, end)
             return (f'Route from {start} to {end}:\n'
                     f' Distance: {distance} km\n'

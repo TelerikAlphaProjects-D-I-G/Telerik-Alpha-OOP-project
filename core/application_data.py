@@ -60,7 +60,7 @@ class ApplicationData:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
         route = Routes.route_distance(routes)
-        new_route = Routes(start_location = routes[0], end_location = routes[1])
+        new_route = Routes(start_location = routes[0],additional_stops= routes[1:-1] , end_location = routes[-1])
         new_route.route_id = len(self.routes) + 1
         new_route.path = routes
         new_route_distance = route
