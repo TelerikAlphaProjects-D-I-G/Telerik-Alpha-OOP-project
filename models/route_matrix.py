@@ -54,7 +54,7 @@ class Routes:
         self.route_id = Routes.routes_id_counter
         Routes.routes_id_counter += 1
         self.assigned_vehicle = None
-
+    #     NEW
     @staticmethod
     def valid_distances(*all_stops):
         distances = Routes.DISTANCES
