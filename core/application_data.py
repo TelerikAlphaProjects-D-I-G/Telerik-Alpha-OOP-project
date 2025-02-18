@@ -1,5 +1,5 @@
 from models.package import Package
-from models.route_matrix import Routes
+from models.route_matrix import Route
 from models.vehicles import Vehicles
 from models.employee import Employee
 
@@ -50,17 +50,17 @@ class ApplicationData:
                 return truck
         return "Truck not found"
 
-    def find_route_by_id(self,route_id: int) -> Routes:
+    def find_route_by_id(self,route_id: int) -> Route:
         for route in self.routes:
             if route.route_id == route_id:
                 return route
         raise ValueError("Route not found")
 
-    def create_route(self, routes) -> Routes:
+    def create_route(self, routes) -> Route:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
-        route = Routes.calculate_total_distance(routes)
-        new_route = Routes(start_location = routes[0],additional_stops= routes[1:-1] , end_location = routes[-1])
+        route = Route.calculate_total_distance(routes)
+        new_route = Route(start_location = routes[0], additional_stops=routes[1:-1], end_location = routes[-1])
         new_route.route_id = len(self.routes) + 1
         new_route.path = routes
         new_route_distance = route

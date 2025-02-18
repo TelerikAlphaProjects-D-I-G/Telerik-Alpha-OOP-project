@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from models.vehicles import Vehicles
 
-class Routes:
+class Route:
 
     routes_lst = []
     routes_id_counter = 1
@@ -50,19 +50,20 @@ class Routes:
         "Perth": {"Sydney": 4016, "Melbourne": 3509, "Adelaide": 2785, "Alice Springs": 2481, "Brisbane": 4311,
                   "Darwin": 4025}
     }
-    def __init__(self, start_location,additional_stops, end_location):
+
+    def __init__(self, start_location, end_location, additional_stops = None):
         self.star_location = start_location
-        self.end_location = end_location
         self.additional_stops = additional_stops
+        self.end_location = end_location
         # self.departure_time = departure_time
-        self.route_id = Routes.routes_id_counter
-        Routes.routes_id_counter += 1
+        self.route_id = Route.routes_id_counter
+        Route.routes_id_counter += 1
         self.assigned_vehicle = None
     #     NEW
     @staticmethod
     def valid_distances(*all_stops):
-        distances = Routes.DISTANCES
-        distances_full_name = Routes.DISTANCES_FULL
+        distances = Route.DISTANCES
+        distances_full_name = Route.DISTANCES_FULL
         expanded_stops = []
         for stop in all_stops:
             if isinstance(stop, list):
@@ -75,19 +76,12 @@ class Routes:
 
         return "All distances are valid"
 
-        # if all_stops[0] not in Routes.DISTANCES or all_stops[0:-1] not in Routes.DISTANCES:
-        #     return Routes.DISTANCES[all_stops]
-        # raise ValueError('Invalid distance')
-        # if all_stops[0] not in Routes.DISTANCES_FULL and all_stops[-1] not in Routes.DISTANCES_FULL[all_stops[0]]:
-        #     # return Routes.DISTANCES[all_stops[0:-1]]
-        #     raise ValueError('Invalid distance')
-
     @staticmethod
     def time_needed(start, end):
-        distance = Routes.calculate_total_distance(start,end)
+        distance = Route.calculate_total_distance(start, end)
         if distance is None:
             return "Invalid route"
-        travel_time = distance / Routes.AVERAGE_SPEED
+        travel_time = distance / Route.AVERAGE_SPEED
         return timedelta(hours= travel_time)
 
 
@@ -101,9 +95,9 @@ class Routes:
         return False
 
     def calculate_total_distance(*all_stops):
-        Routes.valid_distances(*all_stops)
-        distances = Routes.DISTANCES
-        distances_full_name = Routes.DISTANCES_FULL
+        Route.valid_distances(*all_stops)
+        distances = Route.DISTANCES
+        distances_full_name = Route.DISTANCES_FULL
         total_distance = 0
         for i in range(len(all_stops) - 1):
             start = all_stops[i]
@@ -115,18 +109,6 @@ class Routes:
                 raise ValueError(f"Distance between {start} and {end} is not available.")
         return total_distance
 
-    # @staticmethod
-    # def route_distance(*routes):
-    #     total_distance = 0
-    #     for i in range(len(routes)-1):
-    #         current_city = routes[i]
-    #         next_city = routes[i + 1]
-    #         distance = Routes.valid_distances(current_city, next_city)
-    #         if distance is None:
-    #             raise ValueError
-    #         total_distance += distance
-    #
-    #     return total_distance
 
     def __str__(self):
         return (f"Route id: {self.route_id}\n"

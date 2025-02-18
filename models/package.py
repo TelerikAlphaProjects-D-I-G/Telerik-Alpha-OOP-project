@@ -1,30 +1,30 @@
 
 from models.package_status import PackageStatus
 from datetime import datetime, timedelta
-from models.route_matrix import Routes
+from models.route_matrix import Route
 
 
 
 class Package:
 
 	LOCATION_MAPPING = {
-		"Sydney": Routes.SYD[0],
-		"Melbourne": Routes.MEL[0],
-		"Adelaide": Routes.ADL[0],
-		"Perth": Routes.PER[0],
-		"Brisbane": Routes.BRI[0],
-		"Alice Springs": Routes.ASP[0],
-		"Darwin": Routes.DAR[0]
+		"Sydney": Route.SYD[0],
+		"Melbourne": Route.MEL[0],
+		"Adelaide": Route.ADL[0],
+		"Perth": Route.PER[0],
+		"Brisbane": Route.BRI[0],
+		"Alice Springs": Route.ASP[0],
+		"Darwin": Route.DAR[0]
 	}
 
 	LOCATION_ABBR_MAPPING = {
-		Routes.SYD[0]: "Sydney",
-		Routes.MEL[0]: "Melbourne",
-		Routes.ADL[0]: "Adelaide",
-		Routes.PER[0]: "Perth",
-		Routes.BRI[0]: "Brisbane",
-		Routes.ASP[0]: "Alice Springs",
-		Routes.DAR[0]: "Darwin"
+		Route.SYD[0]: "Sydney",
+		Route.MEL[0]: "Melbourne",
+		Route.ADL[0]: "Adelaide",
+		Route.PER[0]: "Perth",
+		Route.BRI[0]: "Brisbane",
+		Route.ASP[0]: "Alice Springs",
+		Route.DAR[0]: "Darwin"
 	}
 
 	unique_id_user = set()
@@ -41,7 +41,7 @@ class Package:
 #		self.location_exist(start_location, end_location)
 		self.check_weight(weight_kg)
 		self._package_status = PackageStatus.PENDING
-		self.estimated_duration = Routes.time_needed(self.start_location, self.end_location)
+		self.estimated_duration = Route.time_needed(self.start_location, self.end_location)
 		self.arrival_time = datetime.now() + self.estimated_duration if self.estimated_duration else None
 
 	@property
@@ -74,7 +74,7 @@ class Package:
 	def __str__(self):
 		start_full_name = Package.LOCATION_ABBR_MAPPING[self.start_location]
 		end_full_name = Package.LOCATION_ABBR_MAPPING[self.end_location]
-		additional_stops = Routes.valid_distances(0, 1)
+		additional_stops = Route.valid_distances(0, 1)
 		return (f'Id: {self.unique_id}\n'
 				f'📍Start location: {start_full_name}\n'
 				f'📍End location: {end_full_name}\n'

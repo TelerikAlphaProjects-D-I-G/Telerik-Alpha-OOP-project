@@ -1,5 +1,5 @@
 import string
-from models.route_matrix import Routes
+from models.route_matrix import Route
 
 from models.employee_role import EmployeeRole
 
@@ -93,7 +93,7 @@ class Employee:
     def check_if_manager(self):
         if self._is_manager is False:
             raise ValueError("Your position is not manager")
-        return Routes.routes_lst
+        return Route.routes_lst
 
     def check_if_supervisor(self):
         if self.employee_role == EmployeeRole.SUPERVISING_EMPLOYEE:

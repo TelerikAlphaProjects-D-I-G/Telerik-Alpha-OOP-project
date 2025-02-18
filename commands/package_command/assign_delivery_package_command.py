@@ -5,7 +5,7 @@ from commands.helper_command.validate_params_helpers_command import try_parse_in
 from core.application_data import ApplicationData
 from models.package_status import PackageStatus
 from models.package import Package
-from models.route_matrix import Routes
+from models.route_matrix import Route
 from models.vehicles import Vehicles
 from storage_data.storage_trucks import TRUCKS
 
