@@ -84,7 +84,7 @@ class Routes:
 
     @staticmethod
     def time_needed(start, end):
-        distance = Routes.calculate_total_distance()
+        distance = Routes.calculate_total_distance(start,end)
         if distance is None:
             return "Invalid route"
         travel_time = distance / Routes.AVERAGE_SPEED
@@ -136,7 +136,7 @@ class Routes:
                 f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
 # print(Routes.valid_distances("SYD","PER"))
-print(Routes.calculate_total_distance("SYD","MEL","ADL","PER"))
+# print(Routes.calculate_total_distance("SYD","MEL"))
 # print(Routes.my_distance('Sydney', 'Melbourne'))
 #print(Routes.time_needed('Sydney', 'Melbourne'))
 #print(Routes.time_needed('SYD', 'MEL'))

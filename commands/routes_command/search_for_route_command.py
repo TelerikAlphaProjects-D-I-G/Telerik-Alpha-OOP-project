@@ -11,17 +11,17 @@ class SearchForRouteCommand(BaseCommand):
     def execute(self, params):
         super().execute(params)
 
-        start, end = params
+        stops = params
 
         try:
-            distance = Routes.valid_distances(start, end)
-            time_needed = Routes.time_needed(start, end)
-            return (f'Route from {start} to {end}:\n'
+            distance = Routes.valid_distances(stops)
+            time_needed = Routes.time_needed(stops[0],stops[-1])
+            return (f'Route from {stops[0]} to {stops[-1]}:\n'
                     f' Distance: {distance} km\n'
-                    f' Estimated Travel Time: {time_needed}')
+                    f' Estimated Travel Time: {str(time_needed).split('.')[0]}')
 
         except ValueError:
-            return f'Error: Invalid route between {start} and {end}.'
+            return f'Error: Invalid route between {stops[0]} and {stops[-1]}.'
 
     def _requires_login(self) -> bool:
         return True
