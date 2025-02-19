@@ -111,7 +111,6 @@ class ApplicationData:
         raise ValueError("Wrong username!")
 
 
-
 # app_data = ApplicationData()
 #
 # print(app_data.count_vehicles_on_road())

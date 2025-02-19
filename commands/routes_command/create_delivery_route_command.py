@@ -11,9 +11,8 @@ class CreateDeliveryRouteCommand(BaseCommand):
         self.params = params
 
     def execute(self, params):
-        cities = params[1:-1]
-        route_id = params[-1]
-        route_id = try_parse_int(route_id)
+        cities = params
+        route_id = Route.routes_id_counter
         try:
             total_distance = Route.calculate_total_distance(params)
         except ValueError as ve:

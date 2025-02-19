@@ -62,7 +62,7 @@ searchforroute SYD MEL ADL
 createdeliverypackage 1 SYD MEL 45 Pack
 assigndeliverypackage
 viewinformationaboutpackage 1
-createdeliveryroute SYD MEL 1
+createdeliveryroute SYD MEL
 assignfreetruck 1001 1
 assigndeliverypackage 1 1009 1
 end

@@ -27,4 +27,4 @@ class SearchForRouteCommand(BaseCommand):
         return True
 
     def _expected_params_count(self) -> int:
-        return 2
+        return 3
