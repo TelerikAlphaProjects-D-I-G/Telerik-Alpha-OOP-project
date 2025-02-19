@@ -68,8 +68,6 @@ class Route:
             if stop not in distances and stop not in distances_full_name:
                 raise ValueError(f"Invalid stop: {stop}")
 
-        return expanded_stops
-
     @staticmethod
     def time_needed(start, end):
         distance = Route.calculate_total_distance(start, end)
@@ -118,8 +116,8 @@ class Route:
         return (f"Route id: {self.route_id}\n"
                 f"Start location: {self.star_location}\n"
                 # f"Additional stops: {self.stops}\n"
-                f"End location: {self.end_location}\n"
-                f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
+                f"End location: {self.end_location}\n")
+                # f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
 # print(Routes.valid_distances("SYD","PER"))
 # print(Routes.calculate_total_distance("SYD","MEL"))

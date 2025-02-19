@@ -14,7 +14,7 @@ class SearchForRouteCommand(BaseCommand):
         stops = params
 
         try:
-            distance = Route.valid_distances(stops)
+            distance = Route.calculate_total_distance(stops)
             time_needed = Route.time_needed(stops[0], stops[-1])
             return (f'Route from {stops[0]} to {stops[-1]}:\n'
                     f' Distance: {distance} km\n'

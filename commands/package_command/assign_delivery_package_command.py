@@ -1,5 +1,6 @@
 from enum import unique
 
+from PycharmProjects.test.tests.test_check_for_win import Routes
 from commands.helper_command.base_command import BaseCommand
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 from core.application_data import ApplicationData
@@ -17,7 +18,7 @@ class AssignDeliveryPackageCommand(BaseCommand):
 
     def execute(self, params):
 
-        unique_id, truck_id, route_id = params
+        unique_id, truck_id= params
 
         truck_id = try_parse_int(truck_id)
         if truck_id is None or truck_id not in TRUCKS:
@@ -27,25 +28,19 @@ class AssignDeliveryPackageCommand(BaseCommand):
         package = self._app_data.find_package_by_id(unique_id)
         if package is None:
             raise ValueError(f"Package {unique_id} not found.")
-
-        route_id = try_parse_int(route_id)
-        routes = self._app_data.find_route_by_id(route_id)
-        if routes is None:
-            raise ValueError(f"Route ID {route_id} not found.")
         truck = Vehicles(truck_id)
         self._app_data.add_package(package)
         package.advance_status()
         truck.assign_package(package)
         return (
-            f"Package_id: {unique_id}\n"
-            f"Truck id: {truck_id}\n"
-            f"Info about package: {package.package_status}\n"
-            f"Info about route: {routes.star_location} {routes.end_location}"
+            f"Package ID: {unique_id}\n"
+            f"Truck ID: {truck_id}\n"
+            f"Package Status: {package.package_status}\n"
         )
     def _requires_login(self) -> bool:
         return True
 
     def _expected_params_count(self) -> int:
-        return 3
+        return 2
 
 

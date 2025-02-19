@@ -66,7 +66,7 @@ searchforroute SYD MEL ADL
 createdeliverypackage 1 SYD MEL 45 Pack
 assigndeliverypackage
 viewinformationaboutpackage 1
-createdeliveryroute SYD MEL
+createdeliveryroute SYD MEL PER
 assignfreetruck 1001 1
 assigndeliverypackage 1 1009 1
 end
@@ -97,22 +97,22 @@ logoutemployee
 end
 
 regiseremployee ivancho Ivan Ivanov manager123 Manager
+createdeliverypackage 1 SYD MEL 45 Ivan
 end
 
 regiseremployee ivancho Ivan Pustovit manager123 Manager
 createdeliverypackage 1 SYD MEL 45 Ivan
-createdeliveryroute SYD MEL PER
-assignfreetruck 1012 1
-assigndeliverypackage 1 1011 1
-viewinformationaboutpackage 1
-viewinformationaboutroute 1 
+createdeliveryroute SYD MEL PER ADL
+createdeliveryroute SYD MEL PER ADL ASP
 end
 
 regiseremployee ivancho Ivan Pustovit manager123 Manager
-createdeliverypackage 1 SYD MEL 45 Ivan
+createdeliverypackage 1 Sydney Melbourne 45 Ivan
 createdeliveryroute SYD MEL PER
 createdeliveryroute BRI SYD MEL ADL
 createdeliveryroute DAR ASP ADL
+assignfreetruck 1001 1
+assigndeliverypackage 1 1001 1
 printroutes
 end
 

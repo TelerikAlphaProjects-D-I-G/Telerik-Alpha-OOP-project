@@ -41,8 +41,6 @@ class Package:
 #		self.location_exist(start_location, end_location)
 		self.check_weight(weight_kg)
 		self._package_status = PackageStatus.PENDING
-		self.estimated_duration = Route.time_needed(self.start_location, self.end_location)
-		self.arrival_time = datetime.now() + self.estimated_duration if self.estimated_duration else None
 
 	@property
 	def package_status(self):
@@ -81,8 +79,6 @@ class Package:
 				f'📦⚖️Weight: {self.weight_kg} kg\n'
 				f'📋Contact information: {self.contact_information}\n'
 				f'✅Current status: {self._package_status}\n'
-				f'🕒Estimated delivery time: {str(self.estimated_duration).split(".")[0]} h\n'
-				f'🕒Expected delivery date: {self.arrival_time.strftime("%H:%M:%S %d-%m-%Y")}'
 				)
 
 # new_package = Package('1', 'Sydney', 'Brisbane', 45, 'JohnDue')
