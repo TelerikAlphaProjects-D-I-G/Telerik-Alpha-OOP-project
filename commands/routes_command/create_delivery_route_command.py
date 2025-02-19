@@ -13,6 +13,7 @@ class CreateDeliveryRouteCommand(BaseCommand):
     def execute(self, params):
         cities = params
         route_id = Route.routes_id_counter
+
         try:
             total_distance = Route.calculate_total_distance(params)
         except ValueError as ve:
@@ -22,7 +23,8 @@ class CreateDeliveryRouteCommand(BaseCommand):
             new_route = self._app_data.create_route(params)
         except ValueError as ve:
             return f"Error creating route: {str(ve)}"
-        return (f"Route created successfully with ID {route_id}:\n"
+
+        return (f"Route created successfully with ID {new_route.route_id}:\n"
         f"Route path: {' -> '.join(cities)}\n"
          f"Total distance: {total_distance} km")
 

@@ -59,12 +59,15 @@ class ApplicationData:
     def create_route(self, routes) -> Route:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
+
+        total_distance, _ = Route.calculate_total_distance(routes)
+
         route = Route.calculate_total_distance(routes)
         new_route = Route(start_location = routes[0], additional_stops=routes[1:-1], end_location = routes[-1])
-        new_route.route_id = len(self.routes) + 1
         new_route.path = routes
-        new_route_distance = route
+        new_route_distance = total_distance
         self.routes.append(new_route)
+
         return new_route
 
     # def new_route(self,route):

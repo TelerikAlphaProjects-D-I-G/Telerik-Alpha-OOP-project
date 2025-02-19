@@ -90,18 +90,28 @@ class Route:
 
     def calculate_total_distance(*all_stops):
         Route.valid_distances(*all_stops)
+
         distances = Route.DISTANCES
         distances_full_name = Route.DISTANCES_FULL
         total_distance = 0
-        for i in range(len(all_stops) - 1):
-            start = all_stops[i]
-            end = all_stops[i + 1]
+
+        expanded_stops = list(all_stops[0])
+
+        stop_distances = []
+
+        for i in range(len(expanded_stops) - 1):
+            start = expanded_stops[i]
+            end = expanded_stops[i + 1]
             city_distances = distances.get(start, distances_full_name)
+
             if end in city_distances:
-                total_distance += city_distances[end]
+                distance = city_distances[end]
+                total_distance += distance
+                stop_distances.append(f"{start} → {end}: {distance} km")
             else:
                 raise ValueError(f"Distance between {start} and {end} is not available.")
-        return total_distance
+
+        return total_distance, stop_distances
 
 
     def __str__(self):
