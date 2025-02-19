@@ -113,6 +113,9 @@ class ApplicationData:
                 return employee
         raise ValueError("Wrong username!")
 
+    def print_routes(self):
+        return self.routes
+
 
 # app_data = ApplicationData()
 #

@@ -12,6 +12,8 @@ from commands.user_command.register_employee_command import RegisterEmployeeComm
 from commands.user_command.login_command import LoginCommand
 from commands.user_command.logout_command import LogoutCommand
 from commands.user_command.view_logged_in_employee_command import ViewLoggedInEmployeeCommand
+from core.application_data import ApplicationData
+from commands.helper_command.print_routes import PrintRoutes
 
 
 class CommandFactory:
@@ -49,6 +51,8 @@ class CommandFactory:
             return LogoutCommand(self._app_data)
         if cmd.lower() == "viewloggedinemployee":
             return ViewLoggedInEmployeeCommand(params, self._app_data)
+        if cmd.lower() == "printroutes":
+            return PrintRoutes(self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
 
@@ -103,4 +107,14 @@ assigndeliverypackage 1 1011 1
 viewinformationaboutpackage 1
 viewinformationaboutroute 1 
 end
+
+regiseremployee ivancho Ivan Pustovit manager123 Manager
+createdeliverypackage 1 SYD MEL 45 Ivan
+createdeliveryroute SYD MEL PER
+createdeliveryroute BRI SYD MEL ADL
+createdeliveryroute DAR ASP ADL
+printroutes
+end
+
 """
+
