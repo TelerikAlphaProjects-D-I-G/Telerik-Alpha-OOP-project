@@ -16,7 +16,7 @@ class PrintRoutes(BaseCommand):
             route_list.append(
                 f"Route ID: {route.route_id}\n"
                 f"Path: {' -> '.join(route.path)}\n"
-                f"Total Distance: {route.calculate_total_distance(route)} km\n"
+                f"Total Distance: {route.distance} km\n"
                 f"Assigned Vehicle: {route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'}\n"
                 "----------------------"
             )

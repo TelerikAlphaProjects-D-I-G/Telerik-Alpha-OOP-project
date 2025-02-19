@@ -65,7 +65,7 @@ class ApplicationData:
         route = Route.calculate_total_distance(routes)
         new_route = Route(start_location = routes[0], additional_stops=routes[1:-1], end_location = routes[-1])
         new_route.path = routes
-        new_route_distance = total_distance
+        new_route.distance = total_distance
         self.routes.append(new_route)
 
         return new_route
