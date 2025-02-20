@@ -31,7 +31,7 @@ class AssignFreeTruckCommand(BaseCommand):
 
         truck.assign_to_work()
 
-        route.assign_vehicle(truck)
+        truck.assign_vehicle(truck)
         return (
         f"🚛 Truck ID: {truck_id} (Status: {'Available' if truck.is_available else 'Assigned'})\n"
         f"🛣️ Route ID: {route.route_id}\n"
