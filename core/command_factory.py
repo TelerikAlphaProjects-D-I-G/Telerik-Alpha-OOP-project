@@ -14,6 +14,7 @@ from commands.user_command.logout_command import LogoutCommand
 from commands.user_command.view_logged_in_employee_command import ViewLoggedInEmployeeCommand
 from core.application_data import ApplicationData
 from commands.helper_command.print_routes import PrintRoutes
+from commands.truck_command.view_information_truck_command import ViewInformationAboutTruck
 
 
 class CommandFactory:
@@ -53,6 +54,8 @@ class CommandFactory:
             return ViewLoggedInEmployeeCommand(params, self._app_data)
         if cmd.lower() == "printroutes":
             return PrintRoutes(self._app_data)
+        if cmd.lower() == "viewinformationabouttruck":
+            return ViewInformationAboutTruck(params, self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
 
@@ -127,6 +130,18 @@ assignfreetruck 1001 1
 assigndeliverypackage 1 1001
 viewinformationaboutpackage 1
 viewinformationaboutroute 1
+viewinformationabouttruck 1001
 end
+
+regiseremployee ivancho Ivan Pustovit manager123 Manager
+createdeliveryroute BRI SYD MEL ADL 2025-02-22 11:30
+createdeliverypackage 1 SYD MEL 45 Ivan
+searchforroute SYD MEL
+assignfreetruck 1001 1
+viewinformationaboutroute 1
+assigndeliverypackage 1 1001
+viewinformationaboutpackage 1
+end
+
 """
 

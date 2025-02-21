@@ -7,6 +7,7 @@ ACTROS = ["Actros",  26000,13000]
 """
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 from storage_data.storage_trucks import TRUCKS
+
 class Vehicles:
 
     def __init__(self, vehicle_id):

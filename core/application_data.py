@@ -2,6 +2,7 @@ from models.package import Package
 from models.route_matrix import Route
 from models.vehicles import Vehicles
 from models.employee import Employee
+from storage_data.storage_trucks import TRUCKS
 
 
 class ApplicationData:
@@ -44,9 +45,9 @@ class ApplicationData:
                 return id
         return None
 
-    def find_truck_by_id(self,unique_id):
+    def find_truck_by_id(self,vehicle_id: int):
         for truck in self.vehicles:
-            if unique_id == truck.vehicle_id:
+            if vehicle_id == truck.vehicle_id:
                 return truck
         return "Truck not found"
 
