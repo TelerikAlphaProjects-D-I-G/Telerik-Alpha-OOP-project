@@ -13,6 +13,12 @@ class ApplicationData:
         self._employees = []
         self._logged_employee = None
         self.routes = []
+        self._add_vehicles_to_vehicles_list()
+
+    def _add_vehicles_to_vehicles_list(self):
+        for truck_id, truck_data in TRUCKS.items():
+            vehicle = Vehicles(truck_id)
+            self.vehicles.append(vehicle)
 
     @property
     def packages(self):
