@@ -23,7 +23,7 @@ class ViewInformationAboutRouteCommand(BaseCommand):
                 f"Route ID: {route.route_id}\n"
                 f"Path: {' -> '.join(route.path)}\n"
                 f"Total Distance: {route.distance} km\n"
-                f"Assigned Vehicle: {route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'}\n"
+                f"Assigned Vehicle: \n{route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'}\n"
                 "----------------------"
             )
 
@@ -31,6 +31,6 @@ class ViewInformationAboutRouteCommand(BaseCommand):
         return True
 
     def _expected_params_count(self) -> int:
-        return 2
+        return 1
 
 

@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-from models.vehicles import Vehicles
 
 class Route:
 
@@ -58,15 +57,8 @@ class Route:
     def valid_distances(*all_stops):
         distances = Route.DISTANCES
         distances_full_name = Route.DISTANCES_FULL
-        expanded_stops = []
-        for stop in all_stops:
-            if isinstance(stop, list):
-                expanded_stops.extend(stop)
-            else:
-                expanded_stops.append(stop)
-        for stop in expanded_stops:
-            if stop not in distances and stop not in distances_full_name:
-                raise ValueError(f"Invalid stop: {stop}")
+        expanded_stops = [stop for sublist in all_stops for stop in (sublist if isinstance(sublist, list) else [sublist])]
+        invalid_stops = [stop for stop in expanded_stops if stop not in distances and stop not in distances_full_name]
 
     @staticmethod
     def time_needed(start, end):
@@ -75,8 +67,6 @@ class Route:
             return "Invalid route"
         travel_time = distance / Route.AVERAGE_SPEED
         return timedelta(hours= travel_time)
-
-
 
     def assign_vehicle(self, vehicle_id):
         vehicle = Vehicles(vehicle_id)

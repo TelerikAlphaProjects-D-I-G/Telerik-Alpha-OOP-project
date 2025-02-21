@@ -1,7 +1,7 @@
 from core.application_data import ApplicationData
 from commands.helper_command.base_command import BaseCommand
-
-
+from commands.user_command.login_command import LoginCommand
+from commands.user_command.register_employee_command import RegisterEmployeeCommand
 class PrintRoutes(BaseCommand):
     def __init__(self, app_data: ApplicationData):
         super().__init__(app_data)
@@ -11,7 +11,6 @@ class PrintRoutes(BaseCommand):
             return "No routes available."
 
         route_list = []
-
         for route in self._app_data.routes:
             route_list.append(
                 f"Route ID: {route.route_id}\n"

@@ -33,8 +33,7 @@ class AssignDeliveryPackageCommand(BaseCommand):
             raise ValueError(f"Truck with ID {truck_id} does not exist!")
         package.advance_status()
         current_load = 0
-        if truck.assign_package(package):
-            current_load += 1
+        truck.assign_package(package)
         return (
             f"Package ID: {unique_id}\n"
             f"Truck ID: {truck_id}\n"

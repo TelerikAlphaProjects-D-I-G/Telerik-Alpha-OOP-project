@@ -5,26 +5,20 @@ MAN = ["Man", 37000, 10000]
 ACTROS = ["Actros",  26000,13000]
 
 """
-
+from commands.helper_command.validate_params_helpers_command import try_parse_int
 from storage_data.storage_trucks import TRUCKS
 class Vehicles:
-
-    # available_vehicles = {
-    #     'Scania': {'capacity': 42000, 'max range': 8000, 'quantity': 10},
-    #     'Man': {'capacity': 37000, 'max range': 10000, 'quantity': 15},
-    #     'Actros': {'capacity': 26000, 'max range': 13000, 'quantity': 15}
-    # }
 
     def __init__(self, vehicle_id):
         self.name = TRUCKS.get(vehicle_id, {}).get('model', 'uknown model')
         self.vehicle_id = vehicle_id
         self.capacity =TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
-        self.max_range = TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
-        self.current_city = TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
+        self.max_range = TRUCKS.get(vehicle_id, {}).get('max_range', 'uknown model')
+        self.current_city = TRUCKS.get(vehicle_id, {}).get('city', 'uknown model')
         self.current_load = 0
         self.is_available = True
+        self.assigned_vehicle = None
         self.assigned_packages = []
-
 
     def assign_package(self, package):
         if self.current_load + package.weight_kg > self.capacity:
@@ -32,6 +26,14 @@ class Vehicles:
         self.assigned_packages.append(package)
         self.current_load += package.weight_kg
         return True
+
+    def assign_vehicle(self, vehicle_id):
+        vehicle = Vehicles(vehicle_id)
+        if self.assigned_vehicle is None:
+            self.assigned_vehicle = vehicle
+            return True
+        return False
+
 
     def assign_to_work(self):
         if self.is_available:
@@ -83,30 +85,5 @@ class Vehicles:
                 f'Max Range: {self.max_range} km\n'
                 f'Status: {"Available" if self.is_available else "Not Available"}\n'
                 f'Current Load: {self.current_load} kg\n'
-                f'Assigned Packages: {len(self.assigned_packages)}\n'
+                f'Assigned Packages: {self.assigned_packages}\n'
                 f"Current city: {self.current_city}")
-
-
-
-#
-#
-scania_vehicle = Vehicles(1011)
-#print(scania_vehicle)
-#
-# """man_vehicle = Vehicles('Man', 1020)
-# print(man_vehicle)
-#
-# actros_vehicle = Vehicles('Actros', 1030)
-# print(actros_vehicle)
-#
-# vehicle_type = Vehicles.find_available_vehicle(5000)"""
-#
-# # from package import Package
-#
-# package1 = Package('2', 'Sydney', 'Brisbane', 500, 'JohnDue')
-#
-# scania_vehicle.assign_package(package1)
-#
-# print(scania_vehicle)
-# print(scania_vehicle.work_done())
-# print(scania_vehicle)

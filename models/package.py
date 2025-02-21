@@ -1,4 +1,4 @@
-
+from commands.helper_command.validate_params_helpers_command import try_parse_int
 from models.package_status import PackageStatus
 from datetime import datetime, timedelta
 from models.route_matrix import Route
@@ -38,7 +38,6 @@ class Package:
 		self.weight_kg = weight_kg
 		self.contact_information = contact_information
 		Package.unique_id_user.add(unique_id)
-#		self.location_exist(start_location, end_location)
 		self.check_weight(weight_kg)
 		self._package_status = PackageStatus.PENDING
 
@@ -59,6 +58,7 @@ class Package:
 			raise ValueError('Invalid location!')
 
 	def check_weight(self, value):
+		value = try_parse_int(value)
 		if value < 0:
 			raise ValueError('Weight should not be negative')
 		self.weight_kg = value
