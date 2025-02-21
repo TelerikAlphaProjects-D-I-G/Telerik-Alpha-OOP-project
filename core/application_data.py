@@ -60,7 +60,7 @@ class ApplicationData:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
 
-        total_distance, _ = Route.calculate_total_distance(routes)
+        total_distance = Route.calculate_total_distance(routes)
 
         route = Route.calculate_total_distance(routes)
         new_route = Route(start_location = routes[0], additional_stops=routes[1:-1], end_location = routes[-1])
@@ -116,6 +116,18 @@ class ApplicationData:
     def print_routes(self):
         return self.routes
 
+    def search_routes(self, start_location, end_location):
+        matching_routes = []
+
+        for route in self.routes:
+            if start_location in route.path and end_location in route.path:
+                start_index = route.path.index(start_location)
+                end_index = route.path.index(end_location)
+
+                if start_index < end_index:
+                    matching_routes.append(route)
+
+        return matching_routes
 
 # app_data = ApplicationData()
 #

@@ -105,15 +105,18 @@ createdeliverypackage 1 SYD MEL 45 Ivan
 createdeliveryroute SYD MEL PER ADL
 createdeliveryroute SYD MEL PER ADL ASP
 end
+assignfreetruck 1001 1
+assigndeliverypackage 1 1001 1
 
 regiseremployee ivancho Ivan Pustovit manager123 Manager
 createdeliverypackage 1 Sydney Melbourne 45 Ivan
 createdeliveryroute SYD MEL PER
 createdeliveryroute BRI SYD MEL ADL
+createdeliveryroute DAR ASP SYD MEL
 createdeliveryroute DAR ASP ADL
-assignfreetruck 1001 1
-assigndeliverypackage 1 1001 1
-printroutes
+createdeliveryroute MEL SYD BRI
+createdeliveryroute MEL SYD
+searchforroute SYD MEL
 end
 
 """

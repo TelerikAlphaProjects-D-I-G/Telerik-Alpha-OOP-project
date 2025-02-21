@@ -11,20 +11,19 @@ class SearchForRouteCommand(BaseCommand):
     def execute(self,params):
         super().execute(params)
 
-        stops = params
+        start_location, end_location = params[0], params[1]
+        matching_routes = self._app_data.search_routes(start_location, end_location)
 
-        try:
-            distance = Route.calculate_total_distance(stops)
-            time_needed = Route.time_needed(stops[0], stops[-1])
-            return (f'Route from {stops[0]} to {stops[-1]}:\n'
-                    f' Distance: {distance} km\n'
-                    f' Estimated Travel Time: {str(time_needed).split('.')[0]}')
+        if not matching_routes:
+            return f'No routes found from {start_location} to {end_location}.'
 
-        except ValueError:
-            return f'Error: Invalid route between {stops[0]} and {stops[-1]}.'
+        matches = 'Matching Routes:\n'+'\n'.join( f"- Route ID: {route.route_id}, Path: {' -> '.join(route.path)}" for route in matching_routes)
+
+        return matches
+
 
     def _requires_login(self) -> bool:
         return True
 
     def _expected_params_count(self) -> int:
-        return 3
+        return 2
