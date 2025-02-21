@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+from models.vehicles import Vehicles
 class Route:
 
     routes_lst = []
@@ -124,9 +124,8 @@ class Route:
                 f"Start location: {self.start_location}\n"
                 # f"Additional stops: {self.stops}\n"
                 f"End location: {self.end_location}\n"
-                f"Departure time: {self.departure_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
-                f"Assigned vehicle: {self.assigned_vehicle.vehicle_id if self.assigned_vehicle else 'None'}")
-                # f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
+                # f"Departure time: {self.departure_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+                f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
 # print(Routes.valid_distances("SYD","PER"))
 # print(Routes.calculate_total_distance("SYD","MEL"))
@@ -134,8 +133,8 @@ class Route:
 #print(Routes.time_needed('Sydney', 'Melbourne'))
 #print(Routes.time_needed('SYD', 'MEL'))
 
-# route = Routes('SYD', 'ADL')
+# route = Route('SYD', 'ADL')
 # route.assign_vehicle(1001)
-#print(route)
+# print(route)
 #print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
 

@@ -7,26 +7,21 @@ ACTROS = ["Actros",  26000,13000]
 """
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 from storage_data.storage_trucks import TRUCKS
-
 class Vehicles:
 
     def __init__(self, vehicle_id):
         self.name = TRUCKS.get(vehicle_id, {}).get('model', 'uknown model')
         self.vehicle_id = vehicle_id
-        self.capacity =TRUCKS.get(vehicle_id, {}).get('capacity', 'uknown model')
-        self.max_range = TRUCKS.get(vehicle_id, {}).get('max_range', 'uknown model')
-        self.current_city = TRUCKS.get(vehicle_id, {}).get('city', 'uknown model')
+        self.capacity =TRUCKS.get(vehicle_id, {}).get('capacity', 0)
+        self.max_range = TRUCKS.get(vehicle_id, {}).get('max_range', 0)
+        self.current_city = TRUCKS.get(vehicle_id, {}).get('city', 'uknown city')
         self.current_load = 0
         self.is_available = True
         self.assigned_vehicle = None
         self.assigned_packages = []
 
     def assign_package(self, package):
-        if self.current_load + package.weight_kg > self.capacity:
-            raise ValueError('Not enough capacity')
-        self.assigned_packages.append(package)
-        self.current_load += package.weight_kg
-        return True
+        package.assign_to_truck(self)
 
     def assign_vehicle(self, vehicle_id):
         if self.assigned_vehicle is None:
@@ -78,11 +73,12 @@ class Vehicles:
     #     raise ValueError('Weight of the Packages exceeds the capacity of available trucks')
 
     def __str__(self):
+        assigned_packages_str = ", ".join(str(pkg.unique_id) for pkg in self.assigned_packages) if self.assigned_packages else "None"
         return (f'Name: {self.name}\n'
                 f'Vehicle ID: {self.vehicle_id}\n'
                 f'Capacity: {self.capacity} kg\n'
                 f'Max Range: {self.max_range} km\n'
                 f'Status: {"Available" if self.is_available else "Not Available"}\n'
                 f'Current Load: {self.current_load} kg\n'
-                f'Assigned Packages: {self.assigned_packages}\n'
+                f'Assigned Packages: {assigned_packages_str}\n'
                 f"Current city: {self.current_city}")

@@ -106,7 +106,7 @@ end
 regiseremployee ivancho Ivan Pustovit manager123 Manager
 createdeliverypackage 1 SYD MEL 45 Ivan
 createdeliveryroute SYD MEL PER ADL 2025-02-22 11:30
-assignfreetruck 1001 1
+assignfreetruck 1002 1
 assigndeliverypackage 1 1001 
 viewinformationaboutpackage 1
 viewinformationaboutroute 1
@@ -130,6 +130,9 @@ assignfreetruck 1001 1
 assigndeliverypackage 1 1001
 viewinformationaboutpackage 1
 viewinformationaboutroute 1
+viewinformationabouttruck 1001 1
+end
+regiseremployee ivancho Ivan Pustovit manager123 Manager
 viewinformationabouttruck 1001
 end
 

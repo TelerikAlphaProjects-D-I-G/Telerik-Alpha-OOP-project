@@ -30,13 +30,13 @@ class AssignDeliveryPackageCommand(BaseCommand):
         if truck is None:
             raise ValueError(f"Truck with ID {truck_id} does not exist!")
         package.advance_status()
-        current_load = 0
         truck.assign_package(package)
         return (
             f"Package ID: {unique_id}\n"
             f"Truck ID: {truck_id}\n"
             f"Package Status: {package.package_status}\n"
-            f"Assigned package: {current_load}"
+            f"Assigned package: {truck.current_load}\n"
+            f"Current load: {truck.current_load} / {truck.capacity}\n"
         )
     def _requires_login(self) -> bool:
         return True

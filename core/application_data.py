@@ -51,7 +51,7 @@ class ApplicationData:
                 return id
         return None
 
-    def find_truck_by_id(self,vehicle_id: int):
+    def find_truck_by_id(self, vehicle_id: int):
         for truck in self.vehicles:
             if vehicle_id == truck.vehicle_id:
                 return truck

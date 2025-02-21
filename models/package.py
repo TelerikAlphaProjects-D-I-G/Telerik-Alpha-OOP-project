@@ -2,7 +2,7 @@ from commands.helper_command.validate_params_helpers_command import try_parse_in
 from models.package_status import PackageStatus
 from datetime import datetime, timedelta
 from models.route_matrix import Route
-
+from models.vehicles import Vehicles
 
 
 class Package:
@@ -40,6 +40,12 @@ class Package:
 		Package.unique_id_user.add(unique_id)
 		self.check_weight(weight_kg)
 		self._package_status = PackageStatus.PENDING
+		self.assigned_truck = None
+
+	def assign_to_truck(self, truck):
+		self.assigned_truck = truck
+		truck.assigned_packages.append(self)
+		truck.current_load += self.weight_kg
 
 	@property
 	def package_status(self):
