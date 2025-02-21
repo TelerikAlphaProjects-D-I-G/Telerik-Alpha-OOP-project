@@ -111,13 +111,16 @@ assigndeliverypackage 1 1001 1
 regiseremployee ivancho Ivan Pustovit manager123 Manager
 createdeliverypackage 1 Sydney Melbourne 45 Ivan
 createdeliveryroute SYD MEL PER
-createdeliveryroute BRI SYD MEL ADL
-createdeliveryroute DAR ASP SYD MEL
-createdeliveryroute DAR ASP ADL
-createdeliveryroute MEL SYD BRI
-createdeliveryroute MEL SYD
-searchforroute SYD MEL
+createdeliveryroute BRI SYD MEL ADL 2025-02-22 11:30
+createdeliveryroute DAR ASP SYD 2025-02-22 12:30
+createdeliveryroute DAR ASP ADL 2025-02-22 08:30
+createdeliveryroute MEL SYD BRI 2025-02-23 12:30
+createdeliveryroute MEL SYD 2025-02-22 14:30
+searchforroute SYD MEL 
 end
 
+regiseremployee ivancho Ivan Pustovit manager123 Manager
+createdeliveryroute BRI SYD MEL ADL 2025-02-22 11:30
+end
 """
 

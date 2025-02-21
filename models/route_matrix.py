@@ -44,12 +44,12 @@ class Route:
         PER1[0]: {SYD1[0]: 4016, MEL1[0]: 3509, ADL1[0]: 2785, ASP1[0]: 2481, BRI1[0]: 4311, DAR1[0]: 4025}
     }
 
-    def __init__(self, start_location, end_location, additional_stops = None):
-        self.star_location = start_location
+    def __init__(self, start_location, end_location, additional_stops = None, departure_time = None):
+        self.start_location = start_location
         self.end_location = end_location
         self.additional_stops = additional_stops
         self.end_location = end_location
-        # self.departure_time = departure_time
+        self.departure_time = departure_time
         self.route_id = Route.routes_id_counter
         Route.routes_id_counter += 1
         self.assigned_vehicle = None
@@ -111,12 +111,31 @@ class Route:
 
         return total_distance, stop_distances
 
+    def get_arrival_times(self):
+        arrival_times = []
+        current_time = self.departure_time
+
+        path = [self.start_location] + self.additional_stops + [self.end_location]
+
+        for i in range(len(path) - 1):
+            start = path[i]
+            end = path[i + 1]
+
+            distance = Route.DISTANCES[start][end]
+            travel_time = distance / Route.AVERAGE_SPEED
+            current_time += timedelta(hours=travel_time)
+            arrival_str = current_time.strftime("%b %dth %H:%M") + "h"
+            arrival_times.append((end, arrival_str))
+        return arrival_times
+
 
     def __str__(self):
         return (f"Route id: {self.route_id}\n"
-                f"Start location: {self.star_location}\n"
+                f"Start location: {self.start_location}\n"
                 # f"Additional stops: {self.stops}\n"
-                f"End location: {self.end_location}\n")
+                f"End location: {self.end_location}\n"
+                f"Departure time: {self.departure_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+                f"Assigned vehicle: {self.assigned_vehicle.vehicle_id if self.assigned_vehicle else 'None'}")
                 # f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
 # print(Routes.valid_distances("SYD","PER"))

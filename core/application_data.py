@@ -56,16 +56,21 @@ class ApplicationData:
                 return route
         raise ValueError("Route not found")
 
-    def create_route(self, routes) -> Route:
+    def create_route(self, routes, departure_time) -> Route:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
 
         total_distance = Route.calculate_total_distance(routes)
 
-        route = Route.calculate_total_distance(routes)
-        new_route = Route(start_location = routes[0], additional_stops=routes[1:-1], end_location = routes[-1])
+        new_route = Route(
+            start_location=routes[0],
+            additional_stops=routes[1:-1],
+            end_location=routes[-1],
+            departure_time=departure_time
+        )
         new_route.path = routes
         new_route.distance = total_distance
+
         self.routes.append(new_route)
 
         return new_route
