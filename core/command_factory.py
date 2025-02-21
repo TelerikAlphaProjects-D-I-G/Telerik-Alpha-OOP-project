@@ -121,7 +121,12 @@ searchforroute SYD MEL
 end
 
 regiseremployee ivancho Ivan Pustovit manager123 Manager
+createdeliverypackage 1 SYD MEL 45 Ivan
 createdeliveryroute BRI SYD MEL ADL 2025-02-22 11:30
+assignfreetruck 1001 1
+assigndeliverypackage 1 1001
+viewinformationaboutpackage 1
+viewinformationaboutroute 1
 end
 """
 

@@ -28,12 +28,10 @@ class Vehicles:
         return True
 
     def assign_vehicle(self, vehicle_id):
-        vehicle = Vehicles(vehicle_id)
         if self.assigned_vehicle is None:
-            self.assigned_vehicle = vehicle
+            self.assigned_vehicle = vehicle_id
             return True
         return False
-
 
     def assign_to_work(self):
         if self.is_available:

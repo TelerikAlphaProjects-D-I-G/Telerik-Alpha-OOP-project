@@ -17,13 +17,17 @@ class ViewInformationAboutRouteCommand(BaseCommand):
         employee = self._app_data.logged_in_employee
         if employee.employee_role != EmployeeRole.MANAGER:
             return "Error: Only Managers are allowed to view route information."
+
         route_id = super()._try_parse_int(params[0])
         route = self._app_data.find_route_by_id(route_id)
+
+        assigned_vehicle = route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'
+
         return (
                 f"Route ID: {route.route_id}\n"
                 f"Path: {' -> '.join(route.path)}\n"
                 f"Total Distance: {route.distance} km\n"
-                f"Assigned Vehicle: \n{route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'}\n"
+                f"Assigned Vehicle: \n{assigned_vehicle}\n"
                 "----------------------"
             )
 

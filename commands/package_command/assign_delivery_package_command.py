@@ -1,6 +1,4 @@
 from enum import unique
-
-from PycharmProjects.test.tests.test_check_for_win import Routes
 from commands.helper_command.base_command import BaseCommand
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 from core.application_data import ApplicationData
