@@ -8,19 +8,30 @@ class SearchForRouteCommand(BaseCommand):
         super().__init__(app_data)
         self.params = params
 
-    def execute(self,params):
+    def execute(self, params):
         super().execute(params)
 
         start_location, end_location = params[0], params[1]
+
         matching_routes = self._app_data.search_routes(start_location, end_location)
 
         if not matching_routes:
             return f'No routes found from {start_location} to {end_location}.'
 
-        matches = 'Matching Routes:\n'+'\n'.join( f"- Route ID: {route.route_id}, Path: {' -> '.join(route.path)}" for route in matching_routes)
+        routes_info = ''
 
-        return matches
+        for route in matching_routes:
+            arrival_times = route.get_arrival_times()
 
+            formatted_route = ' → '.join([f"{city} (Arrival at {arrival_time})" for city, arrival_time in
+                                          zip([route.start_location] + (route.additional_stops or []) +
+                                              [route.end_location], arrival_times)])
+
+            routes_info += (f"Route ID: {route.route_id}\n"
+                            f"Path: {formatted_route}\n"
+                            f"Departure: {route.departure_time.strftime('%b %dth %H:%M')}h\n\n")
+
+        return f"Matching Routes:\n{routes_info}"
 
     def _requires_login(self) -> bool:
         return True
