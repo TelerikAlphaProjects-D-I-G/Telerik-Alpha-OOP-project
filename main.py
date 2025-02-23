@@ -89,10 +89,12 @@ def main():
 
             cmd_factory.create("regiseremployee").execute([username, password, first_name, last_name, position])
             print("User created successfully!")
+        #
         elif choice == "3":
             # Exit
             print("Exiting the application. Goodbye!")
             return
+        #
         else:
             print("Invalid choice. Please try again.")
 
