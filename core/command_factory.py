@@ -113,6 +113,7 @@ viewinformationaboutroute 1
 end
 
 regiseremployee ivancho Ivan Pustovit manager123 Manager
+createdeliverypackage Sydney Melbourne 45 Ivan
 createdeliveryroute SYD MEL PER
 createdeliveryroute BRI SYD MEL ADL 2025-02-22 11:30
 createdeliveryroute DAR ASP SYD 2025-02-22 12:30

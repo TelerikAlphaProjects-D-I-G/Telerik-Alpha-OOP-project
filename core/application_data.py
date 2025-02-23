@@ -40,8 +40,8 @@ class ApplicationData:
     def get_package(self,package_id):
         return self.packages.get(package_id)
 
-    def create_package(self, unique_id, start_location, end_location, weight_kg, contact_information) ->Package:
-        package = Package(unique_id, start_location, end_location, weight_kg, contact_information)
+    def create_package(self, start_location, end_location, weight_kg, contact_information) ->Package:
+        package = Package(start_location, end_location, weight_kg, contact_information)
         self._packages.append(package)
         return package
 
