@@ -119,7 +119,7 @@ createdeliveryroute BRI SYD MEL ADL 2025-02-22 11:30
 createdeliveryroute DAR ASP SYD 2025-02-22 12:30
 createdeliveryroute DAR ASP ADL 2025-02-22 08:30
 createdeliveryroute MEL SYD BRI 2025-02-23 12:30
-createdeliveryroute MEL SYD 2025-02-22 14:30
+createdeliveryroute SYD MEL 2025-02-22 14:30
 viewinformationaboutroute 1
 searchforroute SYD MEL
 end

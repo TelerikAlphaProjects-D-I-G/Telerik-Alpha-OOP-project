@@ -95,7 +95,7 @@ class ApplicationData:
             f"----------------------\n"
         )
 
-        # Write route details to a file
+
         with open("routes_log.txt", "a", encoding="utf-8") as file:
             file.write(route_details)
 
@@ -151,15 +151,14 @@ class ApplicationData:
 
     def search_routes(self, start_location, end_location):
         matching_routes = []
-
+        seen_routes_id = set()
         for route in self.routes:
             if start_location in route.path and end_location in route.path:
                 start_index = route.path.index(start_location)
                 end_index = route.path.index(end_location)
-
-                if start_index < end_index:
+                if start_index < end_index and route.route_id not in seen_routes_id:
                     matching_routes.append(route)
-
+                    seen_routes_id.add(route.route_id)
         return matching_routes
 
 # app_data = ApplicationData()
