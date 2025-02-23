@@ -1,131 +1,93 @@
 from core.application_data import ApplicationData
 from core.command_factory import CommandFactory
-from core.engine import Engine
-from storage_data.storage_trucks import TRUCKS
+
+def main():
+    app_data = ApplicationData()
+    cmd_factory = CommandFactory(app_data)
+
+    # Login
 
 
-# app_data = ApplicationData()
-# cmd_factory = CommandFactory(app_data)
-# engine = Engine(cmd_factory)
-#
-# engine.start()
+    print("Welcome to the Logistics Console Application!")
 
-class DeliveryApp:
-    def __init__(self):
-        self.routes = []
-        self.packages = []
-        self.employees = []
+    while True:
+        print("\nPlease select an option:")
+        print("1. Login")
+        print("2. Register")
+        print("3. Exit")
 
-    def register_employee(self):
-        name = input("Enter employee name: ")
-        position_employee = input("Enter employee position: ")
-        employee = {"name": name, "position employee": position_employee}
-        self.employees.append(employee)
-        print(f"Employee {name} (registered as {position_employee})")
+        choice = input("Enter your choice: ")
 
-    def create_route(self):
-        path = input("Enter route path (separated by spaces, e.g., SYD MEL PER): ").split()
-        route_id = len(self.routes) + 1
-        route = {"route_id": route_id, "path": path}
-        self.routes.append(route)
-        print(f"✅ Route {route_id} created: {' -> '.join(path)}")
+        if choice == "1":
+            # Login
+            username = input("Enter your username: ")
+            password = input("Enter your password: ")
 
-    def create_package(self):
-        start = input("Enter package start location: ")
-        end = input("Enter package destination: ")
-        weight = input("Enter package weight (kg): ")
-        contact = input("Enter contact name: ")
-        package_id = len(self.packages) + 1
-        package = {"id": package_id, "start": start, "end": end, "weight": weight, "contact": contact}
-        self.packages.append(package)
-        print(f"📦 Package {package_id} created from {start} to {end}, {weight}kg.")
+            try:
+                employee = app_data.find_employee_by_username(username)
+                if employee and employee.password == password:
+                    app_data.login(employee)
+                    print("Login successful!")
 
-    def assign_free_truck(self):
-        pass
+                    while True:
+                        print("\nLogged in as:", employee.username)
+                        print("\nPlease select an option:")
+                        print("1. Register Employee")
+                        print("2. Create Delivery Package")
+                        print("3. Create Delivery Route")
+                        print("4. View Information About Route")
+                        print("5. Search for Route")
+                        print("6. Logout")
+                        print("7. Exit")
 
-    def assign_delivery_package(self):
-        pass
+                        choice = input("Enter your choice: ")
 
-    def search_routes(self):
-        start = input("Enter start location: ")
-        end = input("Enter destination: ")
-        matching_routes = [r for r in self.routes if start in r["path"] and end in r["path"]]
-        if matching_routes:
-            print("🔍 Matching Routes:")
-            for r in matching_routes:
-                print(f"- Route ID: {r['route_id']}, Path: {' -> '.join(r['path'])}")
-        else:
-            print("❌ No routes found.")
+                        if choice == "1":
+                            # Register Employee
+                            cmd_factory.create("regiseremployee").execute()
+                        elif choice == "2":
+                            # Create Delivery Package
+                            cmd_factory.create("createdeliverypackage").execute()
+                        elif choice == "3":
+                            # Create Delivery Route
+                            cmd_factory.create("createdeliveryroute").execute()
+                        elif choice == "4":
+                            # View Information About Route
+                            cmd_factory.create("viewinformationaboutroute").execute()
+                        elif choice == "5":
+                            # Search for Route
+                            cmd_factory.create("searchforroute").execute()
+                        elif choice == "6":
+                            # Logout
+                            app_data.logout()
+                            print("Logged out successfully!")
+                            break
+                        elif choice == "7":
+                            # Exit
+                            print("Exiting the application. Goodbye!")
+                            return
+                        else:
+                            print("Invalid choice. Please try again.")
+                else:
+                    print("Invalid password. Please try again.")
+            except ValueError as e:
+                print("Error:", e)
+        elif choice == "2":
+            # Register
+            username = input("Enter your desired username: ")
+            password = input("Enter your desired password: ")
+            first_name = input("Enter your first name: ")
+            last_name = input("Enter your last name: ")
+            position = input("Enter your position: ")
 
-    def view_routes(self):
-        if not self.routes:
-            print("❌ No routes available.")
+            cmd_factory.create("regiseremployee").execute(username, password, first_name, last_name, position)
+            print("User created successfully!")
+        elif choice == "3":
+            # Exit
+            print("Exiting the application. Goodbye!")
             return
-        print("📍 Available Routes:")
-        for r in self.routes:
-            print(f"- Route {r['route_id']}: {' -> '.join(r['path'])}")
-
-    def view_trucks(self):
-        id_trucks = input("Enter truck's id: ")
-        print("Available Trucks: ")
-        id_trucks = int(id_trucks)
-        truck = TRUCKS.get(id_trucks)
-        print(
-            f"🚛 Truck ID: {id_trucks}, "
-            f"Model: {truck['model']}, "
-            f"Capacity: {truck['capacity']}kg, "
-            f"Max Range: {truck['max_range']}km, "
-            f"Location: {truck['city']}")
-
-    def view_packages(self):
-        print("Available Packages: ")
-        for package in self.packages:
-            print(
-                f"- Package ID: {package['id']},"
-                f" From: {package['start']} -> To {package['end']},"
-                f" Weight: {package['weight']}kg, "
-                f"Contact: {package['contact']}")
-
-    def run(self):
-        while True:
-            print("\n🚛 Logistics Management System")
-            print("1. Register employee")
-            print("2. Create Route")
-            print("3. Create Package")
-            print("4. Search for Routes")
-            print("5. Assign Free Truck to Route")
-            print("6. Assign Package to Truck")
-            print("7. View Routes")
-            print("8. View Trucks")
-            print("9. View Package")
-            print("10. Exit")
-            choice = input("Select an option: ")
-
-            if choice == "1":
-                self.register_employee()
-            elif choice == "2":
-                self.create_route()
-            elif choice == "3":
-                self.create_package()
-            elif choice == "4":
-                self.search_routes()
-            elif choice == "5":
-                self.assign_free_truck()
-            elif choice == "6":
-                self.assign_delivery_package()
-            elif choice == "7":
-                self.view_routes()
-            elif choice == "8":
-                self.view_trucks()
-            elif choice == "9":
-                self.view_packages()
-            elif choice == "10":
-                print("👋 Exiting... Goodbye!")
-                break
-            else:
-                print("⚠️ Invalid choice. Please try again.")
-
+        else:
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
-    app = DeliveryApp()
-    app.run()
+    main()
