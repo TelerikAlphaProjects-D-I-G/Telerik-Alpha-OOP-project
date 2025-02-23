@@ -20,7 +20,7 @@ class TestEmployee(unittest.TestCase):
         with self.assertRaises(ValueError) as cm:
             Employee.validate_username("a")
         self.assertEqual(str(cm.exception), Employee.USERNAME_LEN_ERR)
-
+    #
     def test_invalid_username_symbols(self):
         with self.assertRaises(ValueError) as cm:
             Employee.validate_username("user@123!")
