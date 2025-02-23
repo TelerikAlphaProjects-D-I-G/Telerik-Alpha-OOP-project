@@ -53,11 +53,14 @@ def main():
                             # Create Delivery Package
                              cmd_factory.create("createdeliverypackage").execute([start_location, end_location, weight_kg, contact_information])
                         elif choice == "3":
-                            # Create Delivery Route
-                            cmd_factory.create("createdeliveryroute").execute()
+                            routes = input("Enter route cities: ").split()
+                            departure_date = input("Enter departure date (YYYY-MM-DD): ")
+                            departure_time = input("Enter departure time (HH:MM): ")
+                            route_info = cmd_factory.create("createdeliveryroute").execute([routes ,departure_date, departure_time])
+                            print(f"Route created successfully:\n {route_info}")
                         elif choice == "4":
-                            # View Information About Route
-                            cmd_factory.create("viewinformationaboutroute").execute()
+                            route_id = input("Enter the route ID: ")
+                            cmd_factory.create("viewinformationaboutroute").execute([route_id])
                         elif choice == "5":
                             # Search for Route
                             cmd_factory.create("searchforroute").execute()
