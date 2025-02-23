@@ -583,3 +583,153 @@ Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
 Total Distance: 877 km
 Departure Time: 2025-02-22 14:30:00
 ----------------------
+Route ID: 1
+Path: BRI (Arrival at ('SYD', 'Feb 22th 21:56h')) → SYD (Arrival at ('MEL', 'Feb 23th 08:01h')) → MEL (Arrival at ('ADL', 'Feb 23th 16:21h')) → ADL (Arrival at N/A)
+Total Distance: 2511 km
+Departure Time: 2025-02-22 11:30:00
+----------------------
+Route ID: 2
+Path: DAR (Arrival at ('ASP', 'Feb 23th 05:42h')) → ASP (Arrival at ('SYD', 'Feb 24th 13:27h')) → SYD (Arrival at N/A)
+Total Distance: 4259 km
+Departure Time: 2025-02-22 12:30:00
+----------------------
+Route ID: 3
+Path: DAR (Arrival at ('ASP', 'Feb 23th 01:42h')) → ASP (Arrival at ('ADL', 'Feb 23th 19:17h')) → ADL (Arrival at N/A)
+Total Distance: 3027 km
+Departure Time: 2025-02-22 08:30:00
+----------------------
+Route ID: 4
+Path: MEL (Arrival at ('SYD', 'Feb 23th 22:34h')) → SYD (Arrival at ('BRI', 'Feb 24th 09:01h')) → BRI (Arrival at N/A)
+Total Distance: 1786 km
+Departure Time: 2025-02-23 12:30:00
+----------------------
+Route ID: 5
+Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
+Total Distance: 877 km
+Departure Time: 2025-02-22 14:30:00
+----------------------
+Route ID: 1
+Path: BRI (Arrival at ('SYD', 'Feb 22th 21:56h')) → SYD (Arrival at ('MEL', 'Feb 23th 08:01h')) → MEL (Arrival at ('ADL', 'Feb 23th 16:21h')) → ADL (Arrival at N/A)
+Total Distance: 2511 km
+Departure Time: 2025-02-22 11:30:00
+----------------------
+Route ID: 2
+Path: DAR (Arrival at ('ASP', 'Feb 23th 05:42h')) → ASP (Arrival at ('SYD', 'Feb 24th 13:27h')) → SYD (Arrival at N/A)
+Total Distance: 4259 km
+Departure Time: 2025-02-22 12:30:00
+----------------------
+Route ID: 3
+Path: DAR (Arrival at ('ASP', 'Feb 23th 01:42h')) → ASP (Arrival at ('ADL', 'Feb 23th 19:17h')) → ADL (Arrival at N/A)
+Total Distance: 3027 km
+Departure Time: 2025-02-22 08:30:00
+----------------------
+Route ID: 4
+Path: MEL (Arrival at ('SYD', 'Feb 23th 22:34h')) → SYD (Arrival at ('BRI', 'Feb 24th 09:01h')) → BRI (Arrival at N/A)
+Total Distance: 1786 km
+Departure Time: 2025-02-23 12:30:00
+----------------------
+Route ID: 5
+Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
+Total Distance: 877 km
+Departure Time: 2025-02-22 14:30:00
+----------------------
+Route ID: 1
+Path: BRI (Arrival at ('SYD', 'Feb 22th 21:56h')) → SYD (Arrival at ('MEL', 'Feb 23th 08:01h')) → MEL (Arrival at ('ADL', 'Feb 23th 16:21h')) → ADL (Arrival at N/A)
+Total Distance: 2511 km
+Departure Time: 2025-02-22 11:30:00
+----------------------
+Route ID: 2
+Path: DAR (Arrival at ('ASP', 'Feb 23th 05:42h')) → ASP (Arrival at ('SYD', 'Feb 24th 13:27h')) → SYD (Arrival at N/A)
+Total Distance: 4259 km
+Departure Time: 2025-02-22 12:30:00
+----------------------
+Route ID: 3
+Path: DAR (Arrival at ('ASP', 'Feb 23th 01:42h')) → ASP (Arrival at ('ADL', 'Feb 23th 19:17h')) → ADL (Arrival at N/A)
+Total Distance: 3027 km
+Departure Time: 2025-02-22 08:30:00
+----------------------
+Route ID: 4
+Path: MEL (Arrival at ('SYD', 'Feb 23th 22:34h')) → SYD (Arrival at ('BRI', 'Feb 24th 09:01h')) → BRI (Arrival at N/A)
+Total Distance: 1786 km
+Departure Time: 2025-02-23 12:30:00
+----------------------
+Route ID: 5
+Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
+Total Distance: 877 km
+Departure Time: 2025-02-22 14:30:00
+----------------------
+Route ID: 1
+Path: BRI (Arrival at ('SYD', 'Feb 22th 21:56h')) → SYD (Arrival at ('MEL', 'Feb 23th 08:01h')) → MEL (Arrival at ('ADL', 'Feb 23th 16:21h')) → ADL (Arrival at N/A)
+Total Distance: 2511 km
+Departure Time: 2025-02-22 11:30:00
+----------------------
+Route ID: 2
+Path: DAR (Arrival at ('ASP', 'Feb 23th 05:42h')) → ASP (Arrival at ('SYD', 'Feb 24th 13:27h')) → SYD (Arrival at N/A)
+Total Distance: 4259 km
+Departure Time: 2025-02-22 12:30:00
+----------------------
+Route ID: 3
+Path: DAR (Arrival at ('ASP', 'Feb 23th 01:42h')) → ASP (Arrival at ('ADL', 'Feb 23th 19:17h')) → ADL (Arrival at N/A)
+Total Distance: 3027 km
+Departure Time: 2025-02-22 08:30:00
+----------------------
+Route ID: 4
+Path: MEL (Arrival at ('SYD', 'Feb 23th 22:34h')) → SYD (Arrival at ('BRI', 'Feb 24th 09:01h')) → BRI (Arrival at N/A)
+Total Distance: 1786 km
+Departure Time: 2025-02-23 12:30:00
+----------------------
+Route ID: 5
+Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
+Total Distance: 877 km
+Departure Time: 2025-02-22 14:30:00
+----------------------
+Route ID: 1
+Path: BRI (Arrival at ('SYD', 'Feb 22th 21:56h')) → SYD (Arrival at ('MEL', 'Feb 23th 08:01h')) → MEL (Arrival at ('ADL', 'Feb 23th 16:21h')) → ADL (Arrival at N/A)
+Total Distance: 2511 km
+Departure Time: 2025-02-22 11:30:00
+----------------------
+Route ID: 2
+Path: DAR (Arrival at ('ASP', 'Feb 23th 05:42h')) → ASP (Arrival at ('SYD', 'Feb 24th 13:27h')) → SYD (Arrival at N/A)
+Total Distance: 4259 km
+Departure Time: 2025-02-22 12:30:00
+----------------------
+Route ID: 3
+Path: DAR (Arrival at ('ASP', 'Feb 23th 01:42h')) → ASP (Arrival at ('ADL', 'Feb 23th 19:17h')) → ADL (Arrival at N/A)
+Total Distance: 3027 km
+Departure Time: 2025-02-22 08:30:00
+----------------------
+Route ID: 4
+Path: MEL (Arrival at ('SYD', 'Feb 23th 22:34h')) → SYD (Arrival at ('BRI', 'Feb 24th 09:01h')) → BRI (Arrival at N/A)
+Total Distance: 1786 km
+Departure Time: 2025-02-23 12:30:00
+----------------------
+Route ID: 5
+Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
+Total Distance: 877 km
+Departure Time: 2025-02-22 14:30:00
+----------------------
+Route ID: 1
+Path: BRI (Arrival at ('SYD', 'Feb 22th 21:56h')) → SYD (Arrival at ('MEL', 'Feb 23th 08:01h')) → MEL (Arrival at ('ADL', 'Feb 23th 16:21h')) → ADL (Arrival at N/A)
+Total Distance: 2511 km
+Departure Time: 2025-02-22 11:30:00
+----------------------
+Route ID: 2
+Path: DAR (Arrival at ('ASP', 'Feb 23th 05:42h')) → ASP (Arrival at ('SYD', 'Feb 24th 13:27h')) → SYD (Arrival at N/A)
+Total Distance: 4259 km
+Departure Time: 2025-02-22 12:30:00
+----------------------
+Route ID: 3
+Path: DAR (Arrival at ('ASP', 'Feb 23th 01:42h')) → ASP (Arrival at ('ADL', 'Feb 23th 19:17h')) → ADL (Arrival at N/A)
+Total Distance: 3027 km
+Departure Time: 2025-02-22 08:30:00
+----------------------
+Route ID: 4
+Path: MEL (Arrival at ('SYD', 'Feb 23th 22:34h')) → SYD (Arrival at ('BRI', 'Feb 24th 09:01h')) → BRI (Arrival at N/A)
+Total Distance: 1786 km
+Departure Time: 2025-02-23 12:30:00
+----------------------
+Route ID: 5
+Path: SYD (Arrival at ('MEL', 'Feb 23th 00:34h')) → MEL (Arrival at N/A)
+Total Distance: 877 km
+Departure Time: 2025-02-22 14:30:00
+----------------------

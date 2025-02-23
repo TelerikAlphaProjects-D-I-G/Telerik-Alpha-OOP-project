@@ -28,8 +28,8 @@ class SearchForRouteCommand(BaseCommand):
                                               [route.end_location], arrival_times)])
 
             routes_info += (f"Route ID: {route.route_id}\n"
-                            f"Path: {formatted_route}\n"
-                            f"Departure: {route.departure_time.strftime('%b %dth %H:%M')}h\n\n")
+                            f"Departure: {route.departure_time.strftime('%b %dth %H:%M')}h\n"
+                            f"Path: {formatted_route}\n--------------------\n")
 
         return f"Matching Routes:\n{routes_info}"
 
