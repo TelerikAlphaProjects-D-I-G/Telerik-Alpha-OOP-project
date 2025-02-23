@@ -161,6 +161,7 @@ class ApplicationData:
                     seen_routes_id.add(route.route_id)
         return matching_routes
 
+
 # app_data = ApplicationData()
 #
 # print(app_data.count_vehicles_on_road())

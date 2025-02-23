@@ -46,8 +46,12 @@ def main():
                             # Register Employee
                             cmd_factory.create("regiseremployee").execute()
                         elif choice == "2":
+                             start_location = input("Enter the start location: ")
+                             end_location = input("Enter the end location: ")
+                             weight_kg = input("Enter the weight in kilograms: ")
+                             contact_information = input("Enter the contact information: ")
                             # Create Delivery Package
-                            cmd_factory.create("createdeliverypackage").execute()
+                             cmd_factory.create("createdeliverypackage").execute([start_location, end_location, weight_kg, contact_information])
                         elif choice == "3":
                             # Create Delivery Route
                             cmd_factory.create("createdeliveryroute").execute()
