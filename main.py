@@ -14,7 +14,6 @@ class DeliveryApp:
     def __init__(self):
         self.routes = []
         self.packages = []
-        self.trucks = []
         self.employees = []
 
     def register_employee(self):
