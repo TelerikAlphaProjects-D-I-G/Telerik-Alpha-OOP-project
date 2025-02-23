@@ -90,7 +90,7 @@ viewinformationaboutpackage 1
 viewloggedinemployee ivancho
 logoutemployee
 viewinformationaboutpackage 1
-regiseremployee gosho Georgi Yovchev 1234568
+regiseremployee gosho Georgi Yovchev 1234568 Employee
 regiseremployee gosho Georgi Yovchev 1234568 Employee
 createdeliverypackage 2 SYD ADL 45 Pack
 createdeliveryroute SYD ADL PER DAR 
