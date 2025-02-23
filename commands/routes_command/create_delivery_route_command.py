@@ -35,7 +35,7 @@ class CreateDeliveryRouteCommand(BaseCommand):
 
         arrival_times = new_route.get_arrival_times()
 
-        formatted_route = ' → '.join([f"{city} ({arrival_time})" for city, arrival_time in zip(cities, arrival_times)])
+        formatted_route = ' → '.join([f"{city} (Arrival at {arrival_time})" for city, arrival_time in zip(cities, arrival_times)])
 
         return (f"Route created successfully with ID {new_route.route_id}:\n"
                 f"Route path: {formatted_route}\n"

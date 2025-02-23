@@ -67,7 +67,7 @@ class ApplicationData:
         if len(routes) <= 1:
             raise ValueError("Invalid route")
 
-        total_distance = Route.calculate_total_distance(routes)
+        total_distance, _ = Route.calculate_total_distance(routes)
 
         new_route = Route(
             start_location=routes[0],
@@ -77,6 +77,27 @@ class ApplicationData:
         )
         new_route.path = routes
         new_route.distance = total_distance
+
+        arrival_times = new_route.get_arrival_times()
+
+        formatted_stops = []
+        for i in range(len(routes)):
+            stop_info = f"{routes[i]} (Arrival at {arrival_times[i] if i < len(arrival_times) else 'N/A'})"
+            formatted_stops.append(stop_info)
+
+        self.routes.append(new_route)
+
+        route_details = (
+            f"Route ID: {new_route.route_id}\n"
+            f"Path: {' → '.join(formatted_stops)}\n"
+            f"Total Distance: {total_distance} km\n"
+            f"Departure Time: {departure_time}\n"
+            f"----------------------\n"
+        )
+
+        # Write route details to a file
+        with open("routes_log.txt", "a", encoding="utf-8") as file:
+            file.write(route_details)
 
         self.routes.append(new_route)
 

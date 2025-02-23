@@ -3,12 +3,14 @@ from commands.helper_command.base_command import BaseCommand
 from core.application_data import ApplicationData
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 
+
 class CreateDeliveryPackageCommand(BaseCommand):
     def __init__(self, app_data: ApplicationData):
         super().__init__(app_data)
 
     def execute(self, params):
         super().execute(params)
+        unique_id
 
         unique_id, start_location, end_location, weight_kg, contact_information = params
 
@@ -35,4 +37,4 @@ class CreateDeliveryPackageCommand(BaseCommand):
         return True
 
     def _expected_params_count(self) -> int:
-        return 5
+        return 4
