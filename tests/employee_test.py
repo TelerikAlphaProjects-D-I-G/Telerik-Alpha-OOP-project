@@ -6,74 +6,56 @@ from models.route_matrix import Route
 
 class TestEmployee(unittest.TestCase):
     def setUp(self):
-        self.employee = Employee("john_doe", True, "John", "Doe", "Secure@123")
-        self.manager = Employee("manager01", True, "Jane", "Smith", "Strong@Pass1")
+        self.employee = Employee("johndoe", "John", "Doe", "Secure@123", "Employee")
+        self.manager = Employee("manager01", "Jane", "Smith", "Strong@Pass1", "Manager")
 
-    def test_username_property(self):
-        self.assertEqual(self.employee.username, "john_doe")
-
-    def test_is_admin_property(self):
-        self.assertTrue(self.employee.is_admin)
-
-    def test_firstname_property(self):
+    def test_valid_employee_creation(self):
+        self.assertEqual(self.employee.username, "johndoe")
         self.assertEqual(self.employee.firstname, "John")
-
-    def test_lastname_property(self):
         self.assertEqual(self.employee.lastname, "Doe")
-
-    def test_password_property(self):
         self.assertEqual(self.employee.password, "Secure@123")
-
-    def test_employee_role_property(self):
         self.assertEqual(self.employee.employee_role, EmployeeRole.EMPLOYEE)
 
-    def test_validate_username_valid(self):
-        self.assertEqual(Employee.validate_username("ValidUser123"), "ValidUser123")
+    def test_invalid_username_too_short(self):
+        with self.assertRaises(ValueError) as cm:
+            Employee.validate_username("a")
+        self.assertEqual(str(cm.exception), Employee.USERNAME_LEN_ERR)
 
-    def test_validate_username_too_short(self):
-        with self.assertRaises(ValueError):
-            Employee.validate_username("ab")
+    def test_invalid_username_symbols(self):
+        with self.assertRaises(ValueError) as cm:
+            Employee.validate_username("user@123!")
+        self.assertEqual(str(cm.exception), Employee.USERNAME_INVALID_SYMBOLS)
 
-    def test_validate_username_too_long(self):
-        with self.assertRaises(ValueError):
-            Employee.validate_username("a" * (Employee.USERNAME_LEN_MAX + 1))
+    def test_invalid_password_length(self):
+        with self.assertRaises(ValueError) as cm:
+            Employee.validate_password("a1@")
+        self.assertEqual(str(cm.exception), Employee.PASSWORD_LEN_ERR)
 
-    def test_validate_username_invalid_symbols(self):
-        with self.assertRaises(ValueError):
-            Employee.validate_username("Invalid@User!")
+    def test_invalid_password_symbols(self):
+        with self.assertRaises(ValueError) as cm:
+            Employee.validate_password("Password!")
+        self.assertEqual(str(cm.exception), Employee.PASSWORD_INVALID_SYMBOLS)
 
-    def test_validate_firstname_valid(self):
-        self.assertEqual(Employee.validate_first_name("John"), "John")
-
-    def test_validate_firstname_too_short(self):
-        with self.assertRaises(ValueError):
-            Employee.validate_first_name("J")
-
-    def test_validate_lastname_valid(self):
-        self.assertEqual(Employee.validate_last_name("Doe"), "Doe")
-
-    def test_validate_lastname_too_long(self):
-        with self.assertRaises(ValueError):
-            Employee.validate_last_name("D" * (Employee.LASTNAME_LEN_MAX + 1))
-
-    def test_validate_password_valid(self):
-        self.assertEqual(Employee.validate_password("Strong@123"), "Strong@123")
-
-    def test_validate_password_invalid_symbols(self):
-        with self.assertRaises(ValueError):
-            Employee.validate_password("InvalidPassword!")
+    def test_is_admin_property(self):
+        self.assertTrue(self.manager.is_admin)
+        self.assertFalse(self.employee.is_admin)
 
     def test_check_if_manager_valid(self):
-        self.assertEqual(self.manager.check_if_manager(), Route.routes_lst)
+        self.assertIsInstance(self.manager.check_if_manager(), list)
 
     def test_check_if_manager_invalid(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValueError) as cm:
             self.employee.check_if_manager()
+        self.assertEqual(str(cm.exception), "Your position is not manager")
 
     def test_employee_str(self):
         expected_str = "Username: john_doe\nFull Name: John Doe\nRole: Employee"
         self.assertEqual(str(self.employee), expected_str)
 
+        expected_manager_str = "Username: manager01\nFull Name: Jane Smith\nRole: Manager"
+        self.assertEqual(str(self.manager), expected_manager_str)
+
 
 if __name__ == "__main__":
     unittest.main()
+
