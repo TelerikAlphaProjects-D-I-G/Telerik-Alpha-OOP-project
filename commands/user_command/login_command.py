@@ -1,5 +1,7 @@
 from commands.helper_command.base_command import BaseCommand
 from core.application_data import ApplicationData
+from models.employee import Employee
+
 
 class LoginCommand(BaseCommand):
     def __init__(self, app_data: ApplicationData):
@@ -12,7 +14,7 @@ class LoginCommand(BaseCommand):
         username, password = params
 
         employee = self._app_data.find_employee_by_username(username)
-        if employee.password != password:
+        if Employee.validate_password(password) != employee.password:
             raise ValueError('Wrong username or password!')
         else:
             self._app_data.login(employee)

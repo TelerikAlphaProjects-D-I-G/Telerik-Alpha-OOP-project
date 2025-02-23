@@ -1,5 +1,6 @@
 from commands.helper_command.base_command import BaseCommand
 from core.application_data import ApplicationData
+from models.employee import Employee
 from models.employee_role import EmployeeRole
 
 class RegisterEmployeeCommand(BaseCommand):
@@ -10,7 +11,7 @@ class RegisterEmployeeCommand(BaseCommand):
         super().execute(params)
         self._throw_if_employee_logged_in()
 
-        username, firstname, lastname, password, role = params
+        username, password, firstname, lastname, role = params
 
         try:
             employee_role = EmployeeRole.from_string(role)
@@ -18,7 +19,7 @@ class RegisterEmployeeCommand(BaseCommand):
             return f"Error: {str(ve)}"
 
         try:
-            employee = self._app_data.create_employee_acc(username, firstname, lastname, password, employee_role)
+            employee = self._app_data.create_employee_acc(username, firstname, lastname, Employee.validate_password(password), employee_role)
         except ValueError as ve:
             return f"Error: {str(ve)}"
 

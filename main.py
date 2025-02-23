@@ -80,7 +80,7 @@ def main():
             last_name = input("Enter your last name: ")
             position = input("Enter your position: ")
 
-            cmd_factory.create("regiseremployee").execute(username, password, first_name, last_name, position)
+            cmd_factory.create("regiseremployee").execute([username, password, first_name, last_name, position])
             print("User created successfully!")
         elif choice == "3":
             # Exit
