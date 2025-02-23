@@ -6,11 +6,11 @@ from models.route_matrix import Route
 
 class TestEmployee(unittest.TestCase):
     def setUp(self):
-        self.employee = Employee("johndoe", "John", "Doe", "Secure@123", "Employee")
+        self.employee = Employee("john_doe", "John", "Doe", "Secure@123", "Employee")
         self.manager = Employee("manager01", "Jane", "Smith", "Strong@Pass1", "Manager")
 
     def test_valid_employee_creation(self):
-        self.assertEqual(self.employee.username, "johndoe")
+        self.assertEqual(self.employee.username, "john_doe")
         self.assertEqual(self.employee.firstname, "John")
         self.assertEqual(self.employee.lastname, "Doe")
         self.assertEqual(self.employee.password, "Secure@123")

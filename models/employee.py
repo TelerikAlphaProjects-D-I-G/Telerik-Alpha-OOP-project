@@ -62,15 +62,21 @@ class Employee:
 
     @staticmethod
     def validate_username(value):
+        forbidden_chars = set("!@#$%^&*()+=[]{}|\\;:'\",<>?/~`")
         if len(value) < Employee.USERNAME_LEN_MIN or len(value) > Employee.USERNAME_LEN_MAX:
             raise ValueError(Employee.USERNAME_LEN_ERR)
-        if not value.isalnum():
+        if value.isdigit():
             raise ValueError(Employee.USERNAME_INVALID_SYMBOLS)
+        if not value.isalnum:
+            raise ValueError(Employee.USERNAME_INVALID_SYMBOLS)
+        if any(char in forbidden_chars for char in value):
+            raise ValueError(Employee.USERNAME_INVALID_SYMBOLS)
+
         return value
 
     @staticmethod
     def validate_first_name(value):
-        if len(value) < Employee.FIRSTNAME_LEN_MIN or len(value) > Employee.FIRSTNAME_LEN_MAX:
+        if Employee.FIRSTNAME_LEN_MIN > len(value) > Employee.FIRSTNAME_LEN_MAX:
             raise ValueError(Employee.FIRSTNAME_LEN_ERR)
         return value
 
