@@ -2,9 +2,9 @@ import unittest
 from models.vehicles import Vehicles
 
 TRUCKS = {
-    1022: {"model": "Actros", "capacity": 25000, "max_range": 1200, "city": "SYD"},
-    1002: {"model": "Scania", "capacity": 18000, "max_range": 1000, "city": "Melbourne"},
-    1011: {"model": "Man", "capacity": 37000, "max_range": 1100, "city": "Brisbane"},
+    1022: {"model": "Actros", "capacity": 26000, "max_range": 13000, "city": "SYD"},
+    1002: {"model": "Scania", "capacity": 42000, "max_range": 8000, "city": "ADL"},
+    1011: {"model": "Man", "capacity": 37000, "max_range": 10000, "city": "SYD"},
 }
 
 
