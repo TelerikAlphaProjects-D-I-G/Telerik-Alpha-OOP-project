@@ -25,8 +25,6 @@ class Main:
 
             if app_data.login(username, password):
                 print("Login successful!")
-                print(app_data.logged_in_employee)
-                print(app_data.logged_in_employee.employee_role)
 
                 while True:
                     print("\nLogged in as:", username)
@@ -42,7 +40,14 @@ class Main:
                     choice = input("Enter your choice: ")
 
                     if choice == "1":
-                        cmd_factory.create("regiseremployee").execute()
+                        username = input("Enter the username: ")
+                        password_employee = input("Enter the password: ")
+                        firstname = input("Enter the first name: ")
+                        lastname = input("Enter the last name: ")
+                        role = input("Enter the role: ")
+                        cmd = cmd_factory.create("regiseremployee")
+                        result = cmd.execute([username, password_employee, firstname, lastname, role])
+                        print(result)
 
                     elif choice == "2":
                         start_location = input("Enter the start location: ")
@@ -70,7 +75,11 @@ class Main:
                         print(result)
 
                     elif choice == "5":
-                        cmd_factory.create("searchforroute").execute()
+                        start_location = input("Enter the start location: ")
+                        end_location = input("Enter the end location: ")
+                        cmd = cmd_factory.create("searchforroute")
+                        result = cmd.execute([start_location, end_location])
+                        print(result)
                     elif choice == "6":
                         app_data.logout()
                         print("Logged out successfully!")

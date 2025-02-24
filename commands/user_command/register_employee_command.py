@@ -24,7 +24,7 @@ class RegisterEmployeeCommand(BaseCommand):
             return f"Error: {str(ve)}"
 
         # Automatically log in the new employee
-        self._app_data.login(employee)
+        self._app_data.login(employee.username, employee.password)
 
         return f"Employee {employee.username} registered successfully as {employee_role}."
 
