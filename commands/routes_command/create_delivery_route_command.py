@@ -17,11 +17,11 @@ class CreateDeliveryRouteCommand(BaseCommand):
         departure_time_str = params[-1]
         route_id = Route.routes_id_counter
 
-        try:
-            departure_datetime_str = f"{departure_date_str} {departure_time_str}"
-            departure_time = datetime.strptime(departure_datetime_str, "%Y-%m-%d %H:%M")
-        except ValueError:
-            return "Error: Invalid departure time format. Please use 'YYYY-MM-DD HH:MM'."
+        # try:
+        departure_datetime_str = f"{departure_date_str} {departure_time_str}"
+        departure_time = datetime.strptime(departure_datetime_str, "%Y-%m-%d %H:%M")
+        # except ValueError:
+        #     return "Error: Invalid departure time format. Please use 'YYYY-MM-DD HH:MM'."
 
         try:
             total_distance, stop_distances = Route.calculate_total_distance(cities)

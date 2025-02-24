@@ -47,21 +47,26 @@ class Main:
                         end_location = input("Enter the end location: ")
                         weight_kg = input("Enter the weight in kilograms: ")
                         contact_information = input("Enter the contact information: ")
-                        cmd_factory.create("createdeliverypackage").execute(
-                            [start_location, end_location, weight_kg, contact_information])
-                        print(f"Package created successfully! with ID: {Package.package_id_count} from {start_location}"
-                              f" to {end_location}")
+                        cmd = cmd_factory.create("createdeliverypackage")
+                        result = cmd.execute([start_location, end_location, weight_kg, contact_information])
+                        print(result)
+
 
                     elif choice == "3":
-                        routes = input("Enter route cities: ").split()
-                        departure_date = input("Enter departure date (YYYY-MM-DD HH:MM): ")
 
-                        route_info = cmd_factory.create("createdeliveryroute").execute(
-                            [routes, departure_date])
-                        print(f"Route created successfully:\n {route_info}")
+                        routes = input("Enter route cities: ").split()
+                        departure_date = input("Enter departure date (YYYY-MM-DD): ")
+                        departure_time = input("Enter departure time (HH:MM): ")
+                        cmd = cmd_factory.create("createdeliveryroute")
+                        result = cmd.execute(routes + [departure_date, departure_time])
+                        print(result)
+
                     elif choice == "4":
                         route_id = input("Enter the route ID: ")
-                        cmd_factory.create("viewinformationaboutroute").execute([route_id])
+                        cmd = cmd_factory.create("viewinformationaboutpackage")
+                        result = cmd.execute([route_id])
+                        print(result)
+
                     elif choice == "5":
                         cmd_factory.create("searchforroute").execute()
                     elif choice == "6":
