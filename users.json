@@ -6,9 +6,13 @@
         "position": "Manager"
     },
     "User": {
+    "Denis": {
         "password": "123456",
         "first_name": "rgerg",
         "last_name": "ergerg",
         "position": "Employee"
+        "first_name": "Denis",
+        "last_name": "Denchev",
+        "position": "Manager"
     }
 }

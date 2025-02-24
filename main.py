@@ -25,6 +25,8 @@ class Main:
 
             if app_data.login(username, password):
                 print("Login successful!")
+                print(app_data.logged_in_employee)
+                print(app_data.logged_in_employee.employee_role)
 
                 while True:
                     print("\nLogged in as:", username)
@@ -80,6 +82,7 @@ class Main:
                         cmd = cmd_factory.create("searchforroute")
                         result = cmd.execute([start_location, end_location])
                         print(result)
+
                     elif choice == "6":
                         app_data.logout()
                         print("Logged out successfully!")
@@ -110,6 +113,7 @@ class Main:
 
         elif choice == "3":
             print("Exiting the application. Goodbye!")
+            break
         else:
             print("Invalid choice. Please try again.")
 
