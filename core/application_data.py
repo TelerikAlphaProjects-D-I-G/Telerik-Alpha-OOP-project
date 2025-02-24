@@ -2,6 +2,7 @@ from models.package import Package
 from models.route_matrix import Route
 from models.vehicles import Vehicles
 from models.employee import Employee
+from models.employee import EmployeeRole
 from storage_data.storage_trucks import TRUCKS
 import json
 import os
@@ -11,7 +12,7 @@ class ApplicationData:
     def __init__(self):
         self._packages = []
         self.vehicles = []
-        self._employees = []
+        self._employees = self.load_users_from_json()
         self._logged_employee = None
         self.routes = []
         self._add_vehicles_to_vehicles_list()
@@ -132,10 +133,9 @@ class ApplicationData:
 
     @property
     def logged_in_employee(self):
-        if self.has_logged_in_employee:
-            return self.logged_in_user
-        else:
-            raise ValueError('There is no logged in employee.')
+        if self._logged_employee is None:
+            raise ValueError("No employee")
+        return self._logged_employee
 
     def has_logged_in_employee(self):
         return self.logged_in_user is not None
@@ -170,13 +170,27 @@ class ApplicationData:
 
 ##########################################################################################################
 
+    def load_users_from_json(self):
+        with open("users.json", "r") as file:
+            users_data = json.load(file)
+        employees = []
+        for username, data in users_data.items():
+            employee = Employee(
+                username = username,
+                firstname = data["first_name"],
+                lastname = data["last_name"],
+                password = data["password"],
+                employee_role = EmployeeRole.from_string(data["position"])
+            )
+            employees.append(employee)
+        return employees
 
     def load_users(self):
         if os.path.exists(USERS_FILE):
             with open(USERS_FILE, "r") as file:
                 return json.load(file)
         return {}
-
+    #
     def save_users(self):
         """Save users to a JSON file."""
         with open(USERS_FILE, "w") as file:
@@ -199,9 +213,10 @@ class ApplicationData:
         return self.users.get(username, None)
 
     def login(self, username, password):
-        if username in self.users and self.users[username]["password"] == password:
-            self.logged_in_user = username
-            return True
+        for employee in self._employees:
+            if employee.username == username and employee.password == password:
+                self._logged_employee = employee
+                return True
         return False
 
     def logout(self):
