@@ -15,8 +15,6 @@ class ViewInformationAboutRouteCommand(BaseCommand):
 
 
         employee = self._app_data.logged_in_employee
-        if employee is None:
-            return "Error: You must be logged in to view route information."
         if employee.employee_role != EmployeeRole.MANAGER:
             return "Error: Only Managers are allowed to view route information."
 

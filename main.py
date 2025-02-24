@@ -63,7 +63,7 @@ class Main:
 
                     elif choice == "4":
                         route_id = input("Enter the route ID: ")
-                        cmd = cmd_factory.create("viewinformationaboutpackage")
+                        cmd = cmd_factory.create("viewinformationaboutroute")
                         result = cmd.execute([route_id])
                         print(result)
 

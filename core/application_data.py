@@ -133,7 +133,7 @@ class ApplicationData:
     @property
     def logged_in_employee(self):
         if self.has_logged_in_employee:
-            return self._logged_employee
+            return self.logged_in_user
         else:
             raise ValueError('There is no logged in employee.')
 
