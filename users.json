@@ -1,0 +1,14 @@
+{
+    "Testname": {
+        "password": "123456",
+        "first_name": "fwfe",
+        "last_name": "wefwf",
+        "position": "Manager"
+    },
+    "User": {
+        "password": "123456",
+        "first_name": "rgerg",
+        "last_name": "ergerg",
+        "position": "Employee"
+    }
+}
