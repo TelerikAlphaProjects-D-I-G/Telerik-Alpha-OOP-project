@@ -70,7 +70,12 @@ class Main:
                         print(result)
 
                     elif choice == "5":
-                        cmd_factory.create("searchforroute").execute()
+                        start_location = input("Enter the start location: ")
+                        end_location = input("Enter the end location: ")
+                        cmd = cmd_factory.create("searchforroute")
+                        result = cmd.execute([start_location, end_location])
+                        print(result)
+
                     elif choice == "6":
                         app_data.logout()
                         print("Logged out successfully!")
