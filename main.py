@@ -1,5 +1,7 @@
 import json
 import os
+
+from commands.helper_command.validate_params_helpers_command import try_parse_int
 from core.application_data import ApplicationData
 from core.command_factory import CommandFactory
 from models.package import Package
@@ -25,73 +27,94 @@ class Main:
 
             if app_data.login(username, password):
                 print("Login successful!")
-                print(app_data.logged_in_employee)
-                print(app_data.logged_in_employee.employee_role)
 
                 while True:
                     print("\nLogged in as:", username)
                     print("\nPlease select an option:")
-                    print("1. Register Employee")
-                    print("2. Create Delivery Package")
-                    print("3. Create Delivery Route")
-                    print("4. View Information About Route")
-                    print("5. Search for Route")
-                    print("6. Logout")
-                    print("7. Exit")
+                    print("1. Truck Commands")
+                    print("2. Route Commands")
+                    print("3. Package Commands")
+                    print("4. Logout")
+                    print("5. Exit")
 
                     choice = input("Enter your choice: ")
 
                     if choice == "1":
-                        username = input("Enter the username: ")
-                        password_employee = input("Enter the password: ")
-                        firstname = input("Enter the first name: ")
-                        lastname = input("Enter the last name: ")
-                        role = input("Enter the role: ")
-                        cmd = cmd_factory.create("regiseremployee")
-                        result = cmd.execute([username, password_employee, firstname, lastname, role])
-                        print(result)
+                        print("\nTruck Commands:")
+                        print("1. Assign Delivery Package")
+                        print("2. View Truck Information")
+                        truck_choice = input("Enter your choice: ")
+                        if truck_choice == "1":
+                            package_id_count = int(input("Enter ID package: "))
+                            truck_id = int(input("Enter ID truck: "))
+                            cmd = cmd_factory.create("assigndeliverypackage")
+                            result = cmd.execute([package_id_count, truck_id])
+                            print(result)
+                        if truck_choice == "2":
+                            truck_id = int(input("Enter ID truck: "))
+                            cmd = cmd_factory.create("viewtruckstatus")
+                            result = cmd.execute([truck_id])
+                            print(result)
+                        else:
+                            print('Invalid choice. Please try again.')
 
                     elif choice == "2":
-                        start_location = input("Enter the start location: ")
-                        end_location = input("Enter the end location: ")
-                        weight_kg = input("Enter the weight in kilograms: ")
-                        contact_information = input("Enter the contact information: ")
-                        cmd = cmd_factory.create("createdeliverypackage")
-                        result = cmd.execute([start_location, end_location, weight_kg, contact_information])
-                        print(result)
-
-
+                        print("\nPackage Commands:")
+                        print("1. Create Delivery Package")
+                        print("2. View Information About Package")
+                        package_choice = input("Enter your choice: ")
+                        if package_choice == "1":
+                            start_location = input("Enter the start location: ")
+                            end_location = input("Enter the end location: ")
+                            weight_kg = input("Enter the weight in kilograms: ")
+                            contact_information = input("Enter the contact information: ")
+                            cmd = cmd_factory.create("createdeliverypackage")
+                            result = cmd.execute([start_location, end_location, weight_kg, contact_information])
+                            print(result)
+                        elif package_choice == "2":
+                            package_id_count = input("Enter ID package: ")
+                            cmd = cmd_factory.create("viewinformationaboutpackage")
+                            result = cmd.execute([package_id_count])
+                            print(result)
+                        else:
+                            print("Invalid choice. Please try again.")
                     elif choice == "3":
+                            print("\nRoute Commands:")
+                            print("1. Create Delivery Route")
+                            print("2. View Information About Route")
+                            print("3. Search for Route")
+                            route_choice = input("Enter your choice: ")
 
-                        routes = input("Enter route cities: ").split()
-                        departure_date = input("Enter departure date (YYYY-MM-DD): ")
-                        departure_time = input("Enter departure time (HH:MM): ")
-                        cmd = cmd_factory.create("createdeliveryroute")
-                        result = cmd.execute(routes + [departure_date, departure_time])
-                        print(result)
-
+                            if route_choice == "1":
+                                routes = input("Enter route cities: ").split()
+                                departure_date = input("Enter departure date (YYYY-MM-DD): ")
+                                departure_time = input("Enter departure time (HH:MM): ")
+                                cmd = cmd_factory.create("createdeliveryroute")
+                                result = cmd.execute(routes + [departure_date, departure_time])
+                                print(result)
+                            elif route_choice == "2":
+                                route_id = input("Enter the route ID: ")
+                                cmd = cmd_factory.create("viewinformationaboutroute")
+                                result = cmd.execute([route_id])
+                                print(result)
+                            elif route_choice == "3":
+                                start_location = input("Enter the start location: ")
+                                end_location = input("Enter the end location: ")
+                                cmd = cmd_factory.create("searchforroute")
+                                result = cmd.execute([start_location, end_location])
+                                print(result)
+                            else:
+                                print("Invalid choice. Please try again.")
                     elif choice == "4":
-                        route_id = input("Enter the route ID: ")
-                        cmd = cmd_factory.create("viewinformationaboutroute")
-                        result = cmd.execute([route_id])
-                        print(result)
-
-                    elif choice == "5":
-                        start_location = input("Enter the start location: ")
-                        end_location = input("Enter the end location: ")
-                        cmd = cmd_factory.create("searchforroute")
-                        result = cmd.execute([start_location, end_location])
-                        print(result)
-
-                    elif choice == "6":
                         app_data.logout()
                         print("Logged out successfully!")
                         break
-                    elif choice == "7":
+                    elif choice == "5":
                         print("Exiting the application. Goodbye!")
-
+                        break
                     else:
                         print("Invalid choice. Please try again.")
+
             else:
                 print("Invalid username or password. Please try again.")
 
