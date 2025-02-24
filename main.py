@@ -25,6 +25,8 @@ class Main:
 
             if app_data.login(username, password):
                 print("Login successful!")
+                print(app_data.logged_in_employee)
+                print(app_data.logged_in_employee.employee_role)
 
                 while True:
                     print("\nLogged in as:", username)
