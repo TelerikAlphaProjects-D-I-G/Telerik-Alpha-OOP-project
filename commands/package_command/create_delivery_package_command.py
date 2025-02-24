@@ -11,7 +11,7 @@ class CreateDeliveryPackageCommand(BaseCommand):
         super().execute(params)
         unique_id = Package.package_id_count
 
-        start_location, end_location, weight_kg, contact_information = params
+        start_location, end_location, weight_kg, contact_information = paванrams
 
         try:
 

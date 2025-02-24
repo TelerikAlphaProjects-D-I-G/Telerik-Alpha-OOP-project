@@ -3,8 +3,9 @@ from models.route_matrix import Route
 from models.vehicles import Vehicles
 from models.employee import Employee
 from storage_data.storage_trucks import TRUCKS
-
-
+import json
+import os
+USERS_FILE = "users.json"
 class ApplicationData:
 
     def __init__(self):
@@ -14,6 +15,8 @@ class ApplicationData:
         self._logged_employee = None
         self.routes = []
         self._add_vehicles_to_vehicles_list()
+        self.users = self.load_users()
+        self.logged_in_user = None
 
     def _add_vehicles_to_vehicles_list(self):
         for truck_id, truck_data in TRUCKS.items():
@@ -118,6 +121,9 @@ class ApplicationData:
         self._employees.append(employee)
         return employee
 
+
+
+
     def find_employee_by_username(self, username: str) -> Employee:
         filtered = [employee for employee in self._employees if employee.username == username]
         if filtered == []:
@@ -132,13 +138,13 @@ class ApplicationData:
             raise ValueError('There is no logged in employee.')
 
     def has_logged_in_employee(self):
-        return self._logged_employee is not None
+        return self.logged_in_user is not None
 
     def login(self, employee: Employee):
-        self._logged_employee = employee
+        self.logged_in_user = employee
 
     def logout(self):
-        self._logged_employee = None
+        self.logged_in_user = None
 
     def find_employee_by_username(self, username: Employee) -> Employee:
         for employee in self._employees:
@@ -160,6 +166,46 @@ class ApplicationData:
                     matching_routes.append(route)
                     seen_routes_id.add(route.route_id)
         return matching_routes
+
+
+##########################################################################################################
+
+
+    def load_users(self):
+        if os.path.exists(USERS_FILE):
+            with open(USERS_FILE, "r") as file:
+                return json.load(file)
+        return {}
+
+    def save_users(self):
+        """Save users to a JSON file."""
+        with open(USERS_FILE, "w") as file:
+            json.dump(self.users, file, indent=4)
+
+    def register_user(self, username, password, first_name, last_name, position):
+        """Register a new user and save to file."""
+        if username in self.users:
+            return False  # Username already exists
+        self.users[username] = {
+            "password": password,
+            "first_name": first_name,
+            "last_name": last_name,
+            "position": position
+        }
+        self.save_users()
+        return True
+
+    def find_employee_by_username(self, username):
+        return self.users.get(username, None)
+
+    def login(self, username, password):
+        if username in self.users and self.users[username]["password"] == password:
+            self.logged_in_user = username
+            return True
+        return False
+
+    def logout(self):
+        self.logged_in_user = None
 
 
 # app_data = ApplicationData()

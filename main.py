@@ -2,53 +2,10 @@ import json
 import os
 from core.application_data import ApplicationData
 from core.command_factory import CommandFactory
-
-USERS_FILE = "users.json"
-
-
-class ApplicationData:
-    def __init__(self):
-        self.users = self.load_users()
-        self.logged_in_user = None
-
-    def load_users(self):
-        if os.path.exists(USERS_FILE):
-            with open(USERS_FILE, "r") as file:
-                return json.load(file)
-        return {}
-
-    def save_users(self):
-        """Save users to a JSON file."""
-        with open(USERS_FILE, "w") as file:
-            json.dump(self.users, file, indent=4)
-
-    def register_user(self, username, password, first_name, last_name, position):
-        """Register a new user and save to file."""
-        if username in self.users:
-            return False  # Username already exists
-        self.users[username] = {
-            "password": password,
-            "first_name": first_name,
-            "last_name": last_name,
-            "position": position
-        }
-        self.save_users()
-        return True
-
-    def find_employee_by_username(self, username):
-        return self.users.get(username, None)
-
-    def login(self, username, password):
-        if username in self.users and self.users[username]["password"] == password:
-            self.logged_in_user = username
-            return True
-        return False
-
-    def logout(self):
-        self.logged_in_user = None
+from models.package import Package
 
 
-def main():
+class Main:
     app_data = ApplicationData()
     cmd_factory = CommandFactory(app_data)
 
@@ -84,6 +41,7 @@ def main():
 
                     if choice == "1":
                         cmd_factory.create("regiseremployee").execute()
+
                     elif choice == "2":
                         start_location = input("Enter the start location: ")
                         end_location = input("Enter the end location: ")
@@ -91,12 +49,15 @@ def main():
                         contact_information = input("Enter the contact information: ")
                         cmd_factory.create("createdeliverypackage").execute(
                             [start_location, end_location, weight_kg, contact_information])
+                        print(f"Package created successfully! with ID: {Package.package_id_count} from {start_location}"
+                              f" to {end_location}")
+
                     elif choice == "3":
                         routes = input("Enter route cities: ").split()
-                        departure_date = input("Enter departure date (YYYY-MM-DD): ")
-                        departure_time = input("Enter departure time (HH:MM): ")
+                        departure_date = input("Enter departure date (YYYY-MM-DD HH:MM): ")
+
                         route_info = cmd_factory.create("createdeliveryroute").execute(
-                            [routes, departure_date, departure_time])
+                            [routes, departure_date])
                         print(f"Route created successfully:\n {route_info}")
                     elif choice == "4":
                         route_id = input("Enter the route ID: ")
@@ -109,7 +70,7 @@ def main():
                         break
                     elif choice == "7":
                         print("Exiting the application. Goodbye!")
-                        return
+
                     else:
                         print("Invalid choice. Please try again.")
             else:
@@ -133,7 +94,6 @@ def main():
 
         elif choice == "3":
             print("Exiting the application. Goodbye!")
-            return
         else:
             print("Invalid choice. Please try again.")
 
