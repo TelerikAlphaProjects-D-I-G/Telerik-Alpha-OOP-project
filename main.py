@@ -101,9 +101,10 @@ class Main:
 
         elif choice == "3":
             print("Exiting the application. Goodbye!")
+            break
         else:
             print("Invalid choice. Please try again.")
 
-
-if __name__ == "__main__":
-    main()
+#
+# if __name__ == "__main__":
+#     main()
