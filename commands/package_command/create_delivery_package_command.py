@@ -23,9 +23,13 @@ class CreateDeliveryPackageCommand(BaseCommand):
 
             new_package = self._app_data.create_package(start_location, end_location, weight_kg, contact_information)
 
-            return (f"\nYour package has been successfully created.\n"
-                    f" ID: {new_package.package_id_count}\n"
-                    f" Weight: {weight_kg} kg\n")
+            return (
+    "\n✅ PACKAGE CREATED SUCCESSFULLY!\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    f"📦 Package ID : {new_package.package_id_count}\n"
+    f"⚖️ Weight     : {weight_kg} kg\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+)
 
         except ValueError as e:
             return f"\nError: {e}"

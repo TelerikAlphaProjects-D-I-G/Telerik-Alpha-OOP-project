@@ -82,6 +82,7 @@ class Main:
                             end_location = input("🏁 Enter the destination: ")
                             weight_kg = input("⚖️ Enter the weight in kilograms: ")
                             contact_information = input("📞 Enter the contact information: ")
+                            cmd = cmd_factory.create("createdeliverypackage")
                             result = cmd.execute([start_location, end_location, weight_kg, contact_information])
                             print(result)
 
