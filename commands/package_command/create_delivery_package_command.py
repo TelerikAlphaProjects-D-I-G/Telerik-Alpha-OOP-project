@@ -16,23 +16,22 @@ class CreateDeliveryPackageCommand(BaseCommand):
         start_location, end_location, weight_kg, contact_information = params
 
         try:
-
             weight_kg = try_parse_int(weight_kg)
             if weight_kg is None:
                 raise ValueError("Invalid value for weight, must be a number.")
 
 
-            self._app_data.create_package(start_location, end_location, weight_kg, contact_information)
+            new_package = self._app_data.create_package(start_location, end_location, weight_kg, contact_information)
 
             return (f"Your package has been successfully created.\n"
-                    f" ID: {unique_id}\n"
+                    f" ID: {new_package.package_id_count}\n"
                     f" Weight: {weight_kg} kg\n")
 
         except ValueError as e:
             return f"Error: {e}"
 
     def _requires_login(self) -> bool:
-        return True
+        return False
 
     def _expected_params_count(self) -> int:
         return 4

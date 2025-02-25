@@ -18,6 +18,7 @@ class ApplicationData:
         self._add_vehicles_to_vehicles_list()
         self.users = self.load_users()
         self.logged_in_user = None
+        self.unique_id = Package.unique_id_user
 
     def _add_vehicles_to_vehicles_list(self):
         for truck_id, truck_data in TRUCKS.items():
@@ -49,9 +50,9 @@ class ApplicationData:
         self._packages.append(package)
         return package
 
-    def find_package_by_id(self, unique_id) -> Package:
+    def find_package_by_id(self, package_id_count) -> Package:
         for id in self._packages:
-            if id.unique_id == unique_id:
+            if package_id_count == id.package_id_count:
                 return id
         return None
 
@@ -109,6 +110,7 @@ class ApplicationData:
 
     # def new_route(self,route):
     #     self.routes.append(route)
+
 
     @property
     def employees(self):

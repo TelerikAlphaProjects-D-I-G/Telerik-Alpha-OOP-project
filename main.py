@@ -32,8 +32,8 @@ class Main:
                     print("\nLogged in as:", username)
                     print("\nPlease select an option:")
                     print("1. Truck Commands")
-                    print("2. Route Commands")
-                    print("3. Package Commands")
+                    print("2. Package Commands")
+                    print("3. Route Commands")
                     print("4. Logout")
                     print("5. Exit")
 
@@ -41,18 +41,19 @@ class Main:
 
                     if choice == "1":
                         print("\nTruck Commands:")
-                        print("1. Assign Delivery Package")
+                        print("1. Assign Free Truck to Route")
                         print("2. View Truck Information")
+                        print("3. Start Truck Movement")
                         truck_choice = input("Enter your choice: ")
                         if truck_choice == "1":
-                            package_id_count = int(input("Enter ID package: "))
+                            route_id = int(input("Enter ID route: "))
                             truck_id = int(input("Enter ID truck: "))
-                            cmd = cmd_factory.create("assigndeliverypackage")
-                            result = cmd.execute([package_id_count, truck_id])
+                            cmd = cmd_factory.create("assignfreetruck")
+                            result = cmd.execute([truck_id, route_id])
                             print(result)
                         if truck_choice == "2":
                             truck_id = int(input("Enter ID truck: "))
-                            cmd = cmd_factory.create("viewtruckstatus")
+                            cmd = cmd_factory.create("viewinformationabouttruck")
                             result = cmd.execute([truck_id])
                             print(result)
                         else:
@@ -62,6 +63,7 @@ class Main:
                         print("\nPackage Commands:")
                         print("1. Create Delivery Package")
                         print("2. View Information About Package")
+                        print("3. Assign Delivery Package")
                         package_choice = input("Enter your choice: ")
                         if package_choice == "1":
                             start_location = input("Enter the start location: ")
@@ -76,8 +78,15 @@ class Main:
                             cmd = cmd_factory.create("viewinformationaboutpackage")
                             result = cmd.execute([package_id_count])
                             print(result)
+                        elif package_choice == "3":
+                            package_id_count = input("Enter ID package: ")
+                            truck_id = input("Enter ID truck: ")
+                            cmd = cmd_factory.create("assigndeliverypackage")
+                            result = cmd.execute([package_id_count, truck_id])
+                            print(result)
                         else:
                             print("Invalid choice. Please try again.")
+
                     elif choice == "3":
                             print("\nRoute Commands:")
                             print("1. Create Delivery Route")

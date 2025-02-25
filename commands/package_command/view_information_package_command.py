@@ -34,7 +34,7 @@ class ViewInformationAboutPackage(BaseCommand):
 		return str(package)
 
 	def _requires_login(self) -> bool:
-		return True
+		return False
 
 	def _expected_params_count(self) -> int:
 		return 1

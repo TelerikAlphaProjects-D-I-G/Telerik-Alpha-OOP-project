@@ -8,18 +8,18 @@ class ViewInformationAboutTruck(BaseCommand):
 
     def execute(self, params):
         super().execute(params)
-        unique_id = try_parse_int(params[1])
+        # unique_id = try_parse_int(params[1])
         truck_id = super()._try_parse_int(params[0])
         truck = self._app_data.find_truck_by_id(truck_id)
-        package = self._app_data.find_package_by_id(unique_id)
-        truck.assign_package(package)
+        # package = self._app_data.find_package_by_id(unique_id)
+        # truck.assign_package(package)
         if truck == "Truck not found":
             return f"Error: Truck with ID {truck_id} not found."
 
         return str(truck)
 
     def _requires_login(self) -> bool:
-        return True
+        return False
 
     def _expected_params_count(self) -> int:
         return 2

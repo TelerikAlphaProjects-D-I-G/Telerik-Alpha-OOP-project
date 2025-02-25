@@ -16,30 +16,30 @@ class AssignDeliveryPackageCommand(BaseCommand):
 
     def execute(self, params):
 
-        unique_id, truck_id= params
+        package_id_count, truck_id= params
 
         truck_id = try_parse_int(truck_id)
         if truck_id is None or truck_id not in TRUCKS:
             raise ValueError(f"Invalid truck ID: {truck_id}. Please provide a valid truck ID.")
 
-        unique_id = try_parse_int(unique_id)
-        package = self._app_data.find_package_by_id(unique_id)
+        package_id_count = try_parse_int(package_id_count)
+        package = self._app_data.find_package_by_id(package_id_count)
         if package is None:
-            raise ValueError(f"Package {unique_id} not found.")
+            raise ValueError(f"Package {package_id_count} not found.")
         truck = Vehicles(truck_id)
         if truck is None:
             raise ValueError(f"Truck with ID {truck_id} does not exist!")
         package.advance_status()
         truck.assign_package(package)
         return (
-            f"Package ID: {unique_id}\n"
+            f"Package ID: {package_id_count}\n"
             f"Truck ID: {truck_id}\n"
             f"Package Status: {package.package_status}\n"
             f"Assigned package: {truck.current_load}\n"
             f"Current load: {truck.current_load} / {truck.capacity}\n"
         )
     def _requires_login(self) -> bool:
-        return True
+        return False
 
     def _expected_params_count(self) -> int:
         return 2
