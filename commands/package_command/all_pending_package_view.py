@@ -9,24 +9,16 @@ class AllPendingPackageView:
 
     def execute(self):
         pending_packages = self.app_data.get_packages_by_status()
+        if not pending_packages:
+            return "\n📦 Not delivery package pending."
         for package in pending_packages:
-                print(f"\nPackage ID: {package.package_id_count}")
-                print(f"Weight: {package.weight_kg}")
-                print(f"Start Location: {package.start_location}")
-                print(f"End Location: {package.end_location}")
-                print(f"Package Status: {package.package_status}")
-                print(f"Contact information: {package.contact_information}")
+                print(f"\n📦 Package ID: {package.package_id_count}")
+                print(f"⚖️ Weight: {package.weight_kg}")
+                print(f"📍 Start Location: {package.start_location}")
+                print(f"🏁 End Location: {package.end_location}")
+                print(f"📦 Package Status: {package.package_status}")
+                print(f"📞 Contact information: {package.contact_information}")
                 print("------------------------")
-        return "Packages displayed successfully!"
-
-
-
-
-
-
-
-
-
-
+        return "✅ Packages displayed successfully!"
     def _requires_login(self) -> bool:
         return False

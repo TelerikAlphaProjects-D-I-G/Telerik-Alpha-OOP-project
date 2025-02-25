@@ -37,5 +37,3 @@ class BaseCommand:
             logged_employee = self._app_data.logged_in_employee
             raise ValueError(
                 f'User {logged_employee.username} is logged in! Please log out first!')
-
-    

@@ -11,22 +11,24 @@ class Main:
     app_data = ApplicationData()
     cmd_factory = CommandFactory(app_data)
 
-    print("Welcome to the Logistics Console Application!")
+    print("\n=========================================")
+    print("🚛 Welcome to the Logistics Console Application!")
+    print("=========================================")
 
     while True:
-        print("\nPlease select an option:")
+        print("\n📌 Please select an option:")
         print("1. Login")
         print("2. Register")
         print("3. Exit")
 
-        choice = input("Enter your choice: ")
+        choice = input("🔹 Enter your choice: ")
 
         if choice == "1":
             username = input("Enter your username: ")
             password = input("Enter your password: ")
 
             if app_data.login(username, password):
-                print("Login successful!")
+                print("✅ Login successful!")
 
                 while True:
                     print("\n📌Main Menu:")
@@ -44,7 +46,7 @@ class Main:
                         print("\nTruck Commands:")
                         print("1.🏁 Assign Free Truck to Route")
                         print("2.🔍 View Truck Information")
-                        print("3. Delivered Packages: ")
+                        print("3.🚚 Delivered Packages: ")
                         print('4.🚚 Find Trucks in Certain City:')
                         print("5.🔙 Back to main menu")
                         truck_choice = input("Enter your choice: ")
@@ -94,8 +96,8 @@ class Main:
 
                         if package_choice == "1":
                             print("\n📦 Creating a new package...")
-                            start_location = input("📍 Enter the start location: ")
-                            end_location = input("🏁 Enter the destination: ")
+                            start_location = input("📍 Enter start location: ")
+                            end_location = input("🏁 Enter end location: ")
                             weight_kg = input("⚖️ Enter the weight in kilograms: ")
                             contact_information = input("📞 Enter the contact information: ")
                             cmd = cmd_factory.create("createdeliverypackage")

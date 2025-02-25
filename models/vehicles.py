@@ -1,11 +1,19 @@
+"""
 
+SCANIA = ["Scania",42000,8000]
+MAN = ["Man", 37000, 10000]
+ACTROS = ["Actros",  26000,13000]
+
+"""
 import time
 
 from commands.helper_command.validate_params_helpers_command import try_parse_int
+from package_status import PackageStatus
 from storage_data.storage_trucks import TRUCKS
 
 
 class Vehicles:
+    TIME_SCALE = 100000
     def __init__(self, vehicle_id):
         self.name = TRUCKS.get(vehicle_id, {}).get('model', 'uknown model')
         self.vehicle_id = vehicle_id
@@ -16,7 +24,6 @@ class Vehicles:
         self.is_available = True
         self.assigned_vehicle = None
         self.assigned_packages = []
-        self.assigned_route = None
 
     def assign_package(self, package):
         package.assign_to_truck(self)

@@ -14,7 +14,7 @@ from core.application_data import ApplicationData
 from commands.helper_command.print_routes import PrintRoutes
 from commands.truck_command.view_information_truck_command import ViewInformationAboutTruck
 from commands.truck_command.find_trucks_in_city_command import FindTrucksInCityCommand
-
+from commands.truck_command.start_movement_truck_command import StartMovementTruckCommand
 
 class CommandFactory:
     def __init__(self, data):
@@ -35,6 +35,8 @@ class CommandFactory:
             return ViewInformationAboutPackage(params, self._app_data)
         if cmd.lower() == "assigndeliverypackage":
             return AssignDeliveryPackageCommand(self._app_data)
+        if cmd.lower() == "startmovement":
+            return StartMovementTruckCommand(self._app_data)
         if cmd.lower() == "assignfreetruck":
             return AssignFreeTruckCommand(self._app_data)
         if cmd.lower() == "regiseremployee":

@@ -38,7 +38,6 @@ class AssignFreeTruckCommand(BaseCommand):
         truck.assign_to_work()
 
         truck.assign_vehicle(truck_id)
-
         route.assigned_vehicle = truck
 
         return (

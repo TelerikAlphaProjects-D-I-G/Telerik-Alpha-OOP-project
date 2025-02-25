@@ -4,7 +4,7 @@ class Route:
 
     routes_lst = []
     routes_id_counter = 1
-
+    TIME_SCALE = 10000
     AVERAGE_SPEED = 87
 
     SYD = ('SYD', 'Sydney')

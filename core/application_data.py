@@ -42,6 +42,7 @@ class ApplicationData:
 
     def add_package(self,package)->Package :
         self._packages.append(package)
+        return package
 
     def get_package(self,package_id):
         return self.packages.get(package_id)

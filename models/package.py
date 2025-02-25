@@ -50,6 +50,9 @@ class Package:
 	def package_status(self):
 		return self._package_status
 
+	def set_status(self, new_status):
+		if new_status in PackageStatus.package_status:
+			self._package_status = new_status
 
 
 	def location_exist(self, location):
