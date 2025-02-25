@@ -16,11 +16,17 @@ class AssignFreeTruckCommand(BaseCommand):
 
 
         truck_id = try_parse_int(truck_id)
-        if truck_id is None or truck_id not in TRUCKS:
-            raise ValueError(f"Invalid truck ID: {truck_id}. Please provide a valid truck ID.")
-
+        try:
+            if truck_id is None or truck_id not in TRUCKS:
+                raise ValueError(f"Invalid truck ID: {truck_id}. Please provide a valid truck ID.")
+        except ValueError as ve:
+            return f"\nError: {str(ve)}"
         route_id = try_parse_int(route_id)
-        route = self._app_data.find_route_by_id(route_id)
+        try:
+            route = self._app_data.find_route_by_id(route_id)
+        except ValueError as ve:
+            return f"\nError: {str(ve)}"
+
         if route is None:
             raise ValueError(f"Route ID {route_id} not found.")
 
