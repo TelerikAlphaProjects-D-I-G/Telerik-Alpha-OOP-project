@@ -45,7 +45,8 @@ class Main:
                         print("1.🏁 Assign Free Truck to Route")
                         print("2.🔍 View Truck Information")
                         print("3. I dont know if works")
-                        print("4.🔙 Back to main menu")
+                        print('4. Find Trucks in Certain City:')
+                        print("5.🔙 Back to main menu")
                         truck_choice = input("Enter your choice: ")
 
                         if truck_choice == "1":
@@ -67,7 +68,13 @@ class Main:
                             result = cmd.execute([truck_id])
                             print(result)
 
-                        elif choice == "4":
+                        if truck_choice == "4":
+                            city = input("Enter City: ")
+                            cmd = cmd_factory.create("findtrucksincity")
+                            result = cmd.execute([city])
+                            print(result)
+
+                        elif choice == "5":
                             continue
 
                         else:

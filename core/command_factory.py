@@ -12,6 +12,7 @@ from commands.user_command.view_logged_in_employee_command import ViewLoggedInEm
 from core.application_data import ApplicationData
 from commands.helper_command.print_routes import PrintRoutes
 from commands.truck_command.view_information_truck_command import ViewInformationAboutTruck
+from commands.truck_command.find_trucks_in_city_command import FindTrucksInCityCommand
 
 
 class CommandFactory:
@@ -53,6 +54,8 @@ class CommandFactory:
             return PrintRoutes(self._app_data)
         if cmd.lower() == "viewinformationabouttruck":
             return ViewInformationAboutTruck(params, self._app_data)
+        if cmd.lower() == 'findtrucksincity':
+            return FindTrucksInCityCommand(params, self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
 
