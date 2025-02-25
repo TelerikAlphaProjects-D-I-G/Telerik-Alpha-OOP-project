@@ -7,7 +7,7 @@ from models.vehicles import Vehicles
 
 class Package:
 
-	package_id_count = 1
+	package_id_count = 0
 
 	LOCATION_MAPPING = {
 		"Sydney": Route.SYD[0],
