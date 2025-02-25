@@ -45,7 +45,7 @@ class Main:
                         print("1.🏁 Assign Free Truck to Route")
                         print("2.🔍 View Truck Information")
                         print("3. I dont know if works")
-                        print('4. Find Trucks in Certain City:')
+                        print('4.🚚 Find Trucks in Certain City:')
                         print("5.🔙 Back to main menu")
                         truck_choice = input("Enter your choice: ")
 
