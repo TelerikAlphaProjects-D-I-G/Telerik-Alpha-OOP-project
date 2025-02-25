@@ -52,7 +52,7 @@ class Route:
         self.route_id = Route.routes_id_counter
         Route.routes_id_counter += 1
         self.assigned_vehicle = None
-    #     NEW
+
     @staticmethod
     def valid_distances(*all_stops):
         distances = Route.DISTANCES
@@ -122,19 +122,8 @@ class Route:
     def __str__(self):
         return (f"Route id: {self.route_id}\n"
                 f"Start location: {self.start_location}\n"
-                # f"Additional stops: {self.stops}\n"
                 f"End location: {self.end_location}\n"
-                # f"Departure time: {self.departure_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
                 f"Assigned vehicle: {self.assigned_vehicle.vehicle_id}")
 
-# print(Routes.valid_distances("SYD","PER"))
-# print(Routes.calculate_total_distance("SYD","MEL"))
-# print(Routes.my_distance('Sydney', 'Melbourne'))
-#print(Routes.time_needed('Sydney', 'Melbourne'))
-#print(Routes.time_needed('SYD', 'MEL'))
 
-# route = Route('SYD', 'ADL')
-# route.assign_vehicle(1001)
-# print(route)
-#print(Routes.time_needed('Sydney', 'Melbourne')) #does not work
 

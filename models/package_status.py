@@ -21,7 +21,3 @@ class PackageStatus:
             return PackageStatus.package_status[index - 1]
         return status
 
-# package_status = PackageStatus()
-# current_status = "In Transit"
-
-#print(package_status.previous(current_status))

@@ -23,5 +23,3 @@ class StartMovementTruckCommand(BaseCommand):
         else:
             return f"📦 All packages were already delivered."
 
-
-

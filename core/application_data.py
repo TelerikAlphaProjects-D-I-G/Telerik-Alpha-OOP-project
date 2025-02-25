@@ -105,11 +105,8 @@ class ApplicationData:
             file.write(route_details)
 
         self.routes.append(new_route)
-
         return new_route
 
-    # def new_route(self,route):
-    #     self.routes.append(route)
 
 
     @property
@@ -170,7 +167,7 @@ class ApplicationData:
         return matching_routes
 
 
-##########################################################################################################
+
 
     def load_users_from_json(self):
         with open("users.json", "r") as file:
@@ -192,7 +189,7 @@ class ApplicationData:
             with open(USERS_FILE, "r") as file:
                 return json.load(file)
         return {}
-    #
+
     def save_users(self):
         """Save users to a JSON file."""
         with open(USERS_FILE, "w") as file:
@@ -223,8 +220,3 @@ class ApplicationData:
 
     def logout(self):
         self.logged_in_user = None
-
-
-# app_data = ApplicationData()
-#
-# print(app_data.count_vehicles_on_road())

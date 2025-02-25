@@ -51,9 +51,3 @@ class AssignFreeTruckCommand(BaseCommand):
 
     def _expected_params_count(self) -> int:
         return 2
-
-
-
-
-
-

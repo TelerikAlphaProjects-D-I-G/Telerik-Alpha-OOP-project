@@ -35,12 +35,6 @@ class CommandFactory:
             return AssignDeliveryPackageCommand(self._app_data)
         if cmd.lower() == "assignfreetruck":
             return AssignFreeTruckCommand(self._app_data)
-        if cmd.lower() == "currstatedelivpack":
-            return CurrStateDeliveryPackCommand(params,self._app_data)
-        if cmd.lower() == "currtransportvehicle":
-            return CurrTransportVehicleCommand(params,self._app_data)
-        if cmd.lower() == "currdeliveryroutes":
-            return CurrDeliveryRoutesCommand(params, self._app_data)
         if cmd.lower() == "regiseremployee":
             return RegisterEmployeeCommand(self._app_data)
         if cmd.lower() == "loginemployee":

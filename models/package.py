@@ -88,6 +88,3 @@ class Package:
     "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 )
 
-# new_package = Package('1', 'Sydney', 'Brisbane', 45, 'JohnDue')
-# new_package.advance_status()
-# print(new_package)

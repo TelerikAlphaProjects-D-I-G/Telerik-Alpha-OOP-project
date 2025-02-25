@@ -19,9 +19,11 @@ class AssignDeliveryPackageCommand(BaseCommand):
         package_id_count, truck_id= params
 
         truck_id = try_parse_int(truck_id)
-        if truck_id is None or truck_id not in TRUCKS:
-            raise ValueError(f"\nInvalid truck ID: {truck_id}. Please provide a valid truck ID.")
-
+        try:
+            if truck_id is None or truck_id not in TRUCKS:
+                raise ValueError(f"\nInvalid truck ID: {truck_id}. Please provide a valid truck ID.")
+        except ValueError as ve:
+            return f"\nError: {str(ve)}"
         package_id_count = try_parse_int(package_id_count)
         package = self._app_data.find_package_by_id(package_id_count)
         if package is None:

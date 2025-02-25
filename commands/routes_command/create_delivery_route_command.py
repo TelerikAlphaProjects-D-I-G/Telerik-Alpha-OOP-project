@@ -2,7 +2,7 @@ from commands.helper_command.base_command import BaseCommand
 from commands.helper_command.validate_params_helpers_command import try_parse_int
 from core.application_data import ApplicationData
 from models.route_matrix import Route
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 class CreateDeliveryRouteCommand(BaseCommand):
@@ -17,11 +17,18 @@ class CreateDeliveryRouteCommand(BaseCommand):
         departure_time_str = params[-1]
         route_id = Route.routes_id_counter
 
-        # try:
+
         departure_datetime_str = f"{departure_date_str} {departure_time_str}"
-        departure_time = datetime.strptime(departure_datetime_str, "%Y-%m-%d %H:%M")
-        # except ValueError:
-        #     return "Error: Invalid departure time format. Please use 'YYYY-MM-DD HH:MM'."
+
+        try:
+
+            departure_time = datetime.strptime(departure_datetime_str, "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)
+        except ValueError:
+            return "Error: Invalid departure time format. Please use 'YYYY-MM-DD HH:MM'."
+
+
+        if departure_time < datetime.now(timezone.utc):
+            return "❌ Error: Departure time cannot be in the past."
 
         try:
             total_distance, stop_distances = Route.calculate_total_distance(cities)
@@ -37,9 +44,9 @@ class CreateDeliveryRouteCommand(BaseCommand):
 
         formatted_route = ' → '.join([f"{city} (Arrival at {arrival_time})" for city, arrival_time in zip(cities, arrival_times)])
 
-        return (f"\nRoute created successfully with ID {new_route.route_id}:\n"
-                f"Route path: {formatted_route}\n"
-                f"Total distance: {total_distance} km")
+        return (f"\n✅ Route created successfully with ID {new_route.route_id}:\n"
+                f"🛤️ Route path: {formatted_route}\n"
+                f"📏 Total distance: {total_distance} km")
 
     def _requires_login(self) -> bool:
         return True
