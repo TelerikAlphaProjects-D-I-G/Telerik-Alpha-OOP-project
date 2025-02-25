@@ -44,7 +44,8 @@ class Main:
                         print("\nTruck Commands:")
                         print("1.🏁 Assign Free Truck to Route")
                         print("2.🔍 View Truck Information")
-                        print("3.🔙 Back to main menu")
+                        print("3. I dont know if works")
+                        print("4.🔙 Back to main menu")
                         truck_choice = input("Enter your choice: ")
 
                         if truck_choice == "1":
@@ -60,7 +61,13 @@ class Main:
                             result = cmd.execute([truck_id])
                             print(result)
 
-                        elif choice == "3":
+                        if truck_choice == "3":
+                            truck_id = int(input("🚛 Enter Truck ID: "))
+                            cmd = cmd_factory.create("startmovement")
+                            result = cmd.execute([truck_id])
+                            print(result)
+
+                        elif choice == "4":
                             continue
 
                         else:
@@ -180,19 +187,3 @@ class Main:
             print("Invalid choice. Please try again.")
 
 
-if __name__ == "__main__":
-    main()
-
-
-# 🚪 → Represents logging in/out or exiting.
-# 📌 → Highlights the main menu.
-# 🚛 → Represents trucks.
-# 📦 → Represents package commands.
-# 🛤️ → Represents route commands.
-# 🔍 → Used for viewing/searching information.
-# 🏁 → Assigning a truck (starting a route).
-# 📤 → Assigning a package.
-# 🔙 → Back to the main menu.
-# 🔒 → Logout.
-# ❌ → Exit program.
-# ⚠️ → Invalid input warning.
