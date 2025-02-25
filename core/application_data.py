@@ -19,7 +19,7 @@ class ApplicationData:
         self._add_vehicles_to_vehicles_list()
         self.users = self.load_users()
         self.logged_in_user = None
-        self.unique_id = Package.unique_id_user
+        # self.package_id_count = Package.package_id_count
 
     def _add_vehicles_to_vehicles_list(self):
         for truck_id, truck_data in TRUCKS.items():

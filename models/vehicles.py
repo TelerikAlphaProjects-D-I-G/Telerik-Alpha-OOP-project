@@ -8,7 +8,8 @@ ACTROS = ["Actros",  26000,13000]
 import time
 
 from commands.helper_command.validate_params_helpers_command import try_parse_int
-from package_status import PackageStatus
+from models.package_status import PackageStatus
+
 from storage_data.storage_trucks import TRUCKS
 
 

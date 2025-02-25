@@ -16,5 +16,11 @@
         "first_name": "Georgi",
         "last_name": "Georgi",
         "position": "Manager"
+    },
+    "Denis": {
+        "password": "123456",
+        "first_name": "denis",
+        "last_name": "denchev",
+        "position": "Manager"
     }
 }

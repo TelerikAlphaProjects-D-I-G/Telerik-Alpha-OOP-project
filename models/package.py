@@ -7,7 +7,7 @@ from models.vehicles import Vehicles
 
 class Package:
 
-	package_id_count = 1
+
 
 	LOCATION_MAPPING = {
 		"Sydney": Route.SYD[0],
@@ -29,10 +29,11 @@ class Package:
 		Route.DAR[0]: "Darwin"
 	}
 
-	unique_id_user = set()
+	package_id_counter = 0
 
 	def __init__(self,  start_location, end_location, weight_kg, contact_information):
-		Package.package_id_count += 1
+		Package.package_id_counter += 1
+		self.package_id_count = Package.package_id_counter
 		self.start_location = self.location_exist(start_location)
 		self.end_location = self.location_exist(end_location)
 		self.weight_kg = weight_kg
@@ -79,6 +80,7 @@ class Package:
 		start_full_name = Package.LOCATION_ABBR_MAPPING[self.start_location]
 		end_full_name = Package.LOCATION_ABBR_MAPPING[self.end_location]
 		additional_stops = Route.valid_distances(0, 1)
+
 		return (
         "\n📦 PACKAGE DETAILS\n"
     "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"

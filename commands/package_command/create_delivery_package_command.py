@@ -11,7 +11,7 @@ class CreateDeliveryPackageCommand(BaseCommand):
 
     def execute(self, params):
         super().execute(params)
-        unique_id = Package.package_id_count
+        # unique_id = Package.package_id_counter
 
         start_location, end_location, weight_kg, contact_information = params
 
