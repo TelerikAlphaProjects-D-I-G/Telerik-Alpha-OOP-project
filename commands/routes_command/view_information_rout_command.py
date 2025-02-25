@@ -24,7 +24,7 @@ class ViewInformationAboutRouteCommand(BaseCommand):
         assigned_vehicle = route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'
 
         return (
-                f"Route ID: {route.route_id}\n"
+                f"\nRoute ID: {route.route_id}\n"
                 f"Path: {' -> '.join(route.path)}\n"
                 f"Total Distance: {route.distance} km\n"
                 f"Assigned Vehicle: \n{assigned_vehicle}\n"

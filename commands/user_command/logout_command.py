@@ -10,7 +10,7 @@ class LogoutCommand(BaseCommand):
         super().execute(params)
         self._app_data.logout()
 
-        return 'You logged out!'
+        return '\nYou logged out!'
 
     def _requires_login(self) -> bool:
         return True

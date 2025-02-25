@@ -26,18 +26,18 @@ class CreateDeliveryRouteCommand(BaseCommand):
         try:
             total_distance, stop_distances = Route.calculate_total_distance(cities)
         except ValueError as ve:
-            return f"Error: {str(ve)}"
+            return f"\nError: {str(ve)}"
 
         try:
             new_route = self._app_data.create_route(cities, departure_time)
         except ValueError as ve:
-            return f"Error creating route: {str(ve)}"
+            return f"\nError creating route: {str(ve)}"
 
         arrival_times = new_route.get_arrival_times()
 
         formatted_route = ' → '.join([f"{city} (Arrival at {arrival_time})" for city, arrival_time in zip(cities, arrival_times)])
 
-        return (f"Route created successfully with ID {new_route.route_id}:\n"
+        return (f"\nRoute created successfully with ID {new_route.route_id}:\n"
                 f"Route path: {formatted_route}\n"
                 f"Total distance: {total_distance} km")
 

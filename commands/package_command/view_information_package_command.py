@@ -15,7 +15,7 @@ class ViewInformationAboutPackage(BaseCommand):
 
 		employee = self._app_data.logged_in_employee
 		if employee.employee_role not in [EmployeeRole.SUPERVISING_EMPLOYEE, EmployeeRole.MANAGER]:
-			return 'Error: Only Supervisors and Managers have access to this data!'
+			return '\nError: Only Supervisors and Managers have access to this data!'
 
 		package_info_id = params[0]
 
@@ -24,12 +24,12 @@ class ViewInformationAboutPackage(BaseCommand):
 			if package_info_id is None:
 				raise ValueError(f"'{package_info_id}' must be a number to proceed")
 		except ValueError as ve:
-			return f"Error: {str(ve)}"
+			return f"\nError: {str(ve)}"
 
 		package = self._app_data.find_package_by_id(package_info_id)
 
 		if package is None:
-			return f"Error: No package found with ID {package_info_id}."
+			return f"\nError: No package found with ID {package_info_id}."
 
 		return str(package)
 

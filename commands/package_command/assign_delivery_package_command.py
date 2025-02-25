@@ -20,19 +20,19 @@ class AssignDeliveryPackageCommand(BaseCommand):
 
         truck_id = try_parse_int(truck_id)
         if truck_id is None or truck_id not in TRUCKS:
-            raise ValueError(f"Invalid truck ID: {truck_id}. Please provide a valid truck ID.")
+            raise ValueError(f"\nInvalid truck ID: {truck_id}. Please provide a valid truck ID.")
 
         package_id_count = try_parse_int(package_id_count)
         package = self._app_data.find_package_by_id(package_id_count)
         if package is None:
-            raise ValueError(f"Package {package_id_count} not found.")
+            raise ValueError(f"\nPackage {package_id_count} not found.")
         truck = Vehicles(truck_id)
         if truck is None:
-            raise ValueError(f"Truck with ID {truck_id} does not exist!")
+            raise ValueError(f"\nTruck with ID {truck_id} does not exist!")
         package.advance_status()
         truck.assign_package(package)
         return (
-            f"Package ID: {package_id_count}\n"
+            f"\nPackage ID: {package_id_count}\n"
             f"Truck ID: {truck_id}\n"
             f"Package Status: {package.package_status}\n"
             f"Assigned package: {truck.current_load}\n"

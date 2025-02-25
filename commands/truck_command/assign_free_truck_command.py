@@ -36,7 +36,7 @@ class AssignFreeTruckCommand(BaseCommand):
         route.assigned_vehicle = truck
 
         return (
-            f"🚛 Truck ID: {truck_id} (Status: {'Available' if truck.is_available else 'Assigned'})\n"
+            f"\n🚛 Truck ID: {truck_id} (Status: {'Available' if truck.is_available else 'Assigned'})\n"
             f"🛣️ Route ID: {route.route_id}\n"
             f"🏙️ Path: {' -> '.join(route.path)}\n"
         )

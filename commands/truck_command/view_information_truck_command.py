@@ -14,9 +14,9 @@ class ViewInformationAboutTruck(BaseCommand):
         # package = self._app_data.find_package_by_id(unique_id)
         # truck.assign_package(package)
         if truck == "Truck not found":
-            return f"Error: Truck with ID {truck_id} not found."
+            return f"\nError: Truck with ID {truck_id} not found."
 
-        return str(truck)
+        return f'\n{str(truck)}'
 
     def _requires_login(self) -> bool:
         return False

@@ -16,7 +16,7 @@ class SearchForRouteCommand(BaseCommand):
         matching_routes = self._app_data.search_routes(start_location, end_location)
 
         if not matching_routes:
-            return f'No routes found from {start_location} to {end_location}.'
+            return f'\nNo routes found from {start_location} to {end_location}.'
 
         routes_info = ''
 
@@ -31,7 +31,7 @@ class SearchForRouteCommand(BaseCommand):
                             f"Departure: {route.departure_time.strftime('%b %dth %H:%M')}h\n"
                             f"Path: {formatted_route}\n--------------------\n")
 
-        return f"Matching Routes:\n{routes_info}"
+        return f"\nMatching Routes:\n{routes_info}"
 
     def _requires_login(self) -> bool:
         return True

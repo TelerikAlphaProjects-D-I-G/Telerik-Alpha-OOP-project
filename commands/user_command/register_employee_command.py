@@ -16,17 +16,17 @@ class RegisterEmployeeCommand(BaseCommand):
         try:
             employee_role = EmployeeRole.from_string(role)
         except ValueError as ve:
-            return f"Error: {str(ve)}"
+            return f"\nError: {str(ve)}"
 
         try:
             employee = self._app_data.create_employee_acc(username, firstname, lastname, Employee.validate_password(password), employee_role)
         except ValueError as ve:
-            return f"Error: {str(ve)}"
+            return f"\nError: {str(ve)}"
 
         # Automatically log in the new employee
         self._app_data.login(employee.username, employee.password)
 
-        return f"Employee {employee.username} registered successfully as {employee_role}."
+        return f"\nEmployee {employee.username} registered successfully as {employee_role}."
 
     def _requires_login(self) -> bool:
         return False
