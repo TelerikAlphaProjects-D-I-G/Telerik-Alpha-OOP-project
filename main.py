@@ -29,21 +29,22 @@ class Main:
                 print("Login successful!")
 
                 while True:
-                    print("\nLogged in as:", username)
-                    print("\nPlease select an option:")
-                    print("1. Truck Commands")
-                    print("2. Package Commands")
-                    print("3. Route Commands")
-                    print("4. Logout")
-                    print("5. Exit")
+                    print("\n📌Main Menu:")
+                    print(f"Logged in as: {username}\n}")
+                    print("Please select an option:")
+                    print("1.🚛 Truck Commands")
+                    print("2.📦 Package Commands")
+                    print("3.🛤️ Route Commands")
+                    print("4.🔒 Logout")
+                    print("5.❌ Exit")
 
                     choice = input("Enter your choice: ")
 
                     if choice == "1":
                         print("\nTruck Commands:")
-                        print("1. Assign Free Truck to Route")
-                        print("2. View Truck Information")
-                        print("3. Back to main menu")
+                        print("1.🏁 Assign Free Truck to Route")
+                        print("2.🔍 View Truck Information")
+                        print("3.🔙 Back to main menu")
                         truck_choice = input("Enter your choice: ")
 
                         if truck_choice == "1":
