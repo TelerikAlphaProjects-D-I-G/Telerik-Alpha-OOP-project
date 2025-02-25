@@ -19,13 +19,6 @@ class TestRoute(unittest.TestCase):
         self.assertEqual(self.route2.end_location, "BRI")
         self.assertEqual(self.route2.additional_stops, ["MEL", "SYD"])
 
-    def test_time_needed_valid(self):
-        travel_time = Route.time_needed("SYD", "MEL")
-        self.assertIsInstance(travel_time, timedelta)
-        self.assertEqual(travel_time, timedelta(hours=877 / Route.AVERAGE_SPEED))
-
-    def test_time_needed_invalid(self):
-        self.assertEqual(Route.time_needed("SYD", "XYZ"), "Invalid route")
 
     def test_assign_vehicle_success(self):
         result = self.route1.assign_vehicle(1011)

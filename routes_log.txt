@@ -833,3 +833,8 @@ Path: SYD (Arrival at ('MEL', 'Feb 27th 22:16h')) → MEL (Arrival at ('ADL', 'F
 Total Distance: 1602 km
 Departure Time: 2025-02-27 12:12:00
 ----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Feb 28th 08:26h')) → MEL (Arrival at ('ADL', 'Feb 28th 16:46h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-02-27 22:22:00
+----------------------
