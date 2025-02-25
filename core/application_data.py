@@ -220,3 +220,14 @@ class ApplicationData:
 
     def logout(self):
         self.logged_in_user = None
+
+    def find_trucks_in_city(self, city):
+        trucks_in_city = []
+        city = city.upper()
+
+        for truck_id, truck in TRUCKS.items():
+            if truck['city'] == city:
+                truck_info = f"🚚 ID: {truck_id}, Model: {truck['model']}, Capacity: {truck['capacity']}kg, Range: {truck['max_range']}km"
+                trucks_in_city.append(truck_info)
+
+        return trucks_in_city
