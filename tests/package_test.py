@@ -40,12 +40,15 @@ class TestPackage(unittest.TestCase):
 
 
     def test_string_representation(self):
-        expected_str = (f'Id: 9\n'
-                        f'📍Start location: Sydney\n'
-                        f'📍End location: Melbourne\n'
-                        f'📦⚖️Weight: 10 kg\n'
-                        f'📋Contact information: John Doe\n'
-                        f'✅Current status: {PackageStatus.PENDING}\n')
+        expected_str = (f'\n📦 PACKAGE DETAILS\n'
+                        f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'
+                        f'🆔 ID                 : 9\n'
+                        f'📍 Start Location     : Sydney\n'
+                        f'📍 End Location       : Melbourne\n'
+                        f'📦⚖️ Weight           : 10 kg\n'
+                        f'📋 Contact Info       : John Doe\n'
+                        f'✅ Current Status     : Pending\n'
+                        f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
         self.assertEqual(str(self.package), expected_str)
 
 if __name__ == "__main__":
