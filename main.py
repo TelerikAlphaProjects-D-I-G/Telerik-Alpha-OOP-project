@@ -31,19 +31,19 @@ class Main:
                 while True:
                     print("\nLogged in as:", username)
                     print("\nPlease select an option:")
-                    print("1. Truck Commands")
-                    print("2. Package Commands")
-                    print("3. Route Commands")
-                    print("4. Logout")
-                    print("5. Exit")
+                    print("1.🚛 Truck Commands")
+                    print("2.📦 Package Commands")
+                    print("3.🛤️ Route Commands")
+                    print("4.🚪 Logout")
+                    print("5.❌ Exit")
 
                     choice = input("Enter your choice: ")
 
                     if choice == "1":
                         print("\nTruck Commands:")
-                        print("1. Assign Free Truck to Route")
-                        print("2. View Truck Information")
-                        print("3. Back to main menu")
+                        print("1.🏁 Assign Free Truck to Route")
+                        print("2.🔍 View Truck Information")
+                        print("3.🔙 Back to main menu")
                         truck_choice = input("Enter your choice: ")
 
                         if truck_choice == "1":
@@ -109,7 +109,7 @@ class Main:
                             print("1. Create Delivery Route")
                             print("2. View Information About Route")
                             print("3. Search for Route")
-                            print("4. Back to main menu")
+                            print("4.🔙 Back to main menu")
                             route_choice = input("Enter your choice: ")
 
                             if route_choice == "1":
