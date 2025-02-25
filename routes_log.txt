@@ -1223,3 +1223,13 @@ Path: SYD (Arrival at ('MEL', 'Mar 04th 08:28h')) → MEL (Arrival at ('ADL', 'M
 Total Distance: 1602 km
 Departure Time: 2025-03-03 22:24:00+00:00
 ----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Dec 12th 22:16h')) → MEL (Arrival at ('ADL', 'Dec 13th 06:36h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-12-12 12:12:00+00:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Nov 11th 21:27h')) → MEL (Arrival at ('ADL', 'Nov 12th 05:47h')) → ADL (Arrival at ('PER', 'Nov 13th 13:48h')) → PER (Arrival at N/A)
+Total Distance: 4387 km
+Departure Time: 2025-11-11 11:23:00+00:00
+----------------------

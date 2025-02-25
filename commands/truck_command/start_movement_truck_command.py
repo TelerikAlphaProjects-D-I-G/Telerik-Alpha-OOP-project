@@ -20,12 +20,22 @@ class StartMovementTruckCommand(BaseCommand):
         truck = self._app_data.find_truck_by_id(truck_id)
         print(f"Truck {truck_id} started delivered")
         delivered_count = 0
+        current_cit = truck.current_city
         for package in self._app_data.packages:
             if package.package_status == PackageStatus.IN_TRANSIT:
+
+                print(f"Current city: {current_cit}")
+                print(f"Truck {truck_id} in transit...")
+
+                time.sleep(5)
                 package.set_status(PackageStatus.DELIVERED)
+
                 delivered_count += 1
-            print(f"Truck {truck_id} in transit...")
-            time.sleep(2)
+
+                print(f"(Package {package.package_id_count}) delivered to 📌 {package.end_location}!")
+
+        print(f"✅ Truck {truck_id} completed delivery!")
+
         if delivered_count > 0:
             return f"{delivered_count} package have been successfully delivered by Truck {truck_id}!"
         else:
