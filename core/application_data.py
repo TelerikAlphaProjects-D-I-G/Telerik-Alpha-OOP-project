@@ -1,4 +1,5 @@
 from models.package import Package
+from models.package_status import PackageStatus
 from models.route_matrix import Route
 from models.vehicles import Vehicles
 from models.employee import Employee
@@ -231,3 +232,11 @@ class ApplicationData:
                 trucks_in_city.append(truck_info)
 
         return trucks_in_city
+
+    def get_packages_by_status(self):
+        all_on_pending = []
+        for pack in self._packages:
+            pending = PackageStatus.PENDING
+            if pack.package_status == pending:
+                all_on_pending.append(pack)
+        return all_on_pending

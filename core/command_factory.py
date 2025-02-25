@@ -1,3 +1,4 @@
+from commands.package_command.all_pending_package_view import AllPendingPackageView
 from commands.package_command.assign_delivery_package_command import AssignDeliveryPackageCommand
 from commands.truck_command.assign_free_truck_command import AssignFreeTruckCommand
 from commands.package_command.create_delivery_package_command import CreateDeliveryPackageCommand
@@ -50,6 +51,8 @@ class CommandFactory:
             return ViewInformationAboutTruck(params, self._app_data)
         if cmd.lower() == 'findtrucksincity':
             return FindTrucksInCityCommand(params, self._app_data)
+        if cmd.lower() == 'allpendingpackageview':
+            return AllPendingPackageView(self._app_data)
 
         raise ValueError(f'Invalid command name: {cmd}!')
 

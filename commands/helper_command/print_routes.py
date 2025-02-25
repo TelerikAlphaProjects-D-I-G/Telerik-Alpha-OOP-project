@@ -11,14 +11,17 @@ class PrintRoutes(BaseCommand):
             return "No routes available."
 
         route_list = []
+        seen_routes_id = set()
         for route in self._app_data.routes:
-            route_list.append(
-                f"Route ID: {route.route_id}\n"
-                f"Path: {' -> '.join(route.path)}\n"
-                f"Total Distance: {route.distance} km\n"
-                f"Assigned Vehicle: {route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'}\n"
-                "----------------------"
-            )
+            if route.route_id not in seen_routes_id:
+                route_list.append(
+                    f"\nRoute ID: {route.route_id}\n"
+                    f"Path: {' -> '.join(route.path)}\n"
+                    f"Total Distance: {route.distance} km\n"
+                    f"Assigned Vehicle: {route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'}\n"
+                    "----------------------"
+                )
+                seen_routes_id.add(route.route_id)
 
         return "\n".join(route_list)
 

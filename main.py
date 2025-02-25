@@ -57,7 +57,7 @@ class Main:
                             print(result)
 
                         if truck_choice == "2":
-                            truck_id = int(input("Enter ID truck: "))
+                            truck_id = int(input("🚛 Enter truck ID: "))
                             cmd = cmd_factory.create("viewinformationabouttruck")
                             result = cmd.execute([truck_id])
                             print(result)
@@ -87,7 +87,8 @@ class Main:
                         print("1.📦 Create Delivery Package")
                         print("2.🔍 View Information About Package")
                         print("3.🚛 Assign Delivery Package to Truck")
-                        print("4.🔙 Back to Main Menu")
+                        print("4.🔍 View Information About Unassigned packages ")
+                        print("5.🔙 Back to Main Menu")
                         package_choice = input("➡️Enter your choice: ")
 
 
@@ -116,6 +117,11 @@ class Main:
                             print(result)
 
                         elif package_choice == "4":
+                            cmd = cmd_factory.create("allpendingpackageview")
+                            result = cmd.execute()
+                            print(result)
+
+                        elif package_choice == "5":
                             continue
 
                         else:
@@ -126,7 +132,8 @@ class Main:
                             print("1.🛤️ Create Delivery Route")
                             print("2.🗺️ View Information About Route")
                             print("3.🔍 Search for Route")
-                            print("4.🔙 Back to Main Menu")
+                            print("4.🔍 View all Routes")
+                            print("5.🔙 Back to Main Menu")
                             route_choice = input("➡️Enter your choice: ")
 
                             if route_choice == "1":
@@ -153,6 +160,12 @@ class Main:
                                 print(result)
 
                             elif route_choice == "4":
+                                cmd = cmd_factory.create("printroutes")
+                                result = cmd.execute()
+                                print(result)
+
+
+                            elif route_choice == "5":
                                 continue
                             else:
                                 print("❌Invalid choice. Please try again.")
