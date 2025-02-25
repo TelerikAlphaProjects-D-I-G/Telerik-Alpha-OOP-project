@@ -9,16 +9,16 @@ class AllPendingPackageView:
 
     def execute(self):
         pending_packages = self.app_data.get_packages_by_status()
-        pending_packages = self.app_data.get_packages_by_status()
-
         for package in pending_packages:
-            return  (f"\nPackage ID: {package.package_id_count}"
-                f"Weight: {package.weight_kg}\n"
-                f"Start Location: {package.start_location}\n"
-                f"End Location: {package.end_location}\n"
-                f"Package Status: {package.package_status}\n"
-                "------------------------"
-                 )
+                print(f"\nPackage ID: {package.package_id_count}")
+                print(f"Weight: {package.weight_kg}")
+                print(f"Start Location: {package.start_location}")
+                print(f"End Location: {package.end_location}")
+                print(f"Package Status: {package.package_status}")
+                print(f"Contact information: {package.contact_information}")
+                print("------------------------")
+        return "Packages displayed successfully!"
+
 
 
 
