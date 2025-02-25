@@ -10,5 +10,11 @@
         "first_name": "denis",
         "last_name": "denchev",
         "position": "Manager"
+    },
+    "gosho": {
+        "password": "1234567",
+        "first_name": "Georgi",
+        "last_name": "Georgi",
+        "position": "Manager"
     }
 }

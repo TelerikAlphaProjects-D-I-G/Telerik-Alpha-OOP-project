@@ -4,13 +4,13 @@ TRUCKS = {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "ADL"
+        'city': "SYD"
     },
     1002: {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "SYD"
+        'city': "MEL"
     },
     1003: {
         'model': 'Scania',
@@ -22,7 +22,7 @@ TRUCKS = {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "ADL"
+        'city': "ASP"
     },
     1005: {
         'model': 'Scania',
@@ -34,19 +34,19 @@ TRUCKS = {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "ASP"
+        'city': "DAR"
     },
     1007: {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "DAR"
+        'city': "PER"
     },
     1008: {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "DAR"
+        'city': "SYD"
     },
     1009: {
         'model': 'Scania',
@@ -58,79 +58,79 @@ TRUCKS = {
         'model': 'Scania',
         'capacity': 42000,
         'max_range': 8000,
-        'city': "BRI"
+        'city': "ADL"
     },
     1011: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ADL"
+        'city': "ASP"
     },
     1012: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ASP"
+        'city': "BRI"
     },
     1013: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ADL"
+        'city': "DAR"
     },
     1014: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ASP"
+        'city': "PER"
     },
     1015: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ADL"
+        'city': "SYD"
     },
     1016: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "SYD"
+        'city': "MEL"
     },
     1017: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "PER"
+        'city': "ADL"
     },
     1018: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "PER"
+        'city': "ASP"
     },
     1019: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ADL"
+        'city': "BRI"
     },
     1020: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "BRI"
+        'city': "DAR"
     },
     1021: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ASP"
+        'city': "PER"
     },
     1022: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "BRI"
+        'city': "SYD"
     },
     1023: {
         'model': 'Man',
@@ -142,61 +142,61 @@ TRUCKS = {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ASP"
+        'city': "MEL"
     },
     1025: {
         'model': 'Man',
         'capacity': 37000,
         'max_range': 10000,
-        'city': "ADL"
+        'city': "ASP"
     },
     1026: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "MEL"
+        'city': "BRI"
     },
     1027: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "MEL"
+        'city': "DAR"
     },
     1028: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "SYD"
+        'city': "PER"
     },
     1029: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "ASP"
+        'city': "SYD"
     },
     1030: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "DAR"
+        'city': "MEL"
     },
     1031: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "MEL"
+        'city': "ADL"
     },
     1032: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "PER"
+        'city': "ASP"
     },
     1033: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "PER"
+        'city': "BRI"
     },
     1034: {
         'model': 'Actros',
@@ -208,7 +208,7 @@ TRUCKS = {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "DAR"
+        'city': "PER"
     },
     1036: {
         'model': 'Actros',
@@ -220,19 +220,19 @@ TRUCKS = {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "ADL"
+        'city': "MEL"
     },
     1038: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "MEL"
+        'city': "ADL"
     },
     1039: {
         'model': 'Actros',
         'capacity': 26000,
         'max_range': 13000,
-        'city': "MEL"
+        'city': "ASP"
     },
     1040: {
         'model': 'Actros',
