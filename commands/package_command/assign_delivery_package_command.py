@@ -32,12 +32,15 @@ class AssignDeliveryPackageCommand(BaseCommand):
         package.advance_status()
         truck.assign_package(package)
         return (
-            f"\nPackage ID: {package_id_count}\n"
-            f"Truck ID: {truck_id}\n"
-            f"Package Status: {package.package_status}\n"
-            f"Assigned package: {truck.current_load}\n"
-            f"Current load: {truck.current_load} / {truck.capacity}\n"
-        )
+    "\n🚛 PACKAGE ASSIGNMENT DETAILS\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    f"📦 Package ID      : {package_id_count}\n"
+    f"🚛 Truck ID        : {truck_id}\n"
+    f"📌 Package Status  : {package.package_status}\n"
+    f"📦 Assigned Package: {truck.current_load}\n"
+    f"⚖️ Current Load    : {truck.current_load} / {truck.capacity} kg\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+)
     def _requires_login(self) -> bool:
         return False
 

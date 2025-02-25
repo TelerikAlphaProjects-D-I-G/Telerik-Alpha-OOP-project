@@ -76,13 +76,17 @@ class Package:
 		start_full_name = Package.LOCATION_ABBR_MAPPING[self.start_location]
 		end_full_name = Package.LOCATION_ABBR_MAPPING[self.end_location]
 		additional_stops = Route.valid_distances(0, 1)
-		return (f'Id: {self.package_id_count}\n'
-				f'📍Start location: {start_full_name}\n'
-				f'📍End location: {end_full_name}\n'
-				f'📦⚖️Weight: {self.weight_kg} kg\n'
-				f'📋Contact information: {self.contact_information}\n'
-				f'✅Current status: {self._package_status}\n'
-				)
+		return (
+        "\n📦 PACKAGE DETAILS\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    f"🆔 ID                 : {self.package_id_count}\n"
+    f"📍 Start Location     : {start_full_name}\n"
+    f"📍 End Location       : {end_full_name}\n"
+    f"📦⚖️ Weight           : {self.weight_kg} kg\n"
+    f"📋 Contact Info       : {self.contact_information}\n"
+    f"✅ Current Status     : {self._package_status}\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+)
 
 # new_package = Package('1', 'Sydney', 'Brisbane', 45, 'JohnDue')
 # new_package.advance_status()
