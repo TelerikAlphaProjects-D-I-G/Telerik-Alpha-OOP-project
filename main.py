@@ -30,7 +30,7 @@ class Main:
 
                 while True:
                     print("\n📌Main Menu:")
-                    print(f"Logged in as: {username}\n}")
+                    print(f"Logged in as: {username}\n")
                     print("Please select an option:")
                     print("1.🚛 Truck Commands")
                     print("2.📦 Package Commands")

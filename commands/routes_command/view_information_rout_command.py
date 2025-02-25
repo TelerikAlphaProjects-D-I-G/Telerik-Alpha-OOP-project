@@ -19,7 +19,10 @@ class ViewInformationAboutRouteCommand(BaseCommand):
             return "Error: Only Managers are allowed to view route information."
 
         route_id = super()._try_parse_int(params[0])
-        route = self._app_data.find_route_by_id(route_id)
+        try:
+            route = self._app_data.find_route_by_id(route_id)
+        except ValueError as ve:
+            return f"\nError: {str(ve)}"
 
         assigned_vehicle = route.assigned_vehicle.vehicle_id if route.assigned_vehicle else 'None'
 
