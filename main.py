@@ -43,28 +43,39 @@ class Main:
                         print("\nTruck Commands:")
                         print("1. Assign Free Truck to Route")
                         print("2. View Truck Information")
-                        print("3. Start Truck Movement")
+                        print("3. Back to main menu")
                         truck_choice = input("Enter your choice: ")
+
                         if truck_choice == "1":
                             route_id = int(input("Enter ID route: "))
                             truck_id = int(input("Enter ID truck: "))
                             cmd = cmd_factory.create("assignfreetruck")
                             result = cmd.execute([truck_id, route_id])
                             print(result)
+
                         if truck_choice == "2":
                             truck_id = int(input("Enter ID truck: "))
                             cmd = cmd_factory.create("viewinformationabouttruck")
                             result = cmd.execute([truck_id])
                             print(result)
+
+                        elif choice == "3":
+                            continue
+
                         else:
                             print('Invalid choice. Please try again.')
+
+
 
                     elif choice == "2":
                         print("\nPackage Commands:")
                         print("1. Create Delivery Package")
                         print("2. View Information About Package")
                         print("3. Assign Delivery Package")
+                        print("4.🔙 Back to main menu")
                         package_choice = input("Enter your choice: ")
+
+
                         if package_choice == "1":
                             start_location = input("Enter the start location: ")
                             end_location = input("Enter the end location: ")
@@ -73,17 +84,23 @@ class Main:
                             cmd = cmd_factory.create("createdeliverypackage")
                             result = cmd.execute([start_location, end_location, weight_kg, contact_information])
                             print(result)
+
                         elif package_choice == "2":
                             package_id_count = input("Enter ID package: ")
                             cmd = cmd_factory.create("viewinformationaboutpackage")
                             result = cmd.execute([package_id_count])
                             print(result)
+
                         elif package_choice == "3":
                             package_id_count = input("Enter ID package: ")
                             truck_id = input("Enter ID truck: ")
                             cmd = cmd_factory.create("assigndeliverypackage")
                             result = cmd.execute([package_id_count, truck_id])
                             print(result)
+
+                        elif package_choice == "4":
+                            continue
+
                         else:
                             print("Invalid choice. Please try again.")
 
@@ -92,6 +109,7 @@ class Main:
                             print("1. Create Delivery Route")
                             print("2. View Information About Route")
                             print("3. Search for Route")
+                            print("4. Back to main menu")
                             route_choice = input("Enter your choice: ")
 
                             if route_choice == "1":
@@ -101,23 +119,30 @@ class Main:
                                 cmd = cmd_factory.create("createdeliveryroute")
                                 result = cmd.execute(routes + [departure_date, departure_time])
                                 print(result)
+
                             elif route_choice == "2":
                                 route_id = input("Enter the route ID: ")
                                 cmd = cmd_factory.create("viewinformationaboutroute")
                                 result = cmd.execute([route_id])
                                 print(result)
+
                             elif route_choice == "3":
                                 start_location = input("Enter the start location: ")
                                 end_location = input("Enter the end location: ")
                                 cmd = cmd_factory.create("searchforroute")
                                 result = cmd.execute([start_location, end_location])
                                 print(result)
+
+                            elif route_choice == "4":
+                                continue
                             else:
                                 print("Invalid choice. Please try again.")
+
                     elif choice == "4":
                         app_data.logout()
                         print("Logged out successfully!")
                         break
+
                     elif choice == "5":
                         print("Exiting the application. Goodbye!")
                         break
@@ -152,3 +177,17 @@ class Main:
 
 if __name__ == "__main__":
     main()
+
+
+# 🚪 → Represents logging in/out or exiting.
+# 📌 → Highlights the main menu.
+# 🚛 → Represents trucks.
+# 📦 → Represents package commands.
+# 🛤️ → Represents route commands.
+# 🔍 → Used for viewing/searching information.
+# 🏁 → Assigning a truck (starting a route).
+# 📤 → Assigning a package.
+# 🔙 → Back to the main menu.
+# 🔒 → Logout.
+# ❌ → Exit program.
+# ⚠️ → Invalid input warning.

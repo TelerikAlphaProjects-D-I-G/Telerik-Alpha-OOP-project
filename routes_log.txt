@@ -763,3 +763,73 @@ Path: SYD (Arrival at ('MEL', 'Mar 02th 08:49h')) → MEL (Arrival at ('ADL', 'M
 Total Distance: 1602 km
 Departure Time: 2025-03-01 22:45:00
 ----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Mar 02th 08:49h')) → MEL (Arrival at ('ADL', 'Mar 02th 17:09h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-03-01 22:45:00
+----------------------
+Route ID: 2
+Path: ADL (Arrival at ('SYD', 'Mar 02th 14:08h')) → SYD (Arrival at ('MEL', 'Mar 03th 00:13h')) → MEL (Arrival at N/A)
+Total Distance: 2253 km
+Departure Time: 2025-03-01 22:20:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Feb 27th 08:04h')) → MEL (Arrival at ('ADL', 'Feb 27th 16:24h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-02-26 22:00:00
+----------------------
+Route ID: 2
+Path: ADL (Arrival at ('SYD', 'Mar 02th 04:00h')) → SYD (Arrival at ('MEL', 'Mar 02th 14:05h')) → MEL (Arrival at N/A)
+Total Distance: 2253 km
+Departure Time: 2025-03-01 12:12:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Mar 02th 08:29h')) → MEL (Arrival at ('ADL', 'Mar 02th 16:49h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-03-01 22:25:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Mar 02th 08:49h')) → MEL (Arrival at ('ADL', 'Mar 02th 17:09h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-03-01 22:45:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Mar 02th 08:29h')) → MEL (Arrival at ('ADL', 'Mar 02th 16:49h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-03-01 22:25:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Mar 02th 08:49h')) → MEL (Arrival at ('ADL', 'Mar 02th 17:09h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-03-01 22:45:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Feb 28th 08:04h')) → MEL (Arrival at ('ADL', 'Feb 28th 16:24h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-02-27 22:00:00
+----------------------
+Route ID: 2
+Path: ADL (Arrival at ('SYD', 'Feb 27th 10:18h')) → SYD (Arrival at ('MEL', 'Feb 27th 20:23h')) → MEL (Arrival at N/A)
+Total Distance: 2253 km
+Departure Time: 2025-02-26 18:30:00
+----------------------
+Route ID: 1
+Path: SYD (Arrival at ('MEL', 'Mar 01th 08:49h')) → MEL (Arrival at ('ADL', 'Mar 01th 17:09h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-02-28 22:45:00
+----------------------
+Route ID: 2
+Path: ADL (Arrival at ('SYD', 'Feb 27th 10:18h')) → SYD (Arrival at ('MEL', 'Feb 27th 20:23h')) → MEL (Arrival at N/A)
+Total Distance: 2253 km
+Departure Time: 2025-02-26 18:30:00
+----------------------
+Route ID: 1
+Path: ADL (Arrival at ('SYD', 'Mar 01th 14:33h')) → SYD (Arrival at ('MEL', 'Mar 02th 00:38h')) → MEL (Arrival at N/A)
+Total Distance: 2253 km
+Departure Time: 2025-02-28 22:45:00
+----------------------
+Route ID: 2
+Path: SYD (Arrival at ('MEL', 'Feb 27th 22:16h')) → MEL (Arrival at ('ADL', 'Feb 28th 06:36h')) → ADL (Arrival at N/A)
+Total Distance: 1602 km
+Departure Time: 2025-02-27 12:12:00
+----------------------
