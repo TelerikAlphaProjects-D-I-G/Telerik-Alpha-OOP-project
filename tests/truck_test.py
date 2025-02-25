@@ -18,7 +18,7 @@ class TestVehicles(unittest.TestCase):
         self.assertEqual(self.truck1.name, "Man")
         self.assertEqual(self.truck1.capacity, 37000)
         self.assertEqual(self.truck1.max_range, 10000)
-        self.assertEqual(self.truck1.current_city, "SYD")
+        self.assertEqual(self.truck1.current_city, "ADL")
 
     def test_vehicle_creation_unknown(self):
         self.assertEqual(self.unknown_truck.name, "uknown model")
@@ -59,6 +59,10 @@ class TestVehicles(unittest.TestCase):
             "Vehicle ID: 1011\n"
             "Capacity: 37000 kg\n"
             "Max Range: 10000 km\n"
+            'Status: Available\n'
+            'Current Load: 0 kg\n'
+            'Assigned Packages: None\n'
+            'Current city: ADL'
         )
         self.assertEqual(str(self.truck1), expected_str)
 
