@@ -2,13 +2,21 @@ from core.application_data import ApplicationData
 from commands.helper_command.base_command import BaseCommand
 from commands.user_command.login_command import LoginCommand
 from commands.user_command.register_employee_command import RegisterEmployeeCommand
+from models.employee_role import EmployeeRole
+
+
 class PrintRoutes(BaseCommand):
     def __init__(self, app_data: ApplicationData):
         super().__init__(app_data)
 
     def execute(self, params=None):
+
+        employee = self._app_data.logged_in_employee
+        if employee.employee_role not in [EmployeeRole.MANAGER]:
+            return '\nError: Only Managers have access to this data!'
+
         if not self._app_data.routes:
-            return "No routes available."
+            return "\nNo routes available."
 
         route_list = []
         seen_routes_id = set()
