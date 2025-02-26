@@ -58,19 +58,19 @@ class Main:
                             result = cmd.execute([truck_id, route_id])
                             print(result)
 
-                        if truck_choice == "2":
+                        elif truck_choice == "2":
                             truck_id = int(input("🚛 Enter truck ID: "))
                             cmd = cmd_factory.create("viewinformationabouttruck")
                             result = cmd.execute([truck_id])
                             print(result)
 
-                        if truck_choice == "3":
+                        elif truck_choice == "3":
                             truck_id = int(input("🚛 Enter Truck ID: "))
                             cmd = cmd_factory.create("startmovement")
                             result = cmd.execute([truck_id])
                             print(result)
 
-                        if truck_choice == "4":
+                        elif truck_choice == "4":
                             city = input("Enter City: ")
                             cmd = cmd_factory.create("findtrucksincity")
                             result = cmd.execute([city])
