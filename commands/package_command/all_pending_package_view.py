@@ -6,8 +6,12 @@ class AllPendingPackageView:
     def __init__(self, app_data):
         self.app_data = app_data
 
-
     def execute(self):
+
+        employee = self.app_data.logged_in_employee
+        if employee.employee_role not in [EmployeeRole.SUPERVISING_EMPLOYEE, EmployeeRole.MANAGER]:
+            return '\nError: Only Supervisors and Managers have access to this data!'
+
         pending_packages = self.app_data.get_packages_by_status()
         if not pending_packages:
             return "\n📦 Not delivery package pending."

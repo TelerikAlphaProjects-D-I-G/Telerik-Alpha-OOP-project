@@ -89,7 +89,7 @@ class Main:
                         print("1.📦 Create Delivery Package")
                         print("2.🔍 View Information About Package")
                         print("3.🚛 Assign Delivery Package to Truck")
-                        print("4.🔍 View Information About Unassigned packages ")
+                        print("4.🔍 View Information About Unassigned Packages ")
                         print("5.🔙 Back to Main Menu")
                         package_choice = input("➡️Enter your choice: ")
 
